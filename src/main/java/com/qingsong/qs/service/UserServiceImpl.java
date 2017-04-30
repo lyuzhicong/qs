@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService{
 	public List<UserVo> getUserVoList() {
 		return userMapper.getUserVoList();
 	}
+	
+	@Override
+	public int login(UserVo userVo){
+		return userMapper.login(userVo);
+	}
 }

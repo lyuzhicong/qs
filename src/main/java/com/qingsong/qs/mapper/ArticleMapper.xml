@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingsong.qs.mapper.ArticleMapper">
+	<insert id="insertArticle" parameterType="com.qingsong.qs.dto.ArticleVo">
+		INSERT INTO article (
+		title,
+		little_title,
+		content,
+		time
+		)
+		VALUES
+		(
+		#{title},
+		#{littleTitle},
+		#{content},
+		NOW()
+		)
+	</insert>
+
+</mapper>

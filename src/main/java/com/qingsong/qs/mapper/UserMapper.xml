@@ -12,5 +12,13 @@
     <select id="getUserVoList" resultMap="BaseResultMap">  
         SELECT id,`name`, password
         FROM user
-    </select>  
+    </select>
+    
+    <select id="login" resultType="int" parameterType="com.qingsong.qs.dto.UserVo">
+    	SELECT COUNT(1) FROM user
+    	WHERE
+    	NAME = #{name}
+    	AND
+    	PASSWORD = #{password}
+    </select>
 </mapper>
