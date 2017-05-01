@@ -15,5 +15,5 @@
 	<!-- 对模型视图添加前后缀 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
 	<!-- 配置资源文件夹的路径，以便jsp能访问到所引用的静态资源文件。 -->
-<!-- 	<mvc:resources location="/resources/" mapping="/**" /> -->
+	<mvc:resources location="/resources/" mapping="/**" />
 </beans>
