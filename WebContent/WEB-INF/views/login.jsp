@@ -24,7 +24,7 @@
 		<div class="form-group">
 			<label class="col-sm-2 control-label">密码:</label>
 			<div class="col-sm-4">
-				<input type="text" name="password" class="form-control" />
+				<input type="password" name="password" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">

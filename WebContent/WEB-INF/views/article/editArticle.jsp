@@ -16,7 +16,7 @@
 <body>
 <div class="block">
 	<h2>编辑文章</h1>
-	<form action="saveArticle.do" method="post" class="form-horizontal">
+	<form action="../article/saveArticle.do" method="post" class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">标题：</label>
 			<div class="col-sm-4">

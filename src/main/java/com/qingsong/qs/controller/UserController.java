@@ -20,14 +20,7 @@ public class UserController {
 	@Autowired
 	public UserService userService;
 	
-	@RequestMapping("/")
-	public String getIndex(HttpServletRequest request){
-		UserVo userVo  = userService.getUserVoList().get(0);
-		request.setAttribute("user", userVo);
-		return "index";
-	}
-	
-	@RequestMapping("loginPage.do")
+	@RequestMapping("admin")
 	public String login(){
 		return "login";
 	}
@@ -36,7 +29,7 @@ public class UserController {
 	public String login(UserVo userVo){
 		int count = userService.login(userVo);
 		if(count == 1){
-			return "loginSuc";
+			return "article/editArticle";
 		}
 		else{
 			return "loginFail";
