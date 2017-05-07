@@ -7,15 +7,22 @@
 		title,
 		little_title,
 		content,
-		time
+		time,
+		path
 		)
 		VALUES
 		(
 		#{title},
 		#{littleTitle},
 		#{content},
-		NOW()
+		NOW(),
+		#{path}
 		)
 	</insert>
+	
+	<select id="getArticleById" parameterType="java.lang.Long" resultType="com.qingsong.qs.dto.ArticleVo">
+		SELECT * FROM article
+		WHERE id = #{value}
+	</select>
 
 </mapper>

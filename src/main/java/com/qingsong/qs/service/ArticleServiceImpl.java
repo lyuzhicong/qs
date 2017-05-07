@@ -22,4 +22,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 	}
 
+	@Override
+	public ArticleVo getArticleById(Long id) {
+		return articleMapper.getArticleById(id);
+	}
+
 }

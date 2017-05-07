@@ -6,6 +6,7 @@ public class ArticleVo {
 	private String littleTitle;
 	private String content;
 	private String date;
+	private String path;
 
 	public Long getId() {
 		return id;
@@ -45,6 +46,14 @@ public class ArticleVo {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }

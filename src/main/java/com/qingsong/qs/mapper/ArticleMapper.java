@@ -7,4 +7,6 @@ public interface ArticleMapper {
 	
 	public int insertArticle(ArticleVo articleVo);
 	
+	public ArticleVo getArticleById(Long id);
+	
 }
