@@ -510,3 +510,23 @@ padding-bottom: 2rem;
     line-height: 2rem;
     font-weight: 500;
 }
+
+/*group*/
+.group{
+    padding: 10px 5%;
+    display: flex;
+    justify-content: center;
+}
+.group ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.group ul li{
+    width: 30%;
+}
+
+.group ul li img{
+    width: 100%;
+}
