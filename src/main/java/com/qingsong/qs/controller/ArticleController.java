@@ -15,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -42,6 +41,12 @@ public class ArticleController {
 	public String saveArticle(ArticleVo articleVo, HttpServletRequest request) {
 		String[] imagesName = request.getParameterValues("image");
 		JSONArray jsonArray = new JSONArray();
+		String content = articleVo.getContent();
+		if(content!=null){
+			content = "<p>" + content;
+			content = content.replaceAll("(\\r\\n)+", "</p><p>") + "</p>";
+			articleVo.setContent(content);
+		}
 		if(imagesName != null && imagesName.length > 1){
 			for (String imageName : imagesName) {
 				JSONObject pathObj = new JSONObject();
@@ -62,12 +67,9 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public void getArticleById(Long id, HttpServletResponse response) throws IOException {
-		JSONObject jsonObj = new JSONObject();
-		jsonObj.put("articleVo", articleService.getArticleById(id));
-		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(jsonObj.toString());
+	public String getArticleById(Long id, HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("articleVo", articleService.getArticleById(id));
+		return "/article/article";
 	}
 
 	@RequestMapping(value = "uploadImages.do")
@@ -77,7 +79,7 @@ public class ArticleController {
 		Map<String, MultipartFile> map = multipartHttpServletRequest.getFileMap();
 		File dir = new File(request.getSession().getServletContext().getRealPath("resources/article"));
 		if (!dir.exists()) {
-//			dir.mkdirs();
+			dir.mkdirs();
 		}
 		String path = null;
 		try {
@@ -87,7 +89,6 @@ public class ArticleController {
 				File ff = new File(dir,path);
 				multipartFile.transferTo(ff);
 			}
-			;
 			jsonObj.put("Status", "OK");
 			jsonObj.put("path", "article" + File.separator + path);
 		} catch (Exception e) {
