@@ -1,7 +1,7 @@
-$(function(){
-    $("#wechat").hover(function(){
+$(function() {
+    $("#wechat").hover(function() {
         $("#wechatcode").fadeIn("slow");
-    }, function(){
+    }, function() {
         $("#wechatcode").fadeOut("fast");
     })
 

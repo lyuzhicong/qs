@@ -1,11 +1,11 @@
 body {
     width: 100%;
-    font-family: 微软雅黑; 
+    font-family: 微软雅黑;
     color: #000000;
     font-size: 16px;
 }
 
-a{
+a {
     text-decoration: none;
     color: #666666;
 }
@@ -19,40 +19,38 @@ ul li {
     border: 0px;
 }
 
-small{
-    color:#95A9B1;
+small {
+    color: #95A9B1;
 }
 
 header,
 footer {
+    width: 100%;
     height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+}
+
+main {
+    width: 100%;
 }
 
 header {
-    width: 80%;
     margin: 0 auto;
 }
 
 footer {
-    width: 80%;
-    padding: 0 10%;
     background-color: #E8EDEF;
 }
 
-footer span{
+.footer span {
     position: relative;
 }
 
-footer #wechatcode{
+.footer #wechatcode {
     position: absolute;
     left: -52px;
     top: -160px;
     display: none;
 }
-
 
 .nav {
     display: flex;
@@ -66,18 +64,20 @@ footer #wechatcode{
     border-bottom: 3px solid transparent;
 }
 
-.nav li:hover{
+.nav li:hover {
     color: #29754D;
     border-bottom: 3px solid #29754D;
 }
 
 .main {
-    width: 100%;
     height: 500px;
+    display: flex;
+    justify-content: center;
     background-color: #F8F8F8;
+    margin: 0 auto;
 }
 
-.main ul{
+.main ul {
     height: 100%;
 }
 
@@ -88,10 +88,14 @@ footer #wechatcode{
     justify-content: center;
 }
 
-.main ul li{
+.main ul li {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.main ul li img {
+    width: 80%;
 }
 
 .main ul li:nth-child(n) {
@@ -99,10 +103,8 @@ footer #wechatcode{
 }
 
 .main ul li:nth-child(2n) {
-background-color: #EEEEEE;
+    background-color: #EEEEEE;
 }
-
-
 
 .detail-top {
     height: 200px;
@@ -112,7 +114,8 @@ background-color: #EEEEEE;
     align-items: center;
     font-size: 2rem;
 }
-.detail-top span{
+
+.detail-top span {
     margin: .75rem 0;
 }
 
@@ -146,41 +149,46 @@ background-color: #EEEEEE;
 }
 
 .detail {
-    width: 100%;
+    width: 1024px;
+    margin: 0 auto;
     background-color: white;
+}
+
+.main-wrap {
+    width: 100%;
+    background-color: #F8F8F8;
 }
 
 
 /*team*/
 
-.team {
+.team-wrap {
     width: 80%;
     margin: 0 auto;
 }
 
-.team ul {
-    width: 100%;
+.team {
     display: flex;
     flex-wrap: wrap;
 }
 
-.team ul li {
+.team li {
     width: 50%;
     position: relative;
     overflow: hidden;
 }
 
-.team ul li img{
+.team li img {
     width: 100%;
     height: 100%;
     transition: all 0.35s;
 }
 
-.team ul li:hover img{
-    transform: translate(-20%,0);
+.team li:hover img {
+    transform: translate(-20%, 0);
 }
 
-.team ul li .tip{
+.team li .tip {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -188,37 +196,34 @@ background-color: #EEEEEE;
     top: 0px;
     background-color: white;
     transition: all 0.35s;
-    transform: translate(0,0);
+    transform: translate(0, 0);
     display: flex;
     flex-direction: column;
-    
 }
 
-
-
-.team ul li:hover .tip{
+.team li:hover .tip {
     transform: translate(-100%, 0);
 }
 
-.tip h3{
+.tip h3 {
     font-size: 1.5rem;
     padding: 15px 8%;
 }
 
-.tip span{
+.tip span {
     color: #29754D;
-    font-size:1.2rem;
+    font-size: 1.2rem;
     padding: 0 8%;
 }
 
-.tip p{
+.tip p {
     color: #666666;
     font-size: 1rem;
     padding: 15px 8%;
     line-height: 1.5rem;
 }
 
-.tip button{
+.tip button {
     border: 1px solid #29754D;
     border-radius: 3px;
     width: 50%;
@@ -229,44 +234,52 @@ background-color: #EEEEEE;
     cursor: pointer;
 }
 
+
 /*number*/
 
-.number{
+.number-wrap {
+    width: 100%;
+    background-color: #F8F8F8;
+}
+
+.number {
     display: flex;
     padding: 20px 10%;
     margin: 0 auto;
     background-color: #F8F8F8;
 }
 
-.number-list{
+.number-list {
     display: flex;
     flex-direction: column;
     width: 30%;
-        align-items: flex-start;
+    align-items: flex-start;
 }
 
-.number-list span{
+.number-list span {
     height: 30px;
     margin-bottom: 10px;
     border-bottom: 3px solid #29754D;
 }
+
 .number-list ul {
     display: flex;
     flex-direction: column;
 }
 
-.number-list ul li{
+.number-list ul li {
     height: 50px;
     display: inline;
     line-height: 50px;
     cursor: pointer;
 }
 
-.number-list ul li:hover{
-color:#29754D;
+.number-list ul li:hover {
+    color: #29754D;
 }
-.number-list ul li.active{
-    color:#29754D;
+
+.number-list ul li.active {
+    color: #29754D;
 }
 
 .number-introduction {
@@ -275,7 +288,7 @@ color:#29754D;
     background-color: white;
 }
 
-.number-introduction-detail{
+.number-introduction-detail {
     display: none;
     flex-direction: column;
     justify-content: space-between;
@@ -283,113 +296,112 @@ color:#29754D;
     padding: 20px 15px;
 }
 
-.number-introduction-detail.active{
+.number-introduction-detail.active {
     display: flex;
 }
 
-.number-introduction-detail h3{
+.number-introduction-detail h3 {
     font-size: 1.75rem;
     margin-bottom: 20px;
 }
 
-.number-introduction-detail h4{
+.number-introduction-detail h4 {
     color: #29754D;
     margin-bottom: 15px;
 }
 
-.number-introduction-detail span{
+.number-introduction-detail span {
     height: 30px;
     border-bottom: 2px solid #29754D;
     margin-bottom: 20px;
 }
 
-.number-introduction-detail img{
+.number-introduction-detail img {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.number-introduction-detail article{
+.number-introduction-detail article {
     margin-bottom: 20px;
 }
 
-.number-introduction-detail article div{
+.number-introduction-detail article div {
     margin-bottom: 15px;
     line-height: 30px;
 }
 
-.number-introduction-detail ul{
+.number-introduction-detail ul {
     display: flex;
     flex-wrap: wrap;
 }
 
-.number-introduction-detail ul li{
+.number-introduction-detail ul li {
     width: 33%;
 }
 
-.number-introduction-detail ul li img{
+.number-introduction-detail ul li img {
     width: 100%;
 }
 
+
 /*share*/
 
-.share{
-display: flex;
+.share {
+    display: flex;
     padding: 20px 10%;
     margin: 0 auto;
     background-color: #F8F8F8;
 }
 
-.share-list{
+.share-list {}
 
-}
-
-.share-detail{
-        height: 100%;
+.share-detail {
+    height: 100%;
     flex: 2;
     display: flex;
     flex-direction: column;
-     align-items: flex-start;
+    align-items: flex-start;
 }
 
 .share-detail>span,
-.share-list>span{
+.share-list>span {
     height: 30px;
     border-bottom: 3px solid #29754D;
 }
 
-.share-detail ul li{
+.share-detail ul li {
     display: flex;
     height: 150px;
     padding: 20px 0;
     border-bottom: 1px solid #F8F8F8;
 }
 
-.share-detail ul li img{
+.share-detail ul li img {
     display: flex;
     width: 250px;
 }
 
-.share-detail ul li div{
+.share-detail ul li div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 10px 20px 0 20px;
 }
 
-.share-detail ul li div h4{
+.share-detail ul li div h4 {
     line-height: 2rem;
 }
 
-.share-detail ul li div span{
+.share-detail ul li div span {
     color: #666666;
 }
 
-.share-list ul li h4{
+.share-list ul li h4 {
     font-size: 1.2rem;
     margin: 20px 0;
 }
 
-.share-list ul li p{
+.share-list ul li p {
     color: #666666;
     margin: 20px 0;
     height: 96px;
@@ -397,13 +409,19 @@ display: flex;
     line-height: 1.5rem;
 }
 
-.share-list ul li img{
+.share-list ul li img {
     width: 100%;
 }
 
+
 /*article*/
 
-.article{
+.article-wrap {
+    width: 100%;
+    background-color: #F8F8F8;
+}
+
+.article {
     display: flex;
     padding: 20px 10%;
     margin: 0 auto;
@@ -411,7 +429,7 @@ display: flex;
 }
 
 .article-list,
-.share-list{
+.share-list {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -419,43 +437,43 @@ display: flex;
     margin: 0 0 0 20px;
 }
 
-.article-list span{
+.article-list span {
     height: 30px;
     margin-bottom: 30px;
     border-bottom: 3px solid #29754D;
 }
-.article-list ul {
-}
 
-.article-list ul li{
+.article-list ul {}
+
+.article-list ul li {
     color: #666666;
     line-height: 25px;
     margin-bottom: 20px;
 }
 
-.article-detail{
+.article-detail {
     height: 100%;
     flex: 2;
     padding: 40px 20px;
     background-color: white;
 }
 
-.article-detail h3{
+.article-detail h3 {
     font-size: 1.75rem;
     line-height: 2.5rem;
 }
 
-.article-detail span{
+.article-detail span {
     color: #666666;
     display: block;
     margin: 10px 0;
 }
 
-.article-detail h4{
+.article-detail h4 {
     font-size: 1.5rem;
 }
 
-.article-detail p{
+.article-detail p {
     color: #666666;
     line-height: 2rem;
     margin: 1rem 0 2rem 0;
@@ -463,33 +481,35 @@ display: flex;
 
 
 /*about*/
-.about{
+
+.about-wrap {
     background-color: #F8F8F8;
+    padding: 20px 0;
+}
+
+.about {
+    margin: 20px auto;
+    background-color: #ffffff;
     display: flex;
-    
-    
+    flex-direction: column;
+    padding-bottom: 2rem;
 }
-.about>div{
-width: 90%;
-margin: 20px 5%;
-background-color: white;
-padding-bottom: 2rem;
-}
-.about section{
+
+.about section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     margin: 2rem 0;
-
 }
 
-.about section h3{
+.about section h3 {
     margin-bottom: 2rem;
     font-size: 1.75rem;
 }
-.about section div{
+
+.about section div {
     color: #666666;
     line-height: 2rem;
     padding: 0 3rem;
@@ -506,51 +526,54 @@ padding-bottom: 2rem;
     flex-direction: column;
 }
 
-.about .address{
+.about .address {
     display: flex;
     justify-content: center;
     background-color: white;
 }
 
-.about .address div{
+.about .address div {
     width: 40%;
     margin: 0 2%;
 }
 
-.about .address div img{
+.about .address div img {
     width: 100%;
     margin-bottom: 1rem;
 }
 
-.about .address div span{
+.about .address div span {
     font-size: 1.2rem;
     line-height: 2rem;
     font-weight: 500;
 }
 
+
 /*group*/
-.group{
+
+.group {
     padding: 30px 10%;
     display: flex;
     justify-content: center;
 }
-.group ul{
+
+.group ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.group ul li{
+.group ul li {
     width: 27%;
     position: relative;
     margin: 20px 20px;
 }
 
-.group ul li img{
+.group ul li img {
     width: 100%;
 }
 
-.group ul li div{
+.group ul li div {
     visibility: hidden;
     width: 100%;
     height: 100%;
@@ -566,7 +589,7 @@ padding-bottom: 2rem;
     align-items: center;
 }
 
-.group ul li div span{
-    font-size: 0.9rem;
+.group ul li div span {
+    font-size: 1.3rem;
     line-height: 1.5rem;
 }

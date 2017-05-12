@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="css/web/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/web/media.css" rel="stylesheet" type="text/css" />
 <link href="css/web/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -12,34 +13,25 @@
 
 <body>
     <header>
-        <div class="logo">
-            <img src="images/web/logo.png">
-            
+        <div class="header">
+            <div class="logo">
+                <img src="images/web/logo.png">
+
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="group.html">投资组合</a></li>
+                    <li><a href="team.html">投资团队</a></li>
+                    <li><a href="share.html">青松分享</a></li>
+                    <li><a href="about.html">关于青松</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="group.html">投资组合</a></li>
-                <li><a href="team.html">投资团队</a></li>
-                <li><a href="share.html">青松分享</a></li>
-                <li><a href="about.html">关于青松</a></li>
-            </ul>
-        </nav>
+
     </header>
-    <main class="team">
-        <ul>
-            <!--刘晓松.jpg
-孟德洋.jpg
-亓骥才.jpg
-苏蔚.jpg
-涂岚.jpg
-王兆乾.jpg
-熊浩然.jpg
-张晨.jpg
-张放.jpg
-张腾.jpg
-周亢.jpg董占斌
-Web投资团队.jpg-->
+    <main class="team-wrap">
+        <ul class="team">
             <li>
                 <img src="images/web/刘晓松.jpg">
                 <div class="tip">
@@ -95,12 +87,13 @@ Web投资团队.jpg-->
                 </div>
             </li>
             <li><img src="images/web/熊浩然.jpg">
-            <div class="tip">
+                <div class="tip">
                     <h3>熊浩然</h3>
                     <span>投资团队</span>
                     <p>熊浩然是青松基金的投资经理，负责消费升级领域的投资。</p>
                     <button><a href="javascript:void(0)">了解详情</a></button>
-                </div></li>
+                </div>
+            </li>
             <li>
                 <img src="images/web/王兆乾.jpg">
                 <div class="tip">
@@ -111,55 +104,61 @@ Web投资团队.jpg-->
                 </div>
             </li>
             <li><img src="images/web/张腾.jpg">
-            <div class="tip">
+                <div class="tip">
                     <h3>张腾</h3>
                     <span>投资团队</span>
                     <p>左手疯投右手诗的90后, 对探索未知事物充满好奇心｡</p>
                     <button><a href="javascript:void(0)">了解详情</a></button>
-                </div></li>
+                </div>
+            </li>
             <li><img src="images/web/周亢.jpg">
-            <div class="tip">
+                <div class="tip">
                     <h3>周亢</h3>
                     <span>投资团队</span>
                     <p>周亢是青松基金的投资分析师,负责线上线下娱乐、消费升级领域的投资。</p>
                     <button><a href="javascript:void(0)">了解详情</a></button>
-                </div></li>
+                </div>
+            </li>
             <li><img src="images/web/张晨.jpg">
-            <div class="tip">
+                <div class="tip">
                     <h3>张晨</h3>
                     <span>投资团队</span>
                     <p>2015年加入青松基金，研究体育文化领域。本科及研究生主攻新闻传播学，信息敏感、探寻未知、乐于分享，擅长挑选与联结。</p>
                     <button><a href="javascript:void(0)">了解详情</a></button>
-                </div></li>
+                </div>
+            </li>
 
             <li><img src="images/web/孟德洋.jpg">
-            <div class="tip">
+                <div class="tip">
                     <h3>孟德洋</h3>
                     <span>投资团队</span>
                     <p>孟德洋在青松基金负责发现泛娱乐、教育领域的投资机会。孟德洋在从上海交通大学研究生毕业后即加入青松基金。</p>
                     <button><a href="javascript:void(0)">了解详情</a></button>
-                </div></li>
+                </div>
+            </li>
         </ul>
     </main>
     <footer>
-        <small>© 2012 QingSong Fund All rights reserved. 粤ICP备12034380号</small>
-        <span>
+        <div class="footer">
+            <small>© 2012 QingSong Fund All rights reserved. 粤ICP备12034380号</small>
+            <span>
             <img src="images/web/pic_QR_code.png" id="wechatcode">
             <img src="images/web/icon_wechat_normal.png" id="wechat">
         </span>
+        </div>
+
     </footer>
 </body>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript">
-    $(function(){
-        
-
-     $(".tip>button").click(function(){
-        var idx = $(this).closest("li").index();
-        window.location.href="number.html?idx=" + idx;
-    });
-})
+    $(function() {
 
 
+        $(".tip>button").click(function() {
+            var idx = $(this).closest("li").index();
+            window.location.href = "number.html?idx=" + idx;
+        });
+    })
 </script>
+
 </html>

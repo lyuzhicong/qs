@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="css/web/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/web/media.css" rel="stylesheet" type="text/css" />
 <link href="css/web/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -11,83 +12,94 @@
 
 <body>
     <header>
-        <div class="logo">
-            <img src="images/web/logo.png">
-            
+        <div class="header">
+            <div class="logo">
+                <img src="images/web/logo.png">
+
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="group.html">投资组合</a></li>
+                    <li><a href="team.html">投资团队</a></li>
+                    <li><a href="share.html">青松分享</a></li>
+                    <li><a href="about.html">关于青松</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="group.html">投资组合</a></li>
-                <li><a href="team.html">投资团队</a></li>
-                <li><a href="share.html">青松分享</a></li>
-                <li><a href="about.html">关于青松</a></li>
-            </ul>
-        </nav>
+
     </header>
-    <div class="main">
-        <ul>
-            <li>
-                <img src="images/web/pic_number_1.png">
-            </li>
-            <li>
-                <img src="images/web/pic_number_2.png">
-            </li>
-            <li>
-                <img src="images/web/pic_number_3.png">
-            </li>
-        </ul>
-    </div>
-    <div class="detail">
-        <div class="detail-top">
-            <span>青松基金的目标是挖掘创新型企业</span>
-            <span>并助其成为基业长青的伟大公司</span>
+    <main>
+        <div class="main-wrap">
+            <div class="main">
+                <ul>
+                    <li>
+                        <img src="images/web/pic_number_1.png">
+                    </li>
+                    <li>
+                        <img src="images/web/pic_number_2.png">
+                    </li>
+                    <li>
+                        <img src="images/web/pic_number_3.png">
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="detail-bottom">
-            <li>
-                <div>
-                    <span>
+        <div class="detail">
+            <div class="detail-top">
+                <span>青松基金的目标是挖掘创新型企业</span>
+                <span>并助其成为基业长青的伟大公司</span>
+            </div>
+            <ul class="detail-bottom">
+                <li>
+                    <div>
+                        <span>
                         <img src="images/web/pic_feature_1.png">
                     </span>
-                    <span>种子期</span>
-                </div>
-                <div>
-                    感谢青松基金，让我在创业路上快速成长，记得我们从见面谈项目到打款只用了一周时间，青松基金是中国最棒的，最专业“快投”天使。
-                </div>
-            </li>
+                        <span>种子期</span>
+                    </div>
+                    <div>
+                        感谢青松基金，让我在创业路上快速成长，记得我们从见面谈项目到打款只用了一周时间，青松基金是中国最棒的，最专业“快投”天使。
+                    </div>
+                </li>
 
-            <li>
-                <div>
-                    <span>
+                <li>
+                    <div>
+                        <span>
                         <img src="images/web/pic_feature_2.png">
                     </span>
-                    <span>早期</span>
-                </div>
-                <div>
-                    感谢青松基金，让我在创业路上快速成长，记得我们从见面谈项目到打款只用了一周时间，青松基金是中国最棒的，最专业“快投”天使。
-                </div>
-            </li>
+                        <span>早期</span>
+                    </div>
+                    <div>
+                        感谢青松基金，让我在创业路上快速成长，记得我们从见面谈项目到打款只用了一周时间，青松基金是中国最棒的，最专业“快投”天使。
+                    </div>
+                </li>
 
-            <li>
-                <div>
-                    <span>
+                <li>
+                    <div>
+                        <span>
                         <img src="images/web/pic_feature_3.png">
                     </span>
-                    <span>成长期</span>
-                </div>
-                <div>
-                    感谢青松基金，让我在创业路上快速成长，记得我们从见面谈项目到打款只用了一周时间，青松基金是中国最棒的，最专业“快投”天使。
-                </div>
-            </li>
-        </ul>
-    </div>
+                        <span>成长期</span>
+                    </div>
+                    <div>
+                        感谢青松基金，让我在创业路上快速成长，记得我们从见面谈项目到打款只用了一周时间，青松基金是中国最棒的，最专业“快投”天使。
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
     <footer>
-        <small>© 2012 QingSong Fund All rights reserved. 粤ICP备12034380号</small>
-        <span>
+        <div class="footer">
+            <small>© 2012 QingSong Fund All rights reserved. 粤ICP备12034380号</small>
+            <span>
             <img src="images/web/pic_QR_code.png" id="wechatcode">
             <img src="images/web/icon_wechat_normal.png" id="wechat">
         </span>
+        </div>
+
     </footer>
 </body>
 <script type="text/javascript" src="js/main.js"></script>
+
 </html>
