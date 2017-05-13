@@ -163,7 +163,9 @@ footer {
 /*team*/
 
 .team-wrap {
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
 }
 
@@ -362,7 +364,7 @@ footer {
 
 .share-detail {
     height: 100%;
-    flex: 2;
+    flex: 3;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -416,6 +418,22 @@ footer {
 
 .share-list ul li img {
     width: 100%;
+}
+
+.share-list div {
+    display: flex;
+    width: 50%;
+    margin: 10px auto;
+    justify-content: space-around;
+}
+
+.share-list div i {
+    font-size: 1.5rem;
+    border: 1px solid #E2E2E2;
+    border-radius: 2px;
+    color: #999999;
+    width: 1.5rem;
+    text-align: center;
 }
 
 
@@ -556,29 +574,29 @@ footer {
 
 /*group*/
 
-.group {
-    padding: 30px 10%;
+.group-wrap {
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.group ul {
+.group {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.group ul li {
+.group li {
     width: 27%;
     position: relative;
     margin: 20px 20px;
 }
 
-.group ul li img {
+.group li img {
     width: 100%;
 }
 
-.group ul li div {
+.group li div {
     visibility: hidden;
     width: 100%;
     height: 100%;
@@ -594,7 +612,7 @@ footer {
     align-items: center;
 }
 
-.group ul li div span {
+.group li div span {
     font-size: 1.3rem;
     line-height: 1.5rem;
 }

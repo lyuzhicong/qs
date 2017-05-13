@@ -3,6 +3,7 @@
 <link href="css/web/reset.css" rel="stylesheet" type="text/css" />
 <link href="css/web/media.css" rel="stylesheet" type="text/css" />
 <link href="css/web/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="font/font-awesome/css/font-awesome.min.css">
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <head>
@@ -137,8 +138,8 @@
 
                 </ul>
                 <div>
-                    <button id="back">back</button>
-                    <button id="next">next</button>
+                    <i id="back " class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i id="next" class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
             </div>
 
