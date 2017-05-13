@@ -1,6 +1,6 @@
 package com.qingsong.qs.dto;
 
-public class ArticleVo {
+public class ArticleVo extends BasePageVo{
 	private Long id;
 	private String title;
 	private String littleTitle;

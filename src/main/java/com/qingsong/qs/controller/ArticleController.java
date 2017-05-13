@@ -2,6 +2,7 @@ package com.qingsong.qs.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -35,6 +37,19 @@ public class ArticleController {
 	@RequestMapping("editArticle.do")
 	public String editArticle() {
 		return "/article/editArticle";
+	}
+	
+	@RequestMapping(value = "getArticleList.do")
+	@ResponseBody
+	public void getCapacityConfList(ArticleVo articleVo, HttpServletResponse response) throws IOException {
+		JSONObject jsonObj = new JSONObject();
+		List<ArticleVo> capacityConfList = articleService.getArticleList(articleVo);
+		jsonObj.put("articleVo", articleVo);
+		jsonObj.put("pageSize", articleVo.getPageSize());
+		jsonObj.put("currentPage", articleVo.getCurrentPage());
+		jsonObj.put("pageCount", articleVo.getPageCount());
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(jsonObj);
 	}
 
 	@RequestMapping(value = "saveArticle.do", method = RequestMethod.POST)
