@@ -29,8 +29,8 @@
         </div>
 
     </header>
-    <div class="group">
-        <ul>
+    <div class="group-wrap">
+        <ul class="group">
             <li>
                 <img src="images/web/group/1.png">
                 <div>
@@ -226,13 +226,13 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript">
     $(function() {
-        $(".group ul li").hover(function() {
+        $(".group li").hover(function() {
             $(this).find("div").css("visibility", "visible");
         }, function() {
             $(this).find("div").css("visibility", "hidden");
         })
 
-        $(".group ul li").click(function() {
+        $(".group li").click(function() {
             var idx = $(this).index();
             window.location.href = "group-detail.html?idx=" + idx;
         })
