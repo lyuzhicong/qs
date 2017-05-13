@@ -346,6 +346,11 @@ footer {
 
 /*share*/
 
+.share-wrap {
+    width: 100%;
+    margin: 0 auto;
+}
+
 .share {
     display: flex;
     padding: 20px 10%;
@@ -591,5 +596,47 @@ footer {
 
 .group ul li div span {
     font-size: 1.3rem;
+    line-height: 1.5rem;
+}
+
+
+/*.group-detail*/
+
+.group-detail-wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.group-detail {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.group-detail li {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.group-detail li.active {
+    display: flex;
+}
+
+.group-detail li h3 {
+    font-size: 2rem;
+}
+
+.group-detail li span {
+    margin: 20px 0;
+}
+
+.group-detail li p {
+    text-indent: 2rem;
+    margin: 20px 0;
     line-height: 1.5rem;
 }

@@ -228,12 +228,15 @@
     $(function() {
         $(".group ul li").hover(function() {
             $(this).find("div").css("visibility", "visible");
-            //    $(this).find("div").animate({
-            //        visibility: "visible"
-            //    }, 500, function(){})
         }, function() {
             $(this).find("div").css("visibility", "hidden");
         })
+
+        $(".group ul li").click(function() {
+            var idx = $(this).index();
+            window.location.href = "group-detail.html?idx=" + idx;
+        })
+
     })
 </script>
 

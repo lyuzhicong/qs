@@ -12,7 +12,9 @@
     .about,
     .team,
     .number,
-    .article {
+    .article,
+    .group-detail,
+    .share {
         width: 1024px;
     }
 }
