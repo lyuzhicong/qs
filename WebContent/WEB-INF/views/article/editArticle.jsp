@@ -8,7 +8,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/dot/doT.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadify/jquery.uploadify.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadify/jquery.uploadify.js"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/uploadify/uploadify.css">
 <title>编辑文章</title>
@@ -29,6 +28,9 @@
 			'onUploadSuccess' : function(file, data, response) {
 				var html = "<input type=\"hidden\" name=\"image\" value=\"" + JSON.parse(data).path + "\">";
 				$('#editForm').append(html);
+			},
+			'onCancel' : function(file){
+				alert(file.name);
 			}
 			
 		});

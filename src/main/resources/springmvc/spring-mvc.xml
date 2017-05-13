@@ -18,9 +18,9 @@
 	<mvc:resources location="/resources/" mapping="/**" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- set the max upload size100MB -->
+		<!-- set the max upload size1MB -->
 		<property name="maxUploadSize">
-			<value>5242880</value>
+			<value>1048576</value>
 		</property>
 		<property name="maxInMemorySize">
 			<value>4096</value>
