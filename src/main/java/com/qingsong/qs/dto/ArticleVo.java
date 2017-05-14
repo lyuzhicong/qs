@@ -6,6 +6,7 @@ public class ArticleVo extends BasePageVo{
 	private String content;
 	private String date;
 	private String path;
+	private String littleTitle;
 
 	public Long getId() {
 		return id;
@@ -45,6 +46,14 @@ public class ArticleVo extends BasePageVo{
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public String getLittleTitle() {
+		return littleTitle;
+	}
+
+	public void setLittleTitle(String littleTitle) {
+		this.littleTitle = littleTitle;
 	}
 
 }
