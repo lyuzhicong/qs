@@ -169,12 +169,14 @@
                 for (var i = 0; i < articleVoList.length; i++) {
                     var articleVo = articleVoList[i];
                     var imgJson = JSON.parse(articleVo.path);
+                    var $li = $('<li id="' + articleVo.id + '"></li>')
                     var img = "<img src=" + imgJson[0].path + ">";
                     var title = "<h4>" + articleVo.title + "</h4>";
                     var date = "<span>" + articleVo.date + "</span>"
                     var $div = $('<div></div>');
                     $div.append(title).append(date);
-                    $(".share-detail>ul").append(img).append($div);
+                    $li.append(img).append($div);
+                    $(".share-detail>ul").append($li);
                 }
             }
         });
@@ -200,13 +202,15 @@
                     $(".share-detail>ul").empty();
                     for (var i = 0; i < articleVoList.length; i++) {
                         var articleVo = articleVoList[i];
+                        var $li = $('<li id="' + articleVo.id + '"></li>')
                         var imgJson = JSON.parse(articleVo.path);
                         var img = "<img src=" + imgJson[0].path + ">";
                         var title = "<h4>" + articleVo.title + "</h4>";
                         var date = "<span>" + articleVo.date + "</span>"
                         var $div = $('<div id="' + articleVo.id + '"></div>');
                         $div.append(title).append(date);
-                        $(".share-detail>ul").append(img).append($div);
+                        $li.append(img).append($div);
+                        $(".share-detail>ul").append($li);
                     }
                 }
             });
