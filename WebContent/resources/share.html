@@ -164,8 +164,8 @@
 <script type="text/javascript">
     $(function() {
         var count = 1;
-        var currentpage = 1;
-        var pagesize = 5;
+        var currentPage = 1;
+        var pageSize = 5;
         var pageCount = 8;
         $(".share-list ul li").hide();
         $(".share-list ul li:first").show();
@@ -175,29 +175,30 @@
             $(".share-list ul li").hide();
             $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
 
-        })
+        });
 
         $("#back").click(function() {
             count--;
             $(".share-list ul li").hide();
             $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
 
-        })
+        });
 
 
-        // $.getJSON("/article/getArticleList.do?currentPage=" + currentpage + "&pageSize=" + pagesize, function(data) {
-        //     if (data) {
-        //         for (var i = 1; i < data.articleVoList.length; i++) {
-        //             var img = "<img src=" + articleVoList[i].path + ">";
-        //             var title = "<h4>" + articleVoList[i].title + "</h4>";
-        //             var date = "<span>" + articleVoList[i].date + "</span>"
-        //             var div = "<div></div>"
-        //             $(div).append(title).append(date);
-        //             $(".share-detail>ul").append($(div))
-        //         }
-
-        //     }
-        // })
+        $.getJSON("article/getArticleList.do?currentPage=" + currentPage + "&pageSize=" + pageSize, function(data) {
+            if (data) {
+            	var articleVoList = data.articleVoList;
+                for (var i = 1; i < articleVoList.length; i++) {
+                	var articleVo = articleVoList[i];
+                    var img = "<img src=" + articleVo.path + ">";
+                    var title = "<h4>" + articleVo.title + "</h4>";
+                    var date = "<span>" + articleVo.date + "</span>"
+                    var div = "<div></div>"
+                    $(div).append(title).append(date);
+                    $(".share-detail>ul").append($(div))
+                }
+            }
+        });
 
         //此demo通过Ajax加载分页元素
         var initPagination = function() {
