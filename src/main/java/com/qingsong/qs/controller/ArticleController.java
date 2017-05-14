@@ -82,9 +82,9 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getArticleById(Long id, HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("articleVo", articleService.getArticleById(id));
-		return "/article/article";
+	@ResponseBody
+	public ArticleVo getArticleById(Long id) {
+		return articleService.getArticleById(id);
 	}
 
 	@RequestMapping(value = "uploadImages.do")

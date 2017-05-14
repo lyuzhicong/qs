@@ -3,7 +3,6 @@ package com.qingsong.qs.dto;
 public class ArticleVo extends BasePageVo{
 	private Long id;
 	private String title;
-	private String littleTitle;
 	private String content;
 	private String date;
 	private String path;
@@ -22,14 +21,6 @@ public class ArticleVo extends BasePageVo{
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getLittleTitle() {
-		return littleTitle;
-	}
-
-	public void setLittleTitle(String littleTitle) {
-		this.littleTitle = littleTitle;
 	}
 
 	public String getContent() {

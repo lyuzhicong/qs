@@ -9,13 +9,19 @@
     <meta charset="utf-8">
     <title>青松基金</title>
 </head>
-
+<script type="text/javascript">
+	$(function(){
+		var id = 22;
+		$.getJSON("article/getArticleById.do?id=" + id, function(data){
+			console.info(data);
+		});
+	});
+</script>
 <body>
     <header>
         <div class="header">
             <div class="logo">
                 <img src="images/web/logo.png">
-
             </div>
             <nav>
                 <ul class="nav">
