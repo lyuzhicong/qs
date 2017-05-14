@@ -10,13 +10,55 @@
     <title>青松基金</title>
 </head>
 <script type="text/javascript">
-	$(function(){
-		var id = 22;
-		$.getJSON("article/getArticleById.do?id=" + id, function(data){
-			console.info(data);
-		});
-	});
+    $(function() {
+        var id = GetUrlParam(id);
+        $.getJSON("article/getArticleById.do?id=" + id, function(data) {
+            if (data) {
+                var $detail = $(".article-detail");
+                $detail.empty();
+                var h3 = '<h3>' + data.title + '</h3>';
+                var span = '<span>' + data.date + '</span>';
+                var content = data.content;
+                var imgs = data.path;
+                var banner = '<img src="' + imgs[0].path + '">';
+
+                $detail.append(h3).append(span).append(banner);
+                for (var i = 0; i < content.length; i++) {
+                    var img = '<img src="' + imgs[i + 1].path + '">';
+                    var h4 = '<h4>' + content[i].title + '</h4>';
+                    var p = content[i].content;
+                    $detail.append(img).append(h4).append(p);
+                }
+            }
+        });
+    });
+
+    function GetUrlParam(paraName) {　　　　
+        var url = document.location.toString();　　　　
+        var arrObj = url.split("?");
+
+        　　　　
+        if (arrObj.length > 1) {　　　　　　
+            var arrPara = arrObj[1].split("&");　　　　　　
+            var arr;
+
+            　　　　　　
+            for (var i = 0; i < arrPara.length; i++) {　　　　　　　　
+                arr = arrPara[i].split("=");
+
+                　　　　　　　　
+                if (arr != null && arr[0] == paraName) {　　　　　　　　　　
+                    return arr[1];　　　　　　　　
+                }　　　　　　
+            }　　　　　　
+            return "";　　　　
+        }　　　　
+        else {　　　　　　
+            return "";　　　　
+        }　　
+    }
 </script>
+
 <body>
     <header>
         <div class="header">
