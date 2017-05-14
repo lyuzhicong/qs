@@ -163,19 +163,18 @@
         $.getJSON("article/getArticleList.do?currentPage=" + currentPage + "&pageSize=" + pageSize, function(data) {
             if (data) {
                 var articleVoList = data.articleVoList;
-                pageCount = data.pageSize;
+                pageCount = data.pageCount;
                 $(".share-detail>ul").empty();
-                for (var i = 1; i < articleVoList.length; i++) {
 
+                for (var i = 0; i < articleVoList.length; i++) {
                     var articleVo = articleVoList[i];
-                    var $li = $('<li id="' + articleVo.id + '"></li>')
-                    var img = "<img src=" + articleVo.path + ">";
+                    var imgJson = JSON.parse(articleVo.path);
+                    var img = "<img src=" + imgJson[0].path + ">";
                     var title = "<h4>" + articleVo.title + "</h4>";
                     var date = "<span>" + articleVo.date + "</span>"
                     var $div = $('<div></div>');
                     $div.append(title).append(date);
-                    $li.append(img).append($div);
-                    $(".share-detail>ul").append($li);
+                    $(".share-detail>ul").append(img).append($div);
                 }
             }
         });
@@ -199,14 +198,15 @@
                 if (data) {
                     var articleVoList = data.articleVoList;
                     $(".share-detail>ul").empty();
-                    for (var i = 1; i < articleVoList.length; i++) {
+                    for (var i = 0; i < articleVoList.length; i++) {
                         var articleVo = articleVoList[i];
-                        var img = "<img src=" + articleVo.path + ">";
+                        var imgJson = JSON.parse(articleVo.path);
+                        var img = "<img src=" + imgJson[0].path + ">";
                         var title = "<h4>" + articleVo.title + "</h4>";
                         var date = "<span>" + articleVo.date + "</span>"
                         var $div = $('<div id="' + articleVo.id + '"></div>');
                         $div.append(title).append(date);
-                        $(".share-detail>ul").append($div);
+                        $(".share-detail>ul").append(img).append($div);
                     }
                 }
             });

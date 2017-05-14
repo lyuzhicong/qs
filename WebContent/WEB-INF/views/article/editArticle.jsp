@@ -137,7 +137,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-10">
-					<button class="btn btn-default" id="btnSubmit">保存</button>
+					<button type="button" class="btn btn-default" id="btnSubmit">保存</button>
 				</div>
 			</div>
 		</form>

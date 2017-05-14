@@ -5,7 +5,6 @@
 	<insert id="insertArticle" parameterType="com.qingsong.qs.dto.ArticleVo">
 		INSERT INTO article (
 		title,
-		little_title,
 		content,
 		date,
 		path
@@ -13,7 +12,6 @@
 		VALUES
 		(
 		#{title},
-		#{littleTitle},
 		#{content},
 		NOW(),
 		#{path}

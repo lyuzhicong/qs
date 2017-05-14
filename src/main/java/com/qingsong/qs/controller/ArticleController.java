@@ -52,33 +52,44 @@ public class ArticleController {
 		response.getWriter().print(jsonObj);
 	}
 
-	@RequestMapping(value = "saveArticle.do", method = RequestMethod.POST)
-	public String saveArticle(ArticleVo articleVo, HttpServletRequest request) {
-		String[] imagesName = request.getParameterValues("image");
+	@RequestMapping(value = "saveArticle.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public JSONObject saveArticle(ArticleVo articleVo, HttpServletRequest request) {
+		JSONObject jsonObj = new JSONObject();
+		String[] imageNameArray = request.getParameterValues("image");
+		String[] littleTitleArray = request.getParameterValues("littleTitle");
+		String[] contentArray = request.getParameterValues("content");
 		JSONArray jsonArray = new JSONArray();
-		String content = articleVo.getContent();
-		if(content!=null){
-			content = "<p>" + content;
-			content = content.replaceAll("(\\r\\n)+", "</p><p>") + "</p>";
-			articleVo.setContent(content);
+		JSONArray contentJsonArray = new JSONArray();
+		if(contentArray!=null){
+			for(int i = 0; i < contentArray.length; i++){
+				String content = contentArray[i];
+				content = "<p>" + content;
+				content = content.replaceAll("(\\r\\n)+", "</p><p>") + "</p>";
+				JSONObject contentJsonObj = new JSONObject();
+				contentJsonObj.put("title", littleTitleArray[i]);
+				contentJsonObj.put("content", content);
+				contentJsonArray.add(contentJsonObj);
+			}
+			articleVo.setContent(contentJsonArray.toString());
 		}
-		if(imagesName != null && imagesName.length > 1){
-			for (String imageName : imagesName) {
+		if(imageNameArray != null){
+			for (String imageName : imageNameArray) {
 				JSONObject pathObj = new JSONObject();
 				pathObj.put("path", imageName);
 				jsonArray.add(pathObj);
 			}
 		}
-		if(jsonArray != null && jsonArray.size() > 0){
+		if(jsonArray != null){
 			articleVo.setPath(jsonArray.toString());
 		}
 		try {
 			articleService.saveArticle(articleVo);
-			return "/article/articleList";
+			jsonObj.put("Status", "OK");
 		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			jsonObj.put("Status", "ERROR");
 		}
-		return "/article/editArticle";
+		return jsonObj;
 	}
 
 	@RequestMapping(value = "getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
