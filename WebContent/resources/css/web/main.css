@@ -296,6 +296,7 @@ footer {
     justify-content: space-between;
     height: 100%;
     padding: 20px 15px;
+    align-items: flex-start;
 }
 
 .number-introduction-detail.active {
@@ -380,7 +381,7 @@ footer {
     display: flex;
     height: 150px;
     padding: 20px 0;
-    border-bottom: 1px solid #F8F8F8;
+    border-bottom: 1px solid #E2E2E2;
 }
 
 .share-detail ul li img {
@@ -401,6 +402,10 @@ footer {
 
 .share-detail ul li div span {
     color: #666666;
+}
+
+.share-detail .page {
+    width: 100px;
 }
 
 .share-list ul li h4 {
@@ -434,6 +439,24 @@ footer {
     color: #999999;
     width: 1.5rem;
     text-align: center;
+}
+
+.pagination {
+    display: flex;
+    margin: 20px auto;
+    width: 250px;
+    justify-content: space-around
+}
+
+.pagination a,
+.pagination span {
+    width: 26px;
+    height: 26px;
+    color: #999999;
+    border: 1px solid #E2E2E2;
+    line-height: 26px;
+    text-align: center;
+    cursor: pointer;
 }
 
 

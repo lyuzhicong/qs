@@ -5,6 +5,7 @@
 <link href="css/web/main.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="font/font-awesome/css/font-awesome.min.css">
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -23,7 +24,7 @@
                     <li><a href="index.html">首页</a></li>
                     <li><a href="group.html">投资组合</a></li>
                     <li><a href="team.html">投资团队</a></li>
-                    <li><a href="share.jsp">青松分享</a></li>
+                    <li><a href="share.html">青松分享</a></li>
                     <li><a href="about.html">关于青松</a></li>
                 </ul>
             </nav>
@@ -93,6 +94,9 @@
                         </div>
                     </li>
                 </ul>
+                <div id="Pagination" class="pagination">
+
+                </div>
             </div>
             <div class="share-list">
                 <span>
@@ -160,6 +164,9 @@
 <script type="text/javascript">
     $(function() {
         var count = 1;
+        var currentpage = 1;
+        var pagesize = 5;
+        var pageCount = 8;
         $(".share-list ul li").hide();
         $(".share-list ul li:first").show();
 
@@ -176,6 +183,47 @@
             $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
 
         })
+
+
+        // $.getJSON("/article/getArticleList.do?currentPage=" + currentpage + "&pageSize=" + pagesize, function(data) {
+        //     if (data) {
+        //         for (var i = 1; i < data.articleVoList.length; i++) {
+        //             var img = "<img src=" + articleVoList[i].path + ">";
+        //             var title = "<h4>" + articleVoList[i].title + "</h4>";
+        //             var date = "<span>" + articleVoList[i].date + "</span>"
+        //             var div = "<div></div>"
+        //             $(div).append(title).append(date);
+        //             $(".share-detail>ul").append($(div))
+        //         }
+
+        //     }
+        // })
+
+        //此demo通过Ajax加载分页元素
+        var initPagination = function() {
+            var num_entries = pageCount;
+            // 创建分页
+            $("#Pagination").pagination(num_entries, {
+                num_edge_entries: 1, //边缘页数
+                num_display_entries: 2, //主体页数
+                callback: pageselectCallback,
+                items_per_page: 1, //每页显示1项
+                prev_text: "<i  class='fa fa-angle-left' aria-hidden='true'></i>",
+                next_text: "<i  class='fa fa-angle-right' aria-hidden='true'></i>"
+            });
+        };
+
+        function pageselectCallback(page_index, jq) {
+            console.log('1')
+                // var new_content = $("#hiddenresult div.result:eq(" + page_index + ")").clone();
+                // $("#Searchresult").empty().append(new_content); //装载对应分页的内容
+                // return false;
+        }
+        //ajax加载
+        // $("#hiddenresult").load("load.html", null, initPagination);
+        initPagination();
+
+
     })
 </script>
 
