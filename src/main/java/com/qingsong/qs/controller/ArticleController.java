@@ -39,12 +39,12 @@ public class ArticleController {
 		return "/article/editArticle";
 	}
 	
-	@RequestMapping(value = "getArticleList.do")
+	@RequestMapping(value = "getArticleList.do", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public void getCapacityConfList(ArticleVo articleVo, HttpServletResponse response) throws IOException {
+	public void getArticleList(ArticleVo articleVo, HttpServletResponse response) throws IOException {
 		JSONObject jsonObj = new JSONObject();
-		List<ArticleVo> capacityConfList = articleService.getArticleList(articleVo);
-		jsonObj.put("articleVo", articleVo);
+		List<ArticleVo> articleVoList = articleService.getArticleList(articleVo);
+		jsonObj.put("articleVoList", articleVoList);
 		jsonObj.put("pageSize", articleVo.getPageSize());
 		jsonObj.put("currentPage", articleVo.getCurrentPage());
 		jsonObj.put("pageCount", articleVo.getPageCount());

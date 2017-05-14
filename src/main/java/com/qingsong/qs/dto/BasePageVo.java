@@ -18,16 +18,23 @@ public class BasePageVo {
 		return currentPage;
 	}
 
+	public void setStartNum(Integer startNum) {
+		this.startNum = startNum;
+	}
+
 	public void setCurrentPage(Integer currentPage) {
-		this.currentPage = currentPage;
+		if (currentPage == null) {
+			this.currentPage = 1;
+		} else {
+			this.currentPage = currentPage;
+		}
 	}
 
 	public Integer getStartNum() {
+		if (startNum == null) {
+			startNum = (currentPage - 1) * pageSize;
+		}
 		return startNum;
-	}
-
-	public void setStartNum(Integer startNum) {
-		this.startNum = startNum;
 	}
 
 	public Integer getPageCount() {
