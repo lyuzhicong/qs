@@ -7,7 +7,7 @@
 		title,
 		little_title,
 		content,
-		time,
+		date,
 		path
 		)
 		VALUES
@@ -21,7 +21,13 @@
 	</insert>
 	
 	<select id="getArticleById" parameterType="java.lang.Long" resultType="com.qingsong.qs.dto.ArticleVo">
-		SELECT * FROM article
+		SELECT
+		id,
+		title,
+		`date`,
+		content,
+		path
+		FROM article
 		WHERE id = #{value}
 	</select>
 	
@@ -30,7 +36,14 @@
 	</select>
 	
 	<select id="getArticleList" parameterType="com.qingsong.qs.dto.ArticleVo" resultType="com.qingsong.qs.dto.ArticleVo">
-		SELECT * FROM article
+		SELECT
+		id,
+		title,
+		`date`,
+		content,
+		path
+		FROM article
+		ORDER BY `date` desc
 		LIMIT #{startNum}, #{pageSize}
 	</select>
 
