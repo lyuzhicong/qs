@@ -32,7 +32,6 @@
 			'onCancel' : function(file){
 				alert(file.name);
 			}
-			
 		});
 		// 		$('#startUpload').click(function(){
 		// 			 $('#uploadify').uploadify('upload','*');
