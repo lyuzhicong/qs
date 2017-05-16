@@ -18,16 +18,17 @@
                 $detail.empty();
                 var h3 = '<h3>' + data.title + '</h3>';
                 var span = '<span>' + data.date + '</span>';
-                var content = data.content;
-                var imgs = data.path;
-                var banner = '<img src="' + imgs[0].path + '">';
-
+                var contentJsonArray = JSON.parse(data.content);
+                var imgJson = JSON.parse(data.path);
+                var banner = '<img src="' + imgJson[0].path + '">';
                 $detail.append(h3).append(span).append(banner);
-                for (var i = 0; i < content.length; i++) {
-                    var img = '<img src="' + imgs[i + 1].path + '">';
-                    var h4 = '<h4>' + content[i].title + '</h4>';
-                    var p = content[i].content;
-                    $detail.append(img).append(h4).append(p);
+                for (var i = 0; i < contentJsonArray.length; i++) {
+//                     var img = '<img src="' + imgs[i + 1].path + '">';
+                    var h4 = '<h4>' + contentJsonArray[i].title + '</h4>';
+                    console.info(contentJsonArray[i].title);
+                    console.info(contentJsonArray[i].content);
+                    var p = contentJsonArray[i].content;
+                    $detail.append(h4).append(p);
                 }
             }
         });
@@ -36,26 +37,12 @@
     function GetUrlParam(paraName) {　　　　
         var url = document.location.toString();　　　　
         var arrObj = url.split("?");
-
-        　　　　
         if (arrObj.length > 1) {　　　　　　
-            var arrPara = arrObj[1].split("&");　　　　　　
-            var arr;
-
-            　　　　　　
-            for (var i = 0; i < arrPara.length; i++) {　　　　　　　　
-                arr = arrPara[i].split("=");
-
-                　　　　　　　　
-                if (arr != null && arr[0] == paraName) {　　　　　　　　　　
-                    return arr[1];　　　　　　　　
-                }　　　　　　
-            }　　　　　　
-            return "";　　　　
-        }　　　　
-        else {　　　　　　
-            return "";　　　　
-        }　　
+            var arrPara = arrObj[1].split("&")[0];　　　　　　
+            return arrPara.split("=")[1];
+        }else{
+        	return "";
+        }
     }
 </script>
 
