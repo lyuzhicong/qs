@@ -11,4 +11,6 @@ public interface ArticleService {
 	public ArticleVo getArticleById(Long id);
 	
 	public List<ArticleVo> getArticleList(ArticleVo articleVo);
+
+	public int deleteArticleById(Long id);
 }

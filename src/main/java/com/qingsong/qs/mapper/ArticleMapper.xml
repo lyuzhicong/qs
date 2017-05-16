@@ -18,6 +18,16 @@
 		)
 	</insert>
 	
+	<update id="updateArticle" parameterType="com.qingsong.qs.dto.ArticleVo">
+		UPDATE article
+		SET
+		title = #{title},
+		content = #{content},
+		date = NOW(),
+		path = {path}
+		WHERE id = #{id}
+	</update>
+	
 	<select id="getArticleById" parameterType="java.lang.Long" resultType="com.qingsong.qs.dto.ArticleVo">
 		SELECT
 		id,
@@ -44,5 +54,12 @@
 		ORDER BY `date` desc
 		LIMIT #{startNum}, #{pageSize}
 	</select>
+	
+	<delete id="deleteArticleById" parameterType="java.lang.Long">
+		DELETE
+		FROM
+		article
+		WHERE id = #{value}
+	</delete>
 
 </mapper>

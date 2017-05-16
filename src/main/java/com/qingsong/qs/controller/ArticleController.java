@@ -51,6 +51,13 @@ public class ArticleController {
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(jsonObj);
 	}
+	
+	@RequestMapping(value = "articleManager.do")
+	public String articleManager(ArticleVo articleVo, HttpServletRequest request){
+		request.setAttribute("articleVoList",articleService.getArticleList(articleVo));
+		return "/article/articleList";
+		
+	}
 
 	@RequestMapping(value = "saveArticle.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -96,6 +103,20 @@ public class ArticleController {
 	@ResponseBody
 	public ArticleVo getArticleById(Long id) {
 		return articleService.getArticleById(id);
+	}
+	
+	@RequestMapping(value= "deleteArticleById.do", method = RequestMethod.POST)
+	@ResponseBody
+	public JSONObject deleteArticleById(Long id){
+		JSONObject jsonObj = new JSONObject();
+		try{
+			articleService.deleteArticleById(id);
+			jsonObj.put("Status", "OK");
+		} catch(Exception e){
+			jsonObj.put("Status", "ERROR");
+			logger.error(e.getMessage(), e);
+		}
+		return jsonObj;
 	}
 
 	@RequestMapping(value = "uploadImages.do")

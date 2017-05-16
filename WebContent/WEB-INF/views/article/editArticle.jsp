@@ -86,15 +86,6 @@
 .block {
 	margin: 20px;
 }
-
-/* .fb-clonebtn { */
-/* 	border: 2px dashed #ddd; */
-/* 	border-radius: 4px; */
-/* 	width: 49%; */
-/* 	font-size: 12px; */
-/* 	color: #666; */
-/* 	background: #fff; */
-/* } */
 </style>
 <body>
 	<div class="block">

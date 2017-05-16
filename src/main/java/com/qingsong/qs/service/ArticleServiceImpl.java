@@ -38,6 +38,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.getArticleList(articleVo);
 	}
 
+	@Override
+	public int deleteArticleById(Long id) {
+		return articleMapper.deleteArticleById(id);
+	}
+
 	
 	
 }

@@ -14,5 +14,7 @@ public interface ArticleMapper {
 	public int getArticleCount(ArticleVo articleVo);
 	
 	public List<ArticleVo> getArticleList(ArticleVo articleVo);
+
+	public int deleteArticleById(Long id);
 	
 }
