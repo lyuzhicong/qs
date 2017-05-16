@@ -31,7 +31,13 @@ a {
     color: #29754D;
 }
 
-footer button {}
+footer {
+    background-color: #F8F8F8;
+}
+
+footer button {
+    background-color: #F8F8F8;
+}
 
 
 /*contant*/
@@ -105,12 +111,13 @@ footer button {}
 }
 
 .about button {
-    width: 60%;
-    height: 35px;
+    width: 70%;
+    height: 50px;
+    font-size: 20px;
     border: 1px solid #29754D;
     border-radius: 2px;
     background-color: #F8F8F8;
-    color: #29754D;
+    color: #0D6235;
     margin: 0 0 20px 0;
 }
 
@@ -134,8 +141,8 @@ footer button {}
 }
 
 .menu {
-    width: 30px;
-    height: 25px;
+    width: 25px;
+    height: 20px;
 }
 
 .menu img {
@@ -230,7 +237,7 @@ footer button {}
     position: absolute;
     top: 60px;
     left: 0px;
-    height: 400px;
+    height: 500px;
     width: 100%;
     background-color: white;
     z-index: 9;
@@ -245,8 +252,10 @@ footer button {}
 #floatmenu ul li {
     flex: 1 1 auto;
     text-align: center;
-    color: #29754D;
-    line-height: 80px;
+    color: #0D6235;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 100px;
 }
 
 footer {
@@ -324,7 +333,7 @@ footer ul li {
     height: calc(100% - 60px);
     background-color: black;
     top: 60px;
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 
@@ -552,7 +561,6 @@ footer ul li {
     height: 40px;
     border: 1px solid #29754D;
     border-radius: 5px;
-    background-color: white;
     color: #29754D;
     font-size: 1rem;
 }
