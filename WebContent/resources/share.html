@@ -178,22 +178,24 @@
                     $li.append(img).append($div);
                     $(".share-detail>ul").append($li);
                 }
+
+                //此demo通过Ajax加载分页元素
+                var initPagination = function() {
+                    var num_entries = pageCount;
+                    // 创建分页
+                    $("#Pagination").pagination(num_entries, {
+                        num_edge_entries: 1, //边缘页数
+                        num_display_entries: 2, //主体页数
+                        callback: pageselectCallback,
+                        items_per_page: 1, //每页显示1项
+                        prev_text: "<i  class='fa fa-angle-left' aria-hidden='true'></i>",
+                        next_text: "<i  class='fa fa-angle-right' aria-hidden='true'></i>"
+                    });
+                };
             }
         });
 
-        //此demo通过Ajax加载分页元素
-        var initPagination = function() {
-            var num_entries = pageCount;
-            // 创建分页
-            $("#Pagination").pagination(num_entries, {
-                num_edge_entries: 1, //边缘页数
-                num_display_entries: 2, //主体页数
-                callback: pageselectCallback,
-                items_per_page: 1, //每页显示1项
-                prev_text: "<i  class='fa fa-angle-left' aria-hidden='true'></i>",
-                next_text: "<i  class='fa fa-angle-right' aria-hidden='true'></i>"
-            });
-        };
+
 
         function pageselectCallback(page_index, jq) {
             $.getJSON("article/getArticleList.do?currentPage=" + (page_index + 1) + "&pageSize=" + pageSize, function(data) {
