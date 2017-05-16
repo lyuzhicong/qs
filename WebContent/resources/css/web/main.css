@@ -69,6 +69,11 @@ footer {
     border-bottom: 3px solid #29754D;
 }
 
+.nav li.active {
+    color: #29754D;
+    border-bottom: 3px solid #29754D;
+}
+
 .main {
     height: 500px;
     display: flex;
@@ -123,9 +128,13 @@ footer {
     height: 350px;
 }
 
+.detail-bottom li span {
+    margin-top: 20px;
+}
+
 .detail-bottom li div:first-child {
     width: 100%;
-    height: 50%;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -146,6 +155,7 @@ footer {
 .main ul li,
 .detail ul li {
     width: 33%;
+    height: 100%;
 }
 
 .detail {
@@ -226,14 +236,19 @@ footer {
 }
 
 .tip button {
-    border: 1px solid #29754D;
-    border-radius: 3px;
+    border: 2px solid #29754D;
+    border-radius: 5px;
     width: 50%;
-    height: 30px;
+    height: 40px;
     margin: 0 8%;
     background-color: white;
     color: #29754D;
     cursor: pointer;
+}
+
+.tip button a {
+    color: #0D6235;
+    font-size: 1.125rem;
 }
 
 
@@ -259,8 +274,9 @@ footer {
 }
 
 .number-list span {
-    height: 30px;
+    height: 35px;
     margin-bottom: 10px;
+    font-size: 1.5rem;
     border-bottom: 3px solid #29754D;
 }
 
@@ -270,18 +286,20 @@ footer {
 }
 
 .number-list ul li {
-    height: 50px;
+    height: 70px;
     display: inline;
+    color: #666666;
+    font-size: 1.75rem;
     line-height: 50px;
     cursor: pointer;
 }
 
 .number-list ul li:hover {
-    color: #29754D;
+    color: #0D6235;
 }
 
 .number-list ul li.active {
-    color: #29754D;
+    color: #0D6235;
 }
 
 .number-introduction {
@@ -553,7 +571,7 @@ footer {
 
 .about section h3 {
     margin-bottom: 2rem;
-    font-size: 1.75rem;
+    font-size: 2rem;
 }
 
 .about section div {
@@ -565,7 +583,7 @@ footer {
 .about section address {
     display: flex;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
 }
 
 .about section address div {
@@ -590,7 +608,7 @@ footer {
 }
 
 .about .address div span {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 500;
 }
@@ -637,7 +655,7 @@ footer {
 }
 
 .group li div span {
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: 1.5rem;
 }
 
