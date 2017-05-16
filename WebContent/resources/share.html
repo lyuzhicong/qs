@@ -225,8 +225,8 @@
 
     $(document).on("click", ".share-detail li", function() {
         console.info($(this).html());
-        var id = $(this).attr("id");
-        // 		window.location.href = "article.html?id=" + id;
+        var id = $(this).closest("li").attr("id");
+        window.location.href = "article.html?id=" + id;
     })
 </script>
 
