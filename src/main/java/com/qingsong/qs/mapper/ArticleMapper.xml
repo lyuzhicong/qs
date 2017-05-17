@@ -24,7 +24,7 @@
 		title = #{title},
 		content = #{content},
 		date = NOW(),
-		path = {path}
+		path = #{path}
 		WHERE id = #{id}
 	</update>
 	

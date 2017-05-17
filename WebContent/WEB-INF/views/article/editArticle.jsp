@@ -18,20 +18,21 @@
 			'uploader' : '${pageContext.request.contextPath}/article/uploadImages.do',
 			'queueID' : 'queue',
 			'auto' : true,//是否自动上传
-			'multi' : true,
-			'fileTypeExts' : '*.gif; *.jpg; *.png',
+			'multi' : false,
+			'fileTypeExts' : '*.gif;*.jpg; *.png',
 			'buttonText' : '选择',
-			'width' : '60',
-			'height' : '28',
-			'queueSizeLimit' : 5,
+			'width' : '65',
+			'height' : '32',
+			'uploadLimit' : 1,
 			'removeCompleted' : false,
 			'onUploadSuccess' : function(file, data, response) {
-				var html = "<input type=\"hidden\" name=\"image\" value=\"" + JSON.parse(data).path + "\">";
+				$('#pathId').remove();
+				var html = "<input type=\"hidden\" id=\"pathId\" name=\"path\" value=\"" + JSON.parse(data).path + "\">";
 				$('#editForm').append(html);
 			},
-			'onCancel' : function(file){
-				alert(file.name);
-			}
+// 			'onCancel' : function(file) {
+// 				alert(file.name);
+// 			}
 		});
 		// 		$('#startUpload').click(function(){
 		// 			 $('#uploadify').uploadify('upload','*');
@@ -48,7 +49,7 @@
 				type : 'POST',
 				success : function(data) {
 					if (data.Status == 'OK') {
-						console.info("success");
+						location.href = 'articleManager.do';
 					} else {
 						console.info("fail");
 					}
@@ -59,17 +60,30 @@
 		$('#addContent').click(function() {
 			$('#content').find('.form-group:last').after($('#contentTmpl').html());
 		});
+
 		$('#removeContent').click(function() {
-			if($('#content').find('.form-group').length > 2){
+			if ($('#content').find('.form-group').length > 2) {
 				$('#content').find('.form-group:last').remove();
 				$('#content').find('.form-group:last').remove();
 			}
 		});
+
+		var content = '${articleVo.content}';
+
+		if (content) {
+			$('#content').find('.form-group').each(function() {
+				$(this).remove();
+			});
+			var conJsonArray = JSON.parse(content);
+			var html = doT.template(document.getElementById('editContentTmpl').innerHTML)(conJsonArray);
+			$('#content').prepend(html);
+		}
+
 	});
 </script>
 <script id="contentTmpl" type="text/x-dot-template">
 	<div class="form-group">
-		<label class="col-sm-2 control-label">小标题:</label>
+		<label class="col-sm-2 control-label">小标题：</label>
 		<div class="col-sm-9">
 			<input type="text" name="littleTitle" class="form-control" />
 		</div>
@@ -81,6 +95,22 @@
 		</div>
 	</div>
 </script>
+<script id="editContentTmpl" type="text/x-dot-template">
+{{~it : main : index}}
+	<div class="form-group">
+		<label class="col-sm-2 control-label">小标题：</label>
+		<div class="col-sm-9">
+			<input type="text" name="littleTitle" class="form-control" value="{{=main.title||''}}"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">内容：</label>
+		<div class="col-sm-9">
+			<textarea rows="15" cols="200" name="content" class="form-control">{{=main.content||''}}</textarea>
+		</div>
+	</div>
+{{~}}
+</script>
 </head>
 <style type="text/css">
 .block {
@@ -91,17 +121,19 @@
 	<div class="block">
 		<h2>编辑文章</h2>
 		<form id="editForm" class="form-horizontal">
+			<input type="hidden" value="${articleVo.id}" name="id" />
+			<input type="hidden" name="path" value="${articleVo.path }" id="pathId">
 			<div class="form-group">
 				<label class="col-sm-1 control-label">标题：</label>
 				<div class="col-sm-6">
-					<input type="text" name="title" class="form-control" />
+					<input type="text" name="title" class="form-control" value="${articleVo.title}" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-1 control-label">内容：</label>
-				<div id="content" class="col-sm-6" style="border: 1px solid #ccc; border-radius: 5px; padding: 20px 0 20px 0;margin-left:12px;">
+				<div id="content" class="col-sm-6" style="border: 1px solid #ccc; border-radius: 5px; padding: 20px 0 20px 0; margin-left: 12px;">
 					<div class="form-group">
-						<label class="col-sm-2 control-label">小标题:</label>
+						<label class="col-sm-2 control-label">小标题：</label>
 						<div class="col-sm-9">
 							<input type="text" name="littleTitle" class="form-control" />
 						</div>
@@ -109,12 +141,12 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">内容：</label>
 						<div class="col-sm-9">
-							<textarea rows="15" cols="200" name="content" class="form-control"></textarea>
+							<textarea rows="12" cols="200" name="content" class="form-control"></textarea>
 						</div>
 					</div>
 					<div style="width: 100%; text-align: center;">
-						<button type="button" id="addContent" class="btn btn-sm btn-success" title="增加">增加</button>
-						<button type="button" id="removeContent" class="btn btn-sm btn-danger" title="减少">减少</button>
+						<button type="button" id="addContent" class="btn btn-success" title="增加" style="margin-right: 5px;">增加</button>
+						<button type="button" id="removeContent" class="btn btn-danger" title="减少" style="margin-left: 5px;">减少</button>
 					</div>
 				</div>
 			</div>
@@ -123,11 +155,12 @@
 				<div class="col-sm-6">
 					<div id="queue"></div>
 					<input id="uploadify" name="uploadify" type="file">
+					(只能上传一张图片    格式:gif,png,jpg  大小限制：1M)
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-10">
-					<button type="button" class="btn btn-default" id="btnSubmit">保存</button>
+					<button type="button" class="btn btn-primary" id="btnSubmit">保存</button>
 				</div>
 			</div>
 		</form>

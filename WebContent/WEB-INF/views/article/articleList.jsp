@@ -15,8 +15,12 @@
 	$(function() {
 		$('.editArticle').click(function() {
 			var id = $(this).data('id');
-			$(location).attr('href', 'editArticle.do?id=' + id);
+			window.open('editArticle.do?id=' + id, '_blank');
 		});
+		
+		$('#addArticle').click(function(){
+			window.open('editArticle.do', '_blank');
+		})
 
 		$('.deleteArticle').click(function() {
 			var id = $(this).data('id');
@@ -46,6 +50,7 @@
 }
 </style>
 <body class="block">
+	<button type="button" class="btn btn-success" id="addArticle">新增</button>
 	<table class="table table-hover">
 		<thead>
 			<th>标题</th>
@@ -57,7 +62,7 @@
 				<td>${articleVo.title }</td>
 				<td>${articleVo.date }</td>
 				<td>
-<%-- 					<button type="button" class="btn btn-warning btn-sm editArticle" data-id="${articleVo.id }">编辑</button> --%>
+					<button type="button" class="btn btn-warning btn-sm editArticle" data-id="${articleVo.id }">编辑</button>
 					<button type="button" class="btn btn-danger btn-sm deleteArticle" data-id="${articleVo.id }">删除</button>
 				</td>
 			</tr>

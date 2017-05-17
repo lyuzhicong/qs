@@ -35,10 +35,13 @@ public class ArticleController {
 	ArticleService articleService;
 
 	@RequestMapping("editArticle.do")
-	public String editArticle() {
+	public String editArticle(Long id, HttpServletRequest request) {
+		if (id != null) {
+			request.setAttribute("articleVo", articleService.getArticleById(id));
+		}
 		return "/article/editArticle";
 	}
-	
+
 	@RequestMapping(value = "getArticleList.do", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public void getArticleList(ArticleVo articleVo, HttpServletResponse response) throws IOException {
@@ -51,28 +54,28 @@ public class ArticleController {
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(jsonObj);
 	}
-	
+
 	@RequestMapping(value = "articleManager.do")
-	public String articleManager(ArticleVo articleVo, HttpServletRequest request){
-		request.setAttribute("articleVoList",articleService.getArticleList(articleVo));
+	public String articleManager(ArticleVo articleVo, HttpServletRequest request) {
+		request.setAttribute("articleVoList", articleService.getArticleList(articleVo));
 		return "/article/articleList";
-		
+
 	}
 
 	@RequestMapping(value = "saveArticle.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public JSONObject saveArticle(ArticleVo articleVo, HttpServletRequest request) {
 		JSONObject jsonObj = new JSONObject();
-		String[] imageNameArray = request.getParameterValues("image");
+//		String[] imageNameArray = request.getParameterValues("image");
 		String[] littleTitleArray = request.getParameterValues("littleTitle");
 		String[] contentArray = request.getParameterValues("content");
-		JSONArray jsonArray = new JSONArray();
+//		JSONArray jsonArray = new JSONArray();
 		JSONArray contentJsonArray = new JSONArray();
-		if(contentArray!=null){
-			for(int i = 0; i < contentArray.length; i++){
+		if (contentArray != null) {
+			for (int i = 0; i < contentArray.length; i++) {
 				String content = contentArray[i];
-				content = "<p>" + content;
-				content = content.replaceAll("(\\r\\n)+", "</p><p>") + "</p>";
+//				content = "<p>" + content;
+//				content = content.replaceAll("(\\r\\n)+", "</p><p>") + "</p>";
 				JSONObject contentJsonObj = new JSONObject();
 				contentJsonObj.put("title", littleTitleArray[i]);
 				contentJsonObj.put("content", content);
@@ -80,16 +83,16 @@ public class ArticleController {
 			}
 			articleVo.setContent(contentJsonArray.toString());
 		}
-		if(imageNameArray != null){
-			for (String imageName : imageNameArray) {
-				JSONObject pathObj = new JSONObject();
-				pathObj.put("path", imageName);
-				jsonArray.add(pathObj);
-			}
-		}
-		if(jsonArray != null){
-			articleVo.setPath(jsonArray.toString());
-		}
+//		if (imageNameArray != null) {
+//			for (String imageName : imageNameArray) {
+//				JSONObject pathObj = new JSONObject();
+//				pathObj.put("path", imageName);
+//				jsonArray.add(pathObj);
+//			}
+//		}
+//		if (jsonArray != null) {
+//			articleVo.setPath(jsonArray.toString());
+//		}
 		try {
 			articleService.saveArticle(articleVo);
 			jsonObj.put("Status", "OK");
@@ -104,15 +107,15 @@ public class ArticleController {
 	public ArticleVo getArticleById(Long id) {
 		return articleService.getArticleById(id);
 	}
-	
-	@RequestMapping(value= "deleteArticleById.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "deleteArticleById.do", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONObject deleteArticleById(Long id){
+	public JSONObject deleteArticleById(Long id) {
 		JSONObject jsonObj = new JSONObject();
-		try{
+		try {
 			articleService.deleteArticleById(id);
 			jsonObj.put("Status", "OK");
-		} catch(Exception e){
+		} catch (Exception e) {
 			jsonObj.put("Status", "ERROR");
 			logger.error(e.getMessage(), e);
 		}
@@ -133,7 +136,7 @@ public class ArticleController {
 			for (Map.Entry<String, MultipartFile> entity : map.entrySet()) {
 				MultipartFile multipartFile = entity.getValue();
 				path = UUID.randomUUID() + multipartFile.getOriginalFilename();
-				File ff = new File(dir,path);
+				File ff = new File(dir, path);
 				multipartFile.transferTo(ff);
 			}
 			jsonObj.put("Status", "OK");
