@@ -3,10 +3,29 @@
 <html>
 <head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/jquery.form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/bootstrap/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap/bootstrap.min.css">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登录</title>
+<script type="text/javascript">
+	$(function(){
+		$('#login').click(function(){
+			$('#loginForm').ajaxSubmit({
+				url : 'login.do',
+				dataType : 'json',
+				type : 'POST',
+				success : function(data){
+					if(data.Status == 'OK'){
+						location.href="${pageContext.request.contextPath}/article/articleManager.do";
+					}else{
+						console.info("fail");
+					}
+				}
+			})
+		})
+	})
+</script>
 </head>
 <style type="text/css">
 .block {
@@ -14,7 +33,7 @@
 }
 </style>
 <body class="block">
-	<form action="login.do" method="post" class="form-horizontal">
+	<form id="loginForm" class="form-horizontal">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">账号：</label>
 			<div class="col-sm-4">
@@ -29,7 +48,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">登录</button>
+				<button type="button" class="btn btn-default" id="login">登录</button>
 			</div>
 		</div>
 	</form>

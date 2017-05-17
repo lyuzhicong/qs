@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,
     chrome=1" />
     <meta name="viewport" content="width=device-width,
@@ -47,7 +48,7 @@
     $(function() {
         var currentPage = 1;
         var pageSize = 5;
-        $.getJSON("article/getArticleList.do", function(data) {
+        $.getJSON("${pageContext.request.contextPath}/article/getArticleList.do", function(data) {
             if (data) {
                 var articleVoList = data.articleVoList;
                 pageCount = data.pageCount;
