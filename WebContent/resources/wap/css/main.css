@@ -237,7 +237,7 @@ footer button {
     position: absolute;
     top: 60px;
     left: 0px;
-    height: 500px;
+    height: 400px;
     width: 100%;
     background-color: white;
     z-index: 9;
@@ -255,7 +255,7 @@ footer button {
     color: #0D6235;
     font-size: 25px;
     font-weight: 500;
-    line-height: 100px;
+    line-height: 80px;
 }
 
 footer {

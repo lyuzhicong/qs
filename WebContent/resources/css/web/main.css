@@ -333,8 +333,19 @@ footer {
 
 .number-introduction-detail span {
     height: 30px;
-    border-bottom: 2px solid #29754D;
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.number-introduction-detail span hr {
+    position: absolute;
+    top: 21px;
+    width: 64px;
+    height: 3px;
+    border: none;
+    background-color: #29754D;
 }
 
 .number-introduction-detail img {
@@ -380,7 +391,9 @@ footer {
     background-color: #F8F8F8;
 }
 
-.share-list {}
+.share-list {
+    position: relative;
+}
 
 .share-detail {
     height: 100%;
@@ -388,12 +401,14 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
 }
 
 .share-detail>span,
 .share-list>span {
     height: 30px;
     border-bottom: 3px solid #29754D;
+    z-index: 1;
 }
 
 .share-detail ul li {
@@ -425,6 +440,17 @@ footer {
 
 .share-detail .page {
     width: 100px;
+}
+
+.share-detail hr,
+.share-list hr {
+    border: none;
+    height: 1px;
+    background-color: #E2E2E2;
+    width: 100%;
+    position: absolute;
+    margin: 0px;
+    top: 31px;
 }
 
 .share-list ul li h4 {
@@ -502,10 +528,25 @@ footer {
     margin: 0 0 0 20px;
 }
 
+.article-list {
+    position: relative;
+}
+
+.article-list hr {
+    border: none;
+    position: absolute;
+    height: 1px;
+    background: #e8e8e8;
+    width: 100%;
+    margin: 0px;
+    top: 31px;
+}
+
 .article-list span {
     height: 30px;
     margin-bottom: 30px;
     border-bottom: 3px solid #29754D;
+    z-index: 1;
 }
 
 .article-list ul {}

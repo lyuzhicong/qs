@@ -37,61 +37,7 @@
     </nav>
     <main class="share">
         <ul>
-            <li>
-                <img src="image/team/刘晓松.jpg">
-                <div>
-                    <h4>
-                        刘晓松：社交网络在这6个方向上还有机会！最大机会是孩子绝不愿和爹妈用同一个产品！
-                    </h4>
-                    <span>
-                            2017.02.27
-                        </span>
-                </div>
-            </li>
-            <li>
-                <img src="image/team/刘晓松.jpg">
-                <div>
-                    <h4>
-                        刘晓松：社交网络在这6个方向上还有机会！最大机会是孩子绝不愿和爹妈用同一个产品！
-                    </h4>
-                    <span>
-                            2017.02.27
-                        </span>
-                </div>
-            </li>
-            <li>
-                <img src="image/team/刘晓松.jpg">
-                <div>
-                    <h4>
-                        刘晓松：社交网络在这6个方向上还有机会！最大机会是孩子绝不愿和爹妈用同一个产品！
-                    </h4>
-                    <span>
-                            2017.02.27
-                        </span>
-                </div>
-            </li>
-            <li>
-                <img src="image/team/刘晓松.jpg">
-                <div>
-                    <h4>
-                        刘晓松：社交网络在这6个方向上还有机会！最大机会是孩子绝不愿和爹妈用同一个产品！
-                    </h4>
-                    <span>
-                            2017.02.27
-                        </span>
-                </div>
-            </li>
-            <li>
-                <img src="image/team/刘晓松.jpg">
-                <div>
-                    <h4>
-                        刘晓松：社交网络在这6个方向上还有机会！最大机会是孩子绝不愿和爹妈用同一个产品！
-                    </h4>
-                    <span>
-                            2017.02.27
-                        </span>
-                </div>
-            </li>
+
         </ul>
     </main>
     <div class="mask"></div>
@@ -101,7 +47,7 @@
     $(function() {
         var currentPage = 1;
         var pageSize = 5;
-        $.getJSON("article/getArticleList.do?currentPage=" + currentPage + "&pageSize=" + pageSize, function(data) {
+        $.getJSON("article/getArticleList.do?currentPage=" + currentPage, function(data) {
             if (data) {
                 var articleVoList = data.articleVoList;
                 pageCount = data.pageCount;
