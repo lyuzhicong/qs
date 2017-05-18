@@ -43,18 +43,24 @@
 		// 		});
 
 		$('#btnSubmit').click(function() {
-			$('#editForm').ajaxSubmit({
-				url : '${pageContext.request.contextPath}/article/saveArticle.do',
-				dataType : 'json',
-				type : 'POST',
-				success : function(data) {
-					if (data.Status == 'OK') {
-						location.href = 'articleManager.do';
-					} else {
-						console.info("fail");
+			if($('#pathId').val()){
+				console.info($('#pathId').val());
+				$('#editForm').ajaxSubmit({
+					url : '${pageContext.request.contextPath}/article/saveArticle.do',
+					dataType : 'json',
+					type : 'POST',
+					success : function(data) {
+						if (data.Status == 'OK') {
+							location.href = 'articleManager.do';
+						} else {
+							console.info("fail");
+						}
 					}
-				}
-			});
+				});
+				
+			}else{
+				alert("请选择一张图片！");
+			}
 		});
 		
 		$('#backToArticleList').click(function(){
