@@ -17,6 +17,14 @@
 	<!-- 配置资源文件夹的路径，以便jsp能访问到所引用的静态资源文件。 -->
 	<mvc:resources location="/resources/" mapping="/**" />
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*/*.do" /> <!-- 管理员登录拦截 -->
+			<mvc:exclude-mapping path="/user/login.do" />
+			<bean class="com.qingsong.qs.util.UserInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- set the max upload size1MB -->
 		<property name="maxUploadSize">
