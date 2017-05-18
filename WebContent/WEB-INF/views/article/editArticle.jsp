@@ -56,6 +56,10 @@
 				}
 			});
 		});
+		
+		$('#backToArticleList').click(function(){
+			location.href = "${pageContext.request.contextPath}/article/articleManager.do";
+		});
 
 		$('#addContent').click(function() {
 			$('#content').find('.form-group:last').after($('#contentTmpl').html());
@@ -91,7 +95,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">内容：</label>
 		<div class="col-sm-9">
-			<textarea rows="15" cols="200" name="content" class="form-control"></textarea>
+			<textarea rows="12" cols="200" name="content" class="form-control"></textarea>
 		</div>
 	</div>
 </script>
@@ -106,7 +110,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">内容：</label>
 		<div class="col-sm-9">
-			<textarea rows="15" cols="200" name="content" class="form-control">{{=main.content||''}}</textarea>
+			<textarea rows="12" cols="200" name="content" class="form-control">{{=main.content||''}}</textarea>
 		</div>
 	</div>
 {{~}}
@@ -119,7 +123,7 @@
 </style>
 <body>
 	<div class="block">
-		<h2>编辑文章</h2>
+	<button type="button" class="btn btn-primary" id="backToArticleList">返回文章列表</button>
 		<form id="editForm" class="form-horizontal">
 			<input type="hidden" value="${articleVo.id}" name="id" />
 			<input type="hidden" name="path" value="${articleVo.path }" id="pathId">
@@ -145,7 +149,7 @@
 						</div>
 					</div>
 					<div style="width: 100%; text-align: center;">
-						<button type="button" id="addContent" class="btn btn-success" title="增加" style="margin-right: 5px;">增加</button>
+						<button type="button" id="addContent" class="btn btn-default" title="增加" style="margin-right: 5px;">增加</button>
 						<button type="button" id="removeContent" class="btn btn-danger" title="减少" style="margin-left: 5px;">减少</button>
 					</div>
 				</div>
@@ -160,7 +164,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-10">
-					<button type="button" class="btn btn-primary" id="btnSubmit">保存</button>
+					<button type="button" class="btn btn-success" id="btnSubmit">保存</button>
 				</div>
 			</div>
 		</form>
