@@ -19,7 +19,9 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*/*.do" /> <!-- 管理员登录拦截 -->
+			<mvc:mapping path="/article/saveArticle.do" /> 
+			<mvc:mapping path="/article/editArticle.do" /> 
+			<mvc:mapping path="/article/uploadImages.do" /> 
 			<mvc:exclude-mapping path="/user/login.do" />
 			<bean class="com.qingsong.qs.util.UserInterceptor"></bean>
 		</mvc:interceptor>

@@ -84,9 +84,19 @@
 			$('#content').find('.form-group').each(function() {
 				$(this).remove();
 			});
+			content = escapeJson(content);
 			var conJsonArray = JSON.parse(content);
 			var html = doT.template(document.getElementById('editContentTmpl').innerHTML)(conJsonArray);
 			$('#content').prepend(html);
+		}
+		
+		function escapeJson(sourceStr) {
+			sourceStr = sourceStr.replace("\b", "\\b");
+			sourceStr = sourceStr.replace("\t", "\\t");
+			sourceStr = sourceStr.replace("\n", "\\n");
+			sourceStr = sourceStr.replace("\f", "\\f");
+			sourceStr = sourceStr.replace("\r", "\\r");
+			return sourceStr;
 		}
 
 	});

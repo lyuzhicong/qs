@@ -60,7 +60,7 @@
 		<c:forEach items="${articleVoList }" var="articleVo">
 			<tr>
 				<td>${articleVo.title }</td>
-				<td>${articleVo.date }</td>
+				<td>${articleVo.dateText }</td>
 				<td>
 					<button type="button" class="btn btn-warning btn-sm editArticle" data-id="${articleVo.id }">编辑</button>
 					<button type="button" class="btn btn-danger btn-sm deleteArticle" data-id="${articleVo.id }">删除</button>

@@ -1,10 +1,13 @@
 package com.qingsong.qs.dto;
 
-public class ArticleVo extends BasePageVo{
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class ArticleVo extends BasePageVo {
 	private Long id;
 	private String title;
 	private String content;
-	private String date;
+	private Date date;
 	private String path;
 	private String littleTitle;
 
@@ -32,11 +35,11 @@ public class ArticleVo extends BasePageVo{
 		this.content = content;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -54,6 +57,14 @@ public class ArticleVo extends BasePageVo{
 
 	public void setLittleTitle(String littleTitle) {
 		this.littleTitle = littleTitle;
+	}
+
+	public String getDateText() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		if (date != null) {
+			return sdf.format(date);
+		}
+		return null;
 	}
 
 }

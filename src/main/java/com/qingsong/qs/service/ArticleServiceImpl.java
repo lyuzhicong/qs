@@ -2,15 +2,19 @@ package com.qingsong.qs.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qingsong.qs.controller.ArticleController;
 import com.qingsong.qs.dto.ArticleVo;
 import com.qingsong.qs.mapper.ArticleMapper;
 import com.qingsong.qs.util.Toolkit;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
+	Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
 	@Autowired
 	public ArticleMapper articleMapper;
@@ -35,7 +39,8 @@ public class ArticleServiceImpl implements ArticleService {
 		int rownum = articleMapper.getArticleCount(articleVo);
 		int pageCount = Toolkit.getPageCount(rownum, articleVo.getPageSize());
 		articleVo.setPageCount(pageCount);
-		return articleMapper.getArticleList(articleVo);
+		List<ArticleVo> articleVoList = articleMapper.getArticleList(articleVo);
+		return articleVoList;
 	}
 
 	@Override
