@@ -17,13 +17,11 @@
                 var $detail = $(".article-detail");
                 $detail.empty();
                 var h3 = '<h3>' + data.title + '</h3>';
-                var span = '<span>' + data.date + '</span>';
+                var span = '<span>' + data.dateText + '</span>';
                 var contentJsonArray = JSON.parse(data.content);
-                var imgJson = JSON.parse(data.path);
-                var banner = '<img src="' + imgJson[0].path + '">';
+                var banner = '<img src="' + data.path + '">';
                 $detail.append(h3).append(span).append(banner);
                 for (var i = 0; i < contentJsonArray.length; i++) {
-                    //                     var img = '<img src="' + imgs[i + 1].path + '">';
                     var h4 = '<h4>' + contentJsonArray[i].title + '</h4>';
                     var p = contentJsonArray[i].content;
                     $detail.append(h4).append(p);
@@ -37,9 +35,9 @@
                 var articleVoList = data.articleVoList;
                 pageCount = data.pageCount;
                 $(".article-list>ul").empty();
-
+	
                 for (var i = 0; i < articleVoList.length; i++) {
-
+					var articleVo = articleVoList[i];
                     var title = "<li>" + articleVo.title + "</li>";
                     $(".article-list>ul").append(title);
                 }

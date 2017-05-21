@@ -51,17 +51,16 @@
                 var $detail = $(".article");
                 $detail.empty();
                 var h3 = '<h3>' + data.title + '</h3>';
-                var span = '<span>' + data.date + '</span>';
-                var content = data.content;
-                var imgs = data.path;
-                var banner = '<img src="' + imgs[0].path + '">';
-
+                var span = '<span>' + data.dateText + '</span>';
+                var contentJsonArray = JSON.parse(data.content);
+                var banner = '<img src="' + data.path + '">';
                 $detail.append(h3).append(span).append(banner);
-                for (var i = 0; i < content.length; i++) {
-                    var img = '<img src="' + imgs[i + 1].path + '">';
-                    var h4 = '<h4>' + content[i].title + '</h4>';
-                    var p = content[i].content;
-                    $detail.append(img).append(h4).append(p);
+                
+                for (var i = 0; i < contentJsonArray.length; i++) {
+                    var contentJson = contentJsonArray[i];
+                	var h4 = '<h4>' + contentJson.title + '</h4>';
+                    var p = contentJson.content;
+                    $detail.append(h4).append(p);
                 }
             }
         });

@@ -15,11 +15,11 @@
 	$(function() {
 		$('.editArticle').click(function() {
 			var id = $(this).data('id');
-			window.open('editArticle.do?id=' + id, '_blank');
+			window.location.href = 'editArticle.do?id=' + id;
 		});
 		
 		$('#addArticle').click(function(){
-			window.open('editArticle.do', '_blank');
+			window.location.href = 'editArticle.do';
 		})
 
 		$('.deleteArticle').click(function() {

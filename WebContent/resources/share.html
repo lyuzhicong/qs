@@ -139,7 +139,7 @@
                     var $li = $('<li id="' + articleVo.id + '"></li>')
                     var img = "<img src=" + articleVo.path + ">";
                     var title = "<h4>" + articleVo.title + "</h4>";
-                    var date = "<span>" + articleVo.date + "</span>"
+                    var date = "<span>" + articleVo.dateText + "</span>"
                     var $div = $('<div></div>');
                     $div.append(title).append(date);
                     $li.append(img).append($div);
@@ -188,15 +188,13 @@
         }
         //ajax加载
         // $("#hiddenresult").load("load.html", null, initPagination);
-
-
-    })
+    });
 
     $(document).on("click", ".share-detail li", function() {
         console.info($(this).html());
         var id = $(this).closest("li").attr("id");
         window.location.href = "article.html?id=" + id;
-    })
+    });
 </script>
 
 </html>

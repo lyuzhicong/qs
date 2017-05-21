@@ -37,7 +37,19 @@ public class ArticleController {
 	@RequestMapping("editArticle.do")
 	public String editArticle(Long id, HttpServletRequest request) {
 		if (id != null) {
-			request.setAttribute("articleVo", articleService.getArticleById(id));
+			ArticleVo articleVo = articleService.getArticleById(id);
+			JSONArray contentArray = JSONArray.fromObject(articleVo.getContent());
+			JSONArray newContArray = new JSONArray();
+			for(Object obj : contentArray){
+				JSONObject jsonObj = JSONObject.fromObject(obj);
+				String content = jsonObj.getString("content");
+				content = content.replace("\n", "\\n");
+				content = content.replace("\r", "\\r");
+				jsonObj.put("content", content);
+				newContArray.add(jsonObj);
+			}
+			articleVo.setContent(newContArray.toString());
+			request.setAttribute("articleVo", articleVo);
 		}
 		return "/article/editArticle";
 	}
@@ -105,7 +117,19 @@ public class ArticleController {
 	@RequestMapping(value = "getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ArticleVo getArticleById(Long id) {
-		return articleService.getArticleById(id);
+		ArticleVo articleVo = articleService.getArticleById(id);
+		JSONArray contentArray = JSONArray.fromObject(articleVo.getContent());
+		JSONArray newContArray = new JSONArray();
+		for(Object obj : contentArray){
+			JSONObject jsonObj = JSONObject.fromObject(obj);
+			String content = jsonObj.getString("content");
+			content = "<p>" + content;
+			content = content.replaceAll("(\r\n)|(\n)", "</p><p>") + "</p>";
+			jsonObj.put("content", content);
+			newContArray.add(jsonObj);
+		}
+		articleVo.setContent(newContArray.toString());
+		return articleVo;
 	}
 
 	@RequestMapping(value = "deleteArticleById.do", method = RequestMethod.POST)
