@@ -35,9 +35,9 @@
                 var articleVoList = data.articleVoList;
                 pageCount = data.pageCount;
                 $(".article-list>ul").empty();
-	
+
                 for (var i = 0; i < articleVoList.length; i++) {
-					var articleVo = articleVoList[i];
+                    var articleVo = articleVoList[i];
                     var title = "<li>" + articleVo.title + "</li>";
                     $(".article-list>ul").append(title);
                 }
@@ -96,6 +96,7 @@
     </main>
     <footer>
         <div class="footer">
+            <div></div>
             <small>© 2012 QingSong Fund All rights reserved. 粤ICP备12034380号</small>
             <span>
             <img src="images/web/pic_QR_code.png" id="wechatcode">

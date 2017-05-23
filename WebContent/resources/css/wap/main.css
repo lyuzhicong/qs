@@ -553,6 +553,12 @@ footer ul li {
     width: 50%;
 }
 
+.number-project ul div {
+    text-indent: 2rem;
+    color: #666666;
+    line-height: 1.5rem;
+}
+
 .number img {
     width: 100%;
 }

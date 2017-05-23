@@ -41,6 +41,11 @@ footer {
     background-color: #E8EDEF;
 }
 
+.footer div {
+    width: 34px;
+    height: 30px;
+}
+
 .footer span {
     position: relative;
 }
@@ -125,7 +130,7 @@ footer {
 }
 
 .detail-bottom {
-    height: 350px;
+    height: 250px;
 }
 
 .detail-bottom li span {
@@ -371,6 +376,10 @@ footer {
     width: 33%;
 }
 
+.number-introduction-detail ul div {
+    line-height: 30px;
+}
+
 .number-introduction-detail ul li img {
     width: 100%;
 }
@@ -409,6 +418,10 @@ footer {
     height: 30px;
     border-bottom: 3px solid #29754D;
     z-index: 1;
+}
+
+.share-detail ul {
+    height: 750px;
 }
 
 .share-detail ul li {
@@ -714,6 +727,11 @@ footer {
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
+}
+
+.group-detail-wrap+footer {
+    position: fixed;
+    bottom: 0px;
 }
 
 .group-detail {
