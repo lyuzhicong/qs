@@ -90,7 +90,7 @@
                     </li>
                 </ul>
                 <div>
-                    <i id="back " class="fa fa-angle-left" aria-hidden="true"></i> <i id="next" class="fa fa-angle-right" aria-hidden="true"></i>
+                    <i id="back" class="fa fa-angle-left" aria-hidden="true"></i> <i id="next" class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
@@ -117,15 +117,27 @@
 
         $("#next").click(function() {
             count++;
-            $(".share-list ul li").hide();
-            $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
+            if (count <= 7) {
+                $(".share-list ul li").hide();
+                $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
+            } else {
+                count = 1;
+                $(".share-list ul li").hide();
+                $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
+            }
 
         });
 
         $("#back").click(function() {
             count--;
-            $(".share-list ul li").hide();
-            $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
+            if (count <= 7 && count > 0) {
+                $(".share-list ul li").hide();
+                $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
+            } else {
+                count = 7;
+                $(".share-list ul li").hide();
+                $(".share-list ul li:nth-child(" + count + ")").fadeIn("fast");
+            }
 
         });
 
