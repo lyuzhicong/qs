@@ -12,7 +12,8 @@ public class UserInterceptor implements HandlerInterceptor {
 	// 拦截前处理
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		Object sessionObj = request.getSession().getAttribute(ADMINSESSION);
-		if (sessionObj != null) {
+		Object session = request.getParameter("session");
+		if (sessionObj != null || session!=null) {
 			return true;
 		}
 		response.sendRedirect(request.getContextPath() + "/user/admin");

@@ -26,7 +26,6 @@ public class ArticleServiceImpl implements ArticleService {
 		} else {
 			articleMapper.insertArticle(articleVo);
 		}
-
 	}
 
 	@Override
@@ -47,7 +46,4 @@ public class ArticleServiceImpl implements ArticleService {
 	public int deleteArticleById(Long id) {
 		return articleMapper.deleteArticleById(id);
 	}
-
-	
-	
 }

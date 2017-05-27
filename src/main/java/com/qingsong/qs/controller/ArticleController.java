@@ -78,16 +78,12 @@ public class ArticleController {
 	@ResponseBody
 	public JSONObject saveArticle(ArticleVo articleVo, HttpServletRequest request) {
 		JSONObject jsonObj = new JSONObject();
-//		String[] imageNameArray = request.getParameterValues("image");
 		String[] littleTitleArray = request.getParameterValues("littleTitle");
 		String[] contentArray = request.getParameterValues("content");
-//		JSONArray jsonArray = new JSONArray();
 		JSONArray contentJsonArray = new JSONArray();
 		if (contentArray != null) {
 			for (int i = 0; i < contentArray.length; i++) {
 				String content = contentArray[i];
-//				content = "<p>" + content;
-//				content = content.replaceAll("(\\r\\n)+", "</p><p>") + "</p>";
 				JSONObject contentJsonObj = new JSONObject();
 				contentJsonObj.put("title", littleTitleArray[i]);
 				contentJsonObj.put("content", content);
@@ -95,16 +91,6 @@ public class ArticleController {
 			}
 			articleVo.setContent(contentJsonArray.toString());
 		}
-//		if (imageNameArray != null) {
-//			for (String imageName : imageNameArray) {
-//				JSONObject pathObj = new JSONObject();
-//				pathObj.put("path", imageName);
-//				jsonArray.add(pathObj);
-//			}
-//		}
-//		if (jsonArray != null) {
-//			articleVo.setPath(jsonArray.toString());
-//		}
 		try {
 			articleService.saveArticle(articleVo);
 			jsonObj.put("Status", "OK");

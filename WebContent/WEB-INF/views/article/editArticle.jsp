@@ -25,6 +25,7 @@
 			'height' : '32',
 			'uploadLimit' : 1,
 			'removeCompleted' : false,
+			'formData' : {'session' : 'adminsession'},
 			'onUploadSuccess' : function(file, data, response) {
 				$('#pathId').remove();
 				var html = "<input type=\"hidden\" id=\"pathId\" name=\"path\" value=\"" + JSON.parse(data).path + "\">";
@@ -42,6 +43,7 @@
 		// 			$('#uploadify').uplodify('cancel','*');
 		// 		});
 
+		
 		$('#btnSubmit').click(function() {
 			if($('#pathId').val()){
 				console.info($('#pathId').val());
@@ -77,6 +79,13 @@
 				$('#content').find('.form-group:last').remove();
 			}
 		});
+		
+		$(document).on('click', '.cancel>a', function(){
+// 			console.info("aaa");
+			$('#queue').empty();
+		});
+		
+		
 
 		var content = '${articleVo.content}';
 
