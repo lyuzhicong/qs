@@ -202,6 +202,7 @@ footer button {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    font-size: 16px;
 }
 
 .ceo img {
@@ -209,26 +210,28 @@ footer button {
 }
 
 .ceo span {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     margin: 10px;
 }
 
 .ceo p {
-    font-size: 1rem;
-    line-height: 2rem;
-    margin: 20px;
-    height: 10%;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    margin: 15px;
+    height: 8%;
     overflow: hidden;
+    color: #666666;
 }
 
 .ceo div {
     width: 60%;
-    height: 40px;
-    margin-bottom: 20px;
+    height: 30px;
+    margin-bottom: 10px;
     border: 1px solid #29754D;
     border-radius: 5px;
     text-align: center;
-    line-height: 40px;
+    font-size: 0.75em;
+    line-height: 30px;
     color: #29754D;
 }
 
@@ -267,7 +270,7 @@ footer {
 }
 
 #index footer {
-    height: 40px;
+    height: 30px;
     position: fixed;
     bottom: 0px;
     width: 100%;
