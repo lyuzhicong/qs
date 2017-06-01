@@ -23,13 +23,18 @@
 			'buttonText' : '选择',
 			'width' : '65',
 			'height' : '32',
-			'uploadLimit' : 1,
+			'uploadLimit' : 5,
+			'queueSizeLimit' : 1,
 			'removeCompleted' : false,
 			'formData' : {'session' : 'adminsession'},
 			'onUploadSuccess' : function(file, data, response) {
 				$('#pathId').remove();
 				var html = "<input type=\"hidden\" id=\"pathId\" name=\"path\" value=\"" + JSON.parse(data).path + "\">";
 				$('#editForm').append(html);
+				
+				if($('#queue').find('.uploadify-queue-item').length > 1){
+					$('.uploadify-queue-item').first().remove();
+				}
 			},
 // 			'onCancel' : function(file) {
 // 				alert(file.name);
@@ -80,13 +85,6 @@
 			}
 		});
 		
-		$(document).on('click', '.cancel>a', function(){
-// 			console.info("aaa");
-			$('#queue').empty();
-		});
-		
-		
-
 		var content = '${articleVo.content}';
 
 		if (content) {

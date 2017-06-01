@@ -149,8 +149,8 @@
 
                 for (var i = 0; i < articleVoList.length; i++) {
                     var articleVo = articleVoList[i];
-                    var $li = $('<li id="' + articleVo.id + '"></li>')
-                    var img = "<img src=" + articleVo.path + ">";
+                    var $li = $('<li id="' + articleVo.id + '"></li>');
+                    var img = '<img src="' + articleVo.path + '">';
                     var title = "<h4>" + articleVo.title + "</h4>";
                     var date = "<span>" + articleVo.dateText + "</span>"
                     var $div = $('<div></div>');

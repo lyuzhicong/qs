@@ -18,6 +18,10 @@
 			window.location.href = 'editArticle.do?id=' + id;
 		});
 		
+		$('#toIndex').click(function(){
+			window.location.href = '${pageContext.request.contextPath}';
+		})
+		
 		$('#addArticle').click(function(){
 			window.location.href = 'editArticle.do';
 		})
@@ -51,6 +55,7 @@
 </style>
 <body class="block">
 	<button type="button" class="btn btn-success" id="addArticle">新增</button>
+	<button type="button" class="btn btn-primary" id="toIndex">返回首页</button>
 	<table class="table table-hover">
 		<thead>
 			<th>标题</th>
