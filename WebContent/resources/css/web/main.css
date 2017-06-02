@@ -729,6 +729,10 @@ footer {
     padding: 20px 0;
 }
 
+.group-detail-wrap>span {
+    margin-top: 1rem;
+}
+
 .group-detail-wrap+footer {
     position: fixed;
     bottom: 0px;
