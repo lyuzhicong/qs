@@ -216,6 +216,12 @@ footer button,
     margin: 10px;
 }
 
+.ceo .font {
+    width: 100px;
+    height: 35px;
+    background-size: 100% 100%;
+}
+
 .ceo p {
     font-size: 0.75rem;
     line-height: 1.5rem;
@@ -240,8 +246,9 @@ footer button,
 
 .ceo>.image {
     width: 100%;
-    height: calc(100% - 40px - 60px);
+    height: calc(100% - 40px - 60px - 20px);
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 #floatmenu {
