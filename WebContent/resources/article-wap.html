@@ -38,7 +38,7 @@
     <main class="article">
     </main>
     <footer>
-        <button>返回</button>
+        <button id="back">返回</button>
     </footer>
     <div class="mask"></div>
 </body>
@@ -46,6 +46,11 @@
 <script type="text/javascript">
     $(function() {
         var id = GetUrlParam(id);
+
+        $("#back").click(function() {
+            window.history.back(-1);
+        })
+
         $.getJSON("article/getArticleById.do?id=" + id, function(data) {
             if (data) {
                 var $detail = $(".article");
@@ -55,10 +60,10 @@
                 var contentJsonArray = JSON.parse(data.content);
                 var banner = '<img src="' + data.path + '">';
                 $detail.append(h3).append(span).append(banner);
-                
+
                 for (var i = 0; i < contentJsonArray.length; i++) {
                     var contentJson = contentJsonArray[i];
-                	var h4 = '<h4>' + contentJson.title + '</h4>';
+                    var h4 = '<h4>' + contentJson.title + '</h4>';
                     var p = contentJson.content;
                     $detail.append(h4).append(p);
                 }
