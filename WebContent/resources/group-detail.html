@@ -240,7 +240,19 @@
         var num = GetUrlParam("idx");
         $(".group-detail li").removeClass("active")
         $(".group-detail li:eq(" + num + ")").addClass("active");
+
+        var height = $('.group-detail-wrap').height();
+        var clientHeight = $(document).height()
+
+        var cotentHeight = clientHeight - 100 - 100;
+
+        if (height > cotentHeight) {
+            $('footer').css('position', 'static');
+        }
+
     })
+
+
 
     function GetUrlParam(paraName) {　　　　
         var url = document.location.toString();　　　　
