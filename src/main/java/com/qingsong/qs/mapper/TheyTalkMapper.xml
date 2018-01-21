@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingsong.qs.mapper.TheyTalkMapper">
+	<resultMap id="theytalkMap" type="com.qingsong.qs.dto.TheyTalkVo">
+		<id column="id" property="id" />
+		<result column="image_path" property="imagePath" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+	</resultMap>
+
+	<select id="getTheyTalkVoList" resultMap="theytalkMap">
+		SELECT
+		`id`,
+		`title`,
+		`image_path`,
+		`content`
+		FROM
+		`they_talk`
+	</select>
+	
+	<select id="getTheyTalkById" parameterType="java.lang.Integer" resultMap="theytalkMap">
+		SELECT
+		`id`,
+		`title`,
+		`image_path`,
+		`content`
+		FROM
+		`they_talk`
+		WHERE
+		id = #{value}
+	</select>
+
+	<update id="updateTheyTalk" parameterType="com.qingsong.qs.dto.TheyTalkVo">
+		UPDATE
+		`they_talk`
+		SET
+		`content` = #{content},
+		`title` = #{title},
+		`image_path` = #{imagePath}
+		WHERE `id` = #{id}
+	</update>
+
+	<insert id="insertTheyTalk" parameterType="com.qingsong.qs.dto.TheyTalkVo">
+		INSERT INTO `they_talk` (
+		`title`,
+		`content`,
+		`image_path`
+		)
+		VALUES
+		(
+		#{title},
+		#{content},
+		#{imagePath}
+		)
+	</insert>
+	
+	<delete id="deleteTheyTalkById" parameterType="java.lang.Integer">
+		DELETE FROM
+		they_talk
+		WHERE 
+		id = #{value}
+	</delete>
+
+</mapper>

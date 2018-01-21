@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingsong.qs.mapper.InvestmentMapper">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+	<resultMap id="investmentMap" type="com.qingsong.qs.dto.InvestmentVo">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="location" property="location" />
+		<result column="content" property="content" />
+		<result column="introduction" property="introduction" />
+		<result column="time" property="time" />
+		<result column="image_path" property="imagePath" />
+	</resultMap>
+
+	<select id="getInvestmentList" resultMap="investmentMap">
+		SELECT
+		`id`,
+		`content`,
+		`title`,
+		`location`,
+		`time`,
+		`introduction`,
+		`image_path`
+		FROM
+		`investment`
+		ORDER BY location ASC
+	</select>
+
+	<select id="getInvestmentById" parameterType="java.lang.Integer" resultMap="investmentMap">
+		SELECT
+		`id`,
+		`content`,
+		`title`,
+		`location`,
+		`time`,
+		`introduction`,
+		`image_path`
+		FROM
+		`investment`
+		WHERE
+		id = #{value}
+	</select>
+
+	<update id="updateInvestment" parameterType="com.qingsong.qs.dto.InvestmentVo">
+		UPDATE
+		`investment`
+		SET
+		`content` = #{content},
+		`title` = #{title},
+		`location` = #{location},
+		`image_path` = #{imagePath},
+		`introduction` = #{introduction},
+		`time` = #{time}
+		WHERE `id` = #{id}
+	</update>
+
+	<insert id="insertInvestment" parameterType="com.qingsong.qs.dto.InvestmentVo">
+		INSERT INTO `investment` (
+		`title`,
+		`content`,
+		`location`,
+		`image_path`,
+		`introduction`,
+		`time`
+		)
+		VALUES
+		(
+		#{title},
+		#{content},
+		#{location},
+		#{imagePath},
+		#{introduction},
+		#{time}
+		)
+	</insert>
+	
+	<delete id="deleteInvestmentById" parameterType="java.lang.Integer">
+		DELETE FROM
+		investment
+		WHERE 
+		id = #{value}
+	</delete>
+
+</mapper>

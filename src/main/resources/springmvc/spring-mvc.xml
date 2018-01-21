@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 					  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 					  http://www.springframework.org/schema/context 
@@ -15,25 +14,27 @@
 	<!-- 对模型视图添加前后缀 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
 	<!-- 配置资源文件夹的路径，以便jsp能访问到所引用的静态资源文件。 -->
-	<mvc:resources location="/resources/" mapping="/**" />
+	<mvc:resources location="/" mapping="/**" />
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/article/saveArticle.do" /> 
-			<mvc:mapping path="/article/editArticle.do" /> 
-			<mvc:mapping path="/article/uploadImages.do" /> 
+			<mvc:mapping path="/**/edit/**" />
+<!-- 			<mvc:mapping path="/investment/investmentManager" /> -->
+<!-- 			<mvc:mapping path="/share/saveTheyTalk" /> -->
+<!-- 			<mvc:mapping path="/updateIndexData" /> -->
+<!-- 			<mvc:mapping path="/article/editArticle.do" /> -->
+			<mvc:mapping path="/article/uploadImages.do" />
+			<mvc:mapping path="/investment/uploadImage" />
 			<mvc:exclude-mapping path="/user/login.do" />
 			<bean class="com.qingsong.qs.util.UserInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- set the max upload size1MB -->
-		<property name="maxUploadSize">
-			<value>1048576</value>
-		</property>
-		<property name="maxInMemorySize">
-			<value>4096</value>
-		</property>
+		<!-- set the max upload size : 5MB -->
+		<property name="maxUploadSize" value="5242880" />
+		<!-- 设置上传缓存 50M-->
+		<property name="maxInMemorySize" value="52428800" />
+		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 </beans>

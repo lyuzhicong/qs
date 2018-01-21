@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingsong.qs.mapper.TeamMapper">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+	<resultMap id="teamMap" type="com.qingsong.qs.dto.TeamVo">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="content" property="content" />
+		<result column="image_path" property="imagePath" />
+		<result column="identity" property="identity" />
+		<result column="introduction" property="introduction" />
+		<result column="email" property="email" />
+		<result column="projects" property="projects" />
+		<result column="focus_areas" property="focusAreas" />
+		<result column="location" property="location" />
+	</resultMap>
+
+	<!-- 查询单条记录 -->
+	<select id="getTeamList" resultMap="teamMap">
+		SELECT
+		`id`,
+		`name`,
+		`content`,
+		`image_path`,
+		`identity`,
+		`introduction`,
+		`email`,
+		`projects`,
+		`focus_areas`,
+		`location`
+		FROM
+		`team`
+	</select>
+
+	<select id="getTeamById" parameterType="java.lang.Integer" resultMap="teamMap">
+		SELECT
+		`id`,
+		`name`,
+		`content`,
+		`image_path`,
+		`identity`,
+		`introduction`,
+		`email`,
+		`projects`,
+		`focus_areas`,
+		`location`
+		FROM
+		`team`
+		WHERE
+		id = #{value}
+	</select>
+
+	<update id="updateTeam" parameterType="com.qingsong.qs.dto.TeamVo">
+		UPDATE
+		`team`
+		SET
+		`name` = #{name},
+		`content` = #{content},
+		`image_path` = #{imagePath},
+		`identity` = #{identity},
+		`introduction` = #{introduction},
+		`email` = #{email},
+		`projects` = #{projects},
+		`focus_areas` = #{focusAreas},
+		`location` = #{location}
+		WHERE `id` = #{id}
+	</update>
+
+	<insert id="insertTeam" parameterType="com.qingsong.qs.dto.TeamVo">
+		INSERT INTO `team` (
+		`name`,
+		`content`,
+		`image_path`,
+		`identity`,
+		`introduction`,
+		`email`,
+		`projects`,
+		`focus_areas`,
+		`location`
+		)
+		VALUES
+		(
+		#{name},
+		#{content},
+		#{imagePath},
+		#{identity},
+		#{introduction},
+		#{email},
+		#{projects},
+		#{focusAreas},
+		#{location}
+		)
+	</insert>
+
+	<delete id="deleteTeamById" parameterType="java.lang.Integer">
+		DELETE
+		FROM
+		`team`
+		WHERE `id` = #{value}
+	</delete>
+</mapper>

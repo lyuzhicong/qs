@@ -34,7 +34,7 @@ public class ArticleController {
 	@Autowired
 	ArticleService articleService;
 
-	@RequestMapping("editArticle.do")
+	@RequestMapping("/edit/editArticle.do")
 	public String editArticle(Long id, HttpServletRequest request) {
 		if (id != null) {
 			ArticleVo articleVo = articleService.getArticleById(id);
@@ -67,14 +67,25 @@ public class ArticleController {
 		response.getWriter().print(jsonObj);
 	}
 
-	@RequestMapping(value = "articleManager.do")
+	@RequestMapping(value = "/edit/articleManager.do")
 	public String articleManager(ArticleVo articleVo, HttpServletRequest request) {
 		request.setAttribute("articleVoList", articleService.getArticleList(articleVo));
 		return "/article/articleList";
-
+	}
+	
+	@RequestMapping(value = "/articleDetail")
+	public String articleDetail(Long id, HttpServletRequest request) {
+		request.setAttribute("id", id);
+		return "/article/articleDetail";
+	}
+	
+	@RequestMapping(value = "/getarticleDetailWap")
+	public String getarticleDetailWap(Long id, HttpServletRequest request) {
+		request.setAttribute("id", id);
+		return "/article/articleDetailWap";
 	}
 
-	@RequestMapping(value = "saveArticle.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/edit/saveArticle.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public JSONObject saveArticle(ArticleVo articleVo, HttpServletRequest request) {
 		JSONObject jsonObj = new JSONObject();
@@ -100,7 +111,7 @@ public class ArticleController {
 		return jsonObj;
 	}
 
-	@RequestMapping(value = "getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ArticleVo getArticleById(Long id) {
 		ArticleVo articleVo = articleService.getArticleById(id);
@@ -118,7 +129,7 @@ public class ArticleController {
 		return articleVo;
 	}
 
-	@RequestMapping(value = "deleteArticleById.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit/deleteArticleById.do", method = RequestMethod.POST)
 	@ResponseBody
 	public JSONObject deleteArticleById(Long id) {
 		JSONObject jsonObj = new JSONObject();
@@ -156,6 +167,6 @@ public class ArticleController {
 			jsonObj.put("Status", "ERROR");
 		}
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(jsonObj);
+		response.getWriter().print(jsonObj.toString());
 	}
 }

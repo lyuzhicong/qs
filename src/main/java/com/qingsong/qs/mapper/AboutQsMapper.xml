@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingsong.qs.mapper.AboutQsMapper">
+	<resultMap id="aboutQsMapper" type="com.qingsong.qs.dto.AboutQsVo">
+		<id column="id" property="id" />
+		<result column="email" property="email" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+	</resultMap>
+
+	<select id="getAboutQsVo" resultMap="aboutQsMapper">
+		SELECT
+		id,
+		`title`,
+		`content`,
+		`email`
+		FROM
+		`about_qs`
+	</select>
+
+	<update id="updateAboutQsVo" parameterType="com.qingsong.qs.dto.AboutQsVo">
+		UPDATE
+		`about_qs`
+		SET
+		`title` = #{title},
+		`content` = #{content},
+		`email` = #{email}
+		WHERE `id` = #{id}
+	</update>
+
+</mapper>

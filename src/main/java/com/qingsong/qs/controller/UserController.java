@@ -1,6 +1,9 @@
 package com.qingsong.qs.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qingsong.enums.contentTypeEnums;
 import com.qingsong.qs.dto.UserVo;
 import com.qingsong.qs.service.UserService;
 
 import net.sf.json.JSONObject;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 
 	Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -31,7 +35,7 @@ public class UserController {
 
 	@RequestMapping(value = "login.do", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public JSONObject login(UserVo userVo, HttpServletRequest request) {
+	public void login(UserVo userVo, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		JSONObject jsonObj = new JSONObject();
 		int count = userService.login(userVo);
 		if (count == 1) {
@@ -40,6 +44,7 @@ public class UserController {
 		} else {
 			jsonObj.put("Status", "ERROR");
 		}
-		return jsonObj;
+		response.setContentType(contentTypeEnums.json.getContentType());
+		response.getWriter().print(jsonObj.toString());
 	}
 }
