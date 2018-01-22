@@ -189,9 +189,9 @@ td {
 		<button type="button" class="btn btn-success btn-sm" id="addTheyTalk">添加</button>
 		<table class="table">
 			<thead>
-				<th>标题</th>
-				<th>详细内容</th>
-				<th>图片</th>
+				<th nowrap>标题</th>
+				<th nowrap>详细内容</th>
+				<th nowrap>图片</th>
 				<th></th>
 				<th></th>
 			</thead>
