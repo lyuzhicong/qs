@@ -55,8 +55,8 @@ public class TeamController {
 		request.setAttribute("teamVoList", teamService.getTeamList());
 		return "team/teamDetail";
 	}
-	@RequestMapping("/getTeamDetailWap")
-	public String getTeamDetailWap(HttpServletRequest request, Integer id) {
+	@RequestMapping("/teamDetailWap")
+	public String teamDetailWap(HttpServletRequest request, Integer id) {
 		TeamVo team = teamService.getTeamById(id);
 		request.setAttribute("team", team);
 		return "team/teamDetailWap";

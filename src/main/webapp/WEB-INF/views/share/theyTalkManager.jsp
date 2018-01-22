@@ -207,7 +207,7 @@ td {
 		</table>
 		<div id="foot">
 			<nav>
-				<a href="${pageContext.request.contextPath }/manager">管理员首页</a> <a href="/">进入青松</a>
+				<a href="${pageContext.request.contextPath }/qsManager/edit/console">管理员首页</a> <a href="${pageContext.request.contextPath }/">进入青松</a>
 			</nav>
 		</div>
 	</div>

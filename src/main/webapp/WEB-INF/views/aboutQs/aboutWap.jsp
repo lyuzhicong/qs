@@ -11,6 +11,7 @@
 <link href="${pageContext.request.contextPath }/resources/css/wap/reset.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath }/resources/css/wap/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery/jquery-2.1.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/main-wap.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
 		var content = $('#hidContent').val();
@@ -18,6 +19,10 @@
 		content = content.replace(/\n/g, "<br/>");
 		content = content.replace(/\s/g, "&nbsp;");
 		$('#content').html(content);
+
+		$('#contactUs').on('click', function() {
+			location.href = "${pageContext.request.contextPath }/about/getContactWap";
+		})
 	})
 </script>
 </head>
@@ -49,10 +54,8 @@
 	</h3>
 	<div id="content"></div>
 
-	<button onclick="${pageContext.request.contextPath }/about/getContactWap">联系我们</button>
+	<button id="contactUs">联系我们</button>
 	</main>
 	<div class="mask"></div>
 </body>
-<script src="${pageContext.request.contextPath }/resources/js/main-wap.js" type="text/javascript"></script>
-
 </html>

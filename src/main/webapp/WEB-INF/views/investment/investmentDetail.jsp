@@ -33,7 +33,7 @@
 			</div>
 			<nav>
 				<ul class="nav">
-					<li><a href="/">首页</a></li>
+					<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 					<li class="active"><a href="${pageContext.request.contextPath }/investment">投资组合</a></li>
 					<li><a href="${pageContext.request.contextPath }/team">投资团队</a></li>
 					<li><a href="${pageContext.request.contextPath }/share">青松分享</a></li>

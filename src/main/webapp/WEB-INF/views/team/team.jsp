@@ -30,7 +30,7 @@
 			</div>
 			<nav>
 				<ul class="nav">
-					<li><a href="/">首页</a></li>
+					<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 					<li><a href="${pageContext.request.contextPath }/investment">投资组合</a></li>
 					<li class="active"><a href="${pageContext.request.contextPath }/team">投资团队</a></li>
 					<li><a href="${pageContext.request.contextPath }/share">青松分享</a></li>
@@ -60,7 +60,6 @@
 			<small>© 2012 QingSong Fund All rights reserved. 粤ICP备12034380号</small> <span> <img src="${pageContext.request.contextPath }/resources/images/web/pic_QR_code.png" id="wechatcode"> <img src="${pageContext.request.contextPath }/resources/images/web/icon_wechat_normal.png" id="wechat">
 			</span>
 		</div>
-
 	</footer>
 </body>
 </html>

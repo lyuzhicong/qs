@@ -63,7 +63,7 @@
 	$(function() {
 		$(".team li").click(function() {
 			var id = $(this).deta('id');
-			window.location.href = "${pageContext.request.contextPath }/team/getTeamDetail?id=" + id;
+			window.location.href = "${pageContext.request.contextPath }/team/teamDetailWap?id=" + id;
 		});
 	})
 </script>

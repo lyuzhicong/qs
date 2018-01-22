@@ -48,36 +48,6 @@
 			<c:forEach items="${investmentVoList }" var="item">
 				<li data-id="${item.id }"><img src="${item.imagePath }">
 			</c:forEach>
-			<!-- 			<li><img src="image/logo/1.png"></li> -->
-			<!-- 			<li><img src="image/logo/2.png"></li> -->
-			<!-- 			<li><img src="image/logo/3.png"></li> -->
-			<!-- 			<li><img src="image/logo/4.png"></li> -->
-			<!-- 			<li><img src="image/logo/5.png"></li> -->
-			<!-- 			<li><img src="image/logo/6.png"></li> -->
-			<!-- 			<li><img src="image/logo/7.png"></li> -->
-			<!-- 			<li><img src="image/logo/8.png"></li> -->
-			<!-- 			<li><img src="image/logo/9.png"></li> -->
-			<!-- 			<li><img src="image/logo/10.png"></li> -->
-			<!-- 			<li><img src="image/logo/11.png"></li> -->
-			<!-- 			<li><img src="image/logo/12.png"></li> -->
-			<!-- 			<li><img src="image/logo/13.png"></li> -->
-			<!-- 			<li><img src="image/logo/14.png"></li> -->
-			<!-- 			<li><img src="image/logo/15.png"></li> -->
-			<!-- 			<li><img src="image/logo/16.png"></li> -->
-			<!-- 			<li><img src="image/logo/17.png"></li> -->
-			<!-- 			<li><img src="image/logo/18.png"></li> -->
-			<!-- 			<li><img src="image/logo/19.png"></li> -->
-			<!-- 			<li><img src="image/logo/20.png"></li> -->
-			<!-- 			<li><img src="image/logo/21.png"></li> -->
-			<!-- 			<li><img src="image/logo/22.png"></li> -->
-			<!-- 			<li><img src="image/logo/23.png"></li> -->
-			<!-- 			<li><img src="image/logo/24.png"></li> -->
-			<!-- 			<li><img src="image/logo/25.png"></li> -->
-			<!-- 			<li><img src="image/logo/26.png"></li> -->
-			<!-- 			<li><img src="image/logo/27.png"></li> -->
-			<!-- 			<li><img src="image/logo/28.png"></li> -->
-			<!-- 			<li><img src="image/logo/29.png"></li> -->
-			<!-- 			<li><img src="image/logo/30.png"></li> -->
 		</ul>
 	</ul>
 	<div class="mask"></div>
@@ -87,7 +57,7 @@
 	$(function() {
 		$(".group li").click(function() {
 			var idx = $(this).data('id')
-			window.location.href = "${pageContext.request.contextPath }/investment/investmentDetailWapid=" + idx;
+			window.location.href = "${pageContext.request.contextPath }/investment/investmentDetailWap?id=" + idx;
 		});
 	})
 </script>

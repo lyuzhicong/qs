@@ -24,7 +24,6 @@
 	</header>
 	<nav id="floatmenu">
 		<ul>
-			<li><a href="${pageContext.request.contextPath }/indexWap">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/investment/getInvestmentWap">投资组合</a></li>
 			<li><a href="${pageContext.request.contextPath }/team/getTeamWap">投资团队</a></li>
 			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松分享</a></li>
@@ -50,7 +49,7 @@
 		$("#back").click(function() {
 			window.localtion.href ="${pageContext.request.contextPath }/investment/getInvestmentWap";
 		})
-s	})
+	})
 </script>
 
 </html>
