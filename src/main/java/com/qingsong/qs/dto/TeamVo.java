@@ -1,5 +1,8 @@
 package com.qingsong.qs.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeamVo {
 
 	private Integer id;
@@ -13,7 +16,20 @@ public class TeamVo {
 	private String email;
 	private String identity;
 	
+	private List<String> projectList;
+	
 	private Integer location;
+	
+	public List<String> getProjectList(){
+		this.projectList = new ArrayList<String>();
+		if(projects != null && !"".equals(projects)) {
+			String[] projectArray = projects.split(";");
+			for(String project : projectArray) {
+				projectList.add(project);
+			}
+		}
+		return projectList;
+	}
 
 	public String getImagePath() {
 		return imagePath;

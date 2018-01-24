@@ -9,12 +9,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery/jquery-plugin-pop.js"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/web/public.css">
-<title>投资团队管理</title>
+<title>素材管理</title>
 <script type="text/javascript">
 	$(function() {
-		$('.editTeam').on('click', function() {
+		$('.editMaterial').on('click', function() {
 			title = '编辑';
-			$.getJSON('${pageContext.request.contextPath}/team/getTeamById?id=' + $(this).data('id'), function(data){
+			$.getJSON('${pageContext.request.contextPath}/material/getMaterialById?id=' + $(this).data('id'), function(data){
 				var html = doT.template($('#editTmpl').text())(data);
 				$.Pop(html,{
 					Title:title,
@@ -25,7 +25,7 @@
 							ope:function(){
 								if($('#hidImagePath').val()){
 									$('#editForm').ajaxSubmit({
-										url: '${pageContext.request.contextPath}/team/edit/saveTeam',
+										url: '${pageContext.request.contextPath}/material/edit/saveMaterial',
 										dataType: 'json',
 										type: 'post',
 										success : function(data){
@@ -53,7 +53,7 @@
 			});
 		});
 		
-		$('#addTeam').on('click', function(){
+		$('#addMaterial').on('click', function(){
 			var title = '添加';
 			var html = doT.template($('#editTmpl').text());
 			$.Pop(html,{
@@ -65,7 +65,7 @@
 						ope:function(){
 							if($('#hidImagePath').val()){
 								$('#editForm').ajaxSubmit({
-									url: '${pageContext.request.contextPath}/team/edit/saveTeam',
+									url: '${pageContext.request.contextPath}/material/edit/saveMaterial',
 									dataType: 'json',
 									type: 'post',
 									success : function(data){
@@ -92,7 +92,7 @@
 			});
 		})
 		
-		$('.deleteTeam').on('click', function(){
+		$('.deleteMaterial').on('click', function(){
 			var id = $(this).data('id');
 			var title = $(this).data('name');
 			$.Pop("是否确认删除：" + title + "?",{
@@ -102,7 +102,7 @@
 						vla:"确定",
 						class:"btn btn-success",
 						ope:function(){
-							$.post('${pageContext.request.contextPath}/team/edit/deleteTeamById?id=' + id, function(data){
+							$.post('${pageContext.request.contextPath}/material/edit/deleteMaterialById?id=' + id, function(data){
 								if(data.Status == 'OK'){
 									location.reload();
 								} else{
@@ -126,7 +126,7 @@
 			if($('input[name="file"]').val()){
 				$('#imageForm').ajaxSubmit({
 					dataType:'json',
-					url:'${pageContext.request.contextPath}/investment/uploadImage',
+					url:'${pageContext.request.contextPath}/material/uploadImage',
 					type:'post',
 					success: function(data){
 						if(data.Status == "OK"){
@@ -148,51 +148,9 @@
 	<form id="editForm" class="form-horizontal">
 		<input type="hidden" name="id" value="{{=it.id||''}}"/>
 		<div class="form-group">
-			<label class="col-sm-3 control-label">姓名：</label>
+			<label class="col-sm-3 control-label">标题：</label>
 			<div class="col-md-6">
-				<input type="text" name="name" class="form-control" value="{{=it.name||''}}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">简介：</label>
-			<div class="col-sm-6">
-				<input type="text" name="introduction" class="form-control" value="{{=it.introduction||''}}"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">身份：</label>
-			<div class="col-sm-6">
-				<input type="text" name="identity" class="form-control" value="{{=it.identity||''}}"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">邮箱：</label>
-			<div class="col-sm-6">
-				<input type="text" name="email" class="form-control" value="{{=it.email||''}}"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">个人简介：</label>
-			<div class="col-sm-6">
-				<textarea class="form-control" rows="4" cols="80" name="content">{{=it.content||''}}</textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">投资项目：</label>
-			<div class="col-sm-6">
-				<input type="text" name="projects" class="form-control" value="{{=it.projects||''}}"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">关注领域：</label>
-			<div class="col-sm-6">
-				<input type="text" name="focusAreas" class="form-control" value="{{=it.focusAreas||''}}" placeholder="素材库地址，多个地址请用分号' ; '隔开"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">位置：</label>
-			<div class="col-sm-6">
-				<input type="text" name="location" class="form-control" value="{{=it.location||''}}" placeholder="请输入数字" value=value.replace(/[^\d]/g,'')/>
+				<input type="text" name="title" class="form-control" value="{{=it.title||''}}" />
 			</div>
 		</div>
 		<input type="hidden" name="imagePath" id="hidImagePath" value="{{=it.imagePath||''}}"/>
@@ -220,35 +178,23 @@ td {
 </style>
 <body>
 	<div class="main-block">
-		<h2>投资团队管理</h2>
-		<button type="button" class="btn btn-success btn-sm" id="addTeam">添加</button>
+		<h2>素材管理</h2>
+		<button type="button" class="btn btn-success btn-sm" id="addMaterial">添加</button>
 		<table class="table">
 			<thead>
-				<th nowrap>姓名
-				<th nowrap>简介</th>
-				<th nowrap>身份</th>
-				<th nowrap>邮箱</th>
-				<th nowrap>个人经历</th>
-				<th nowrap>关注领域</th>
+				<th nowrap>标题</th>
 				<th nowrap>图片</th>
-				<th nowrap>投资项目</th>
-				<th nowrap>位置</th>
-				<th></th>
-				<th></th>
+				<th nowrap>地址</th>
+				<th nowrap></th>
+				<th nowrap></th>
 			</thead>
-			<c:forEach items="${teamList }" var="item">
+			<c:forEach items="${materialList }" var="item">
 				<tr>
-					<td>${item.name }</td>
-					<td>${item.introduction }</td>
-					<td>${item.identity }</td>
-					<td>${item.email }</td>
-					<td style="width: 400px;">${item.content }</td>
-					<td>${item.focusAreas }</td>
+					<td>${item.title }</td>
 					<td><img src="${item.imagePath}" width="100px" height="100px" /></td>
-					<td>${item.projects }</td>
-					<td>${item.location }</td>
-					<td><button type="button" data-id="${item.id }" class="btn btn-primary btn-sm editTeam">编辑</button></td>
-					<td><button type="button" data-name="${item.name }" data-id="${item.id }" class="btn btn-danger btn-sm deleteTeam">删除</button></td>
+					<td>${item.imagePath }</td>
+					<td><button type="button" data-id="${item.id }" class="btn btn-primary btn-sm editMaterial">编辑</button></td>
+					<td><button type="button" data-name="${item.title }" data-id="${item.id }" class="btn btn-danger btn-sm deleteMaterial">删除</button></td>
 				</tr>
 			</c:forEach>
 		</table>

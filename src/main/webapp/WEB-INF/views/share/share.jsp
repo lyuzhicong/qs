@@ -103,14 +103,12 @@
                 }
             });
         }
-        //ajax加载
-        // $("#hiddenresult").load("load.html", null, initPagination);
     });
 
     $(document).on("click", ".share-detail li", function() {
-//         console.info($(this).html());
         var id = $(this).closest("li").attr("id");
-        location.href = "${pageContext.request.contextPath }/article/articleDetail?id=" + id;
+//         location.href = "${pageContext.request.contextPath }/article/articleDetail?id=" + id;
+        location.href = "${pageContext.request.contextPath }/article/articleShareDetail?id=" + id;
     });
 </script>
 <script id="theyTalkTmpl" type="text/x-dot-template">

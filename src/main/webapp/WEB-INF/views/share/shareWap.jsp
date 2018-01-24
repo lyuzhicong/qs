@@ -63,7 +63,7 @@
 
 	$(document).on("click", ".share li", function() {
 		var id = $(this).closest("li").attr("id");
-		window.location.href = "${pageContext.request.contextPath }/article/getarticleDetailWap?id=" + id;
+		window.location.href = "${pageContext.request.contextPath }/article/getArticleDetailWap?id=" + id;
 	});
 </script>
 </html>

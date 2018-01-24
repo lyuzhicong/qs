@@ -25,7 +25,6 @@
 	</header>
 	<nav id="floatmenu">
 		<ul>
-			<li><a href="${pageContext.request.contextPath }/indexWap">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/investment/getInvestmentWap">投资组合</a></li>
 			<li><a href="${pageContext.request.contextPath }/team/getTeamWap">投资团队</a></li>
 			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松分享</a></li>
@@ -48,22 +47,14 @@
 			window.history.back(-1);
 		})
 
-		$.getJSON("article/getArticleById.do?id=" + id, function(data) {
+		$.getJSON("${pageContext.request.contextPath }/article/getArticleShareById.do?id=" + id, function(data) {
 			if (data) {
 				var $detail = $(".article");
 				$detail.empty();
 				var h3 = '<h3>' + data.title + '</h3>';
 				var span = '<span>' + data.dateText + '</span>';
-				var contentJsonArray = JSON.parse(data.content);
-				var banner = '<img src="' + data.path + '">';
-				$detail.append(h3).append(span).append(banner);
-
-				for (var i = 0; i < contentJsonArray.length; i++) {
-					var contentJson = contentJsonArray[i];
-					var h4 = '<h4>' + contentJson.title + '</h4>';
-					var p = contentJson.content;
-					$detail.append(h4).append(p);
-				}
+				var content = '<div>' + data.content + '</div>';
+				$detail.append(h3).append(span).append(content);
 			}
 		});
 	});

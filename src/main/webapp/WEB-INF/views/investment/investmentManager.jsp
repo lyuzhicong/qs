@@ -131,9 +131,9 @@
 					success: function(data){
 						if(data.Status == "OK"){
 							$('#hidImagePath').val(data.fileId);
-							$('#imageForm').append('<p>上传成功！</p>')
+							$('#imageForm').empty().append('<p>上传成功！</p>')
 						} else{
-							$('#imageForm').append('<p>' + data.errorMsg + '</p>');
+							$('#imageForm').empty().append('<p>' + data.errorMsg + '</p>');
 						}
 					}
 				});
@@ -168,7 +168,7 @@
 		<div class="form-group">
 			<label class="col-sm-3 control-label">位置：</label>
 			<div class="col-sm-6">
-				<input type="text" name="location" class="form-control" value="{{=it.location||''}}"/>
+				<input type="text" name="location" class="form-control" value="{{=it.location||''}}" placeholder="请输入数字" value=value.replace(/[^\d]/g,'')/>
 			</div>
 		</div>
 		<div class="form-group">

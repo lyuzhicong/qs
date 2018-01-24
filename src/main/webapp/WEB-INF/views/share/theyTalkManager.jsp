@@ -131,7 +131,7 @@
 					success: function(data){
 						if(data.Status == "OK"){
 							$('#hidImagePath').val(data.fileId);
-							$('#imageForm').append('<p>上传成功！</p>')
+							$('#imageForm').empty().append('<p>上传成功！</p>')
 						} else{
 							$('#imageForm').append('<p>' + data.errorMsg + '</p>');
 						}

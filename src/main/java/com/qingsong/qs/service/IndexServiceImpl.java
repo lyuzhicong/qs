@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qingsong.qs.dto.CompanyVo;
 import com.qingsong.qs.dto.IndexVo;
 import com.qingsong.qs.mapper.IndexMapper;
 
@@ -20,8 +21,8 @@ public class IndexServiceImpl implements IndexService{
 	}
 	
 	@Override
-	public int updateIndex(IndexVo indexVo){
-		return indexMapper.updateIndex(indexVo);
+	public int deleteIndexById(Integer id){
+		return indexMapper.deleteIndexById(id);
 	}
 
 	@Override
@@ -30,7 +31,36 @@ public class IndexServiceImpl implements IndexService{
 	}
 
 	@Override
-	public void updateIndexData(IndexVo indexVo) {
-		indexMapper.updateIndex(indexVo);
+	public void saveIndexData(IndexVo indexVo) {
+		if(indexVo.getId() != null) {
+			indexMapper.updateIndex(indexVo);
+		} else {
+			indexMapper.insertIndex(indexVo);
+		}
+	}
+
+	@Override
+	public List<CompanyVo> getCompanyList() {
+		return indexMapper.getCompanyList();
+	}
+
+	@Override
+	public CompanyVo getCompanyById(Integer id) {
+		return indexMapper.getCompanyById(id);
+	}
+
+	@Override
+	public int saveCompany(CompanyVo companyVo) {
+		if(companyVo.getId() != null) {
+			indexMapper.updateCompany(companyVo);
+		} else {
+			indexMapper.insertCompany(companyVo);
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteCompanyById(Integer id) {
+		return indexMapper.deleteCompanyById(id);
 	}
 }

@@ -10,13 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qingsong.enums.contentTypeEnums;
+import com.qingsong.qs.dto.CompanyVo;
 import com.qingsong.qs.dto.IndexVo;
 import com.qingsong.qs.service.IndexService;
-import com.qingsong.qs.service.TheyTalkService;
 
 import net.sf.json.JSONObject;
 
@@ -27,28 +29,10 @@ public class IndexController {
 
 	@Autowired
 	private IndexService indexService;
-	
-	@Autowired
-	private TheyTalkService theyTalkService;
 
 	@RequestMapping("")
 	public String getIndex(HttpServletRequest request) {
 		List<IndexVo> indexVoList = indexService.getIndexVoList();
-		if(indexVoList == null || indexVoList.size() < 3) {
-			indexVoList.clear();
-			IndexVo indexVo = new IndexVo();
-			indexVo.setNumber("13亿");
-			indexVo.setContent("资产管理规模");
-			IndexVo indexVo1 = new IndexVo();
-			indexVo1.setNumber("100");
-			indexVo1.setContent("被投企业");
-			IndexVo indexVo2 = new IndexVo();
-			indexVo2.setNumber("60倍");
-			indexVo2.setContent("50%项目退出回报率");
-			indexVoList.add(indexVo);
-			indexVoList.add(indexVo1);
-			indexVoList.add(indexVo2);
-		}
 		request.setAttribute("indexVoList", indexVoList);
 		return "index/index";
 	}
@@ -59,20 +43,42 @@ public class IndexController {
 		return "index/indexManager";
 
 	}
-	
+
 	@RequestMapping(value = "getIndexDataById")
 	@ResponseBody
 	public IndexVo getIndexDataById(Integer id) {
 		return indexService.getIndexDataById(id);
 	}
-	
-	@RequestMapping("edit/updateIndexData")
+
+	@RequestMapping("edit/saveIndexData")
 	public void updateIndexData(IndexVo indexVo, HttpServletResponse response) throws IOException {
 		JSONObject jsonObj = new JSONObject();
 		try {
-			indexService.updateIndexData(indexVo);
+			indexService.saveIndexData(indexVo);
 			jsonObj.put("Status", "OK");
-		} catch(Exception e) {
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			jsonObj.put("Status", "ERROR");
+		}
+		response.setContentType(contentTypeEnums.json.getContentType());
+		response.getWriter().print(jsonObj.toString());
+	}
+
+	@RequestMapping("getIndexWap")
+	public String getIndexWap(HttpServletRequest request) {
+		List<IndexVo> indexVoList = indexService.getIndexVoList();
+		request.setAttribute("companyList", indexService.getCompanyList());
+		request.setAttribute("indexVoList", indexVoList);
+		return "index/indexWap";
+	}
+	
+	@RequestMapping(value = "edit/index/{id}", method = RequestMethod.DELETE)
+	public void deleteIndexById(@PathVariable("id") Integer id, HttpServletResponse response) throws IOException{
+		JSONObject jsonObj = new JSONObject();
+		try {
+			indexService.deleteIndexById(id);
+			jsonObj.put("Status", "OK");
+		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			jsonObj.put("Status", "ERROR");
 		}
@@ -80,27 +86,51 @@ public class IndexController {
 		response.getWriter().print(jsonObj.toString());
 	}
 	
-	@RequestMapping("getIndexWap")
-	public String getIndexWap(HttpServletRequest request) {
-		List<IndexVo> indexVoList = indexService.getIndexVoList();
-		if(indexVoList == null || indexVoList.size() < 3) {
-			indexVoList.clear();
-			IndexVo indexVo = new IndexVo();
-			indexVo.setNumber("13亿");
-			indexVo.setContent("资产管理规模");
-			IndexVo indexVo1 = new IndexVo();
-			indexVo1.setNumber("100");
-			indexVo1.setContent("被投企业");
-			IndexVo indexVo2 = new IndexVo();
-			indexVo2.setNumber("60倍");
-			indexVo2.setContent("50%项目退出回报率");
-			indexVoList.add(indexVo);
-			indexVoList.add(indexVo1);
-			indexVoList.add(indexVo2);
-		}
-		request.setAttribute("theyTalkList", theyTalkService.getTheyTalkVoList());
-		request.setAttribute("indexVoList", indexVoList);
-		return "index/indexWap";
+
+	@RequestMapping("edit/indexWapManager")
+	public String getIndexWapManager(HttpServletRequest request) {
+		request.setAttribute("companyList", indexService.getCompanyList());
+		return "index/indexWapManager";
 	}
 	
+	@RequestMapping("/companyDetailWap")
+	public String getIndexWapManager(Integer id, HttpServletRequest request) {
+		request.setAttribute("company", indexService.getCompanyById(id));
+		return "index/companyDetailWap";
+	}
+
+	@RequestMapping(value = "edit/company/{id}", method = RequestMethod.DELETE)
+	public void deleteCompanyById(@PathVariable("id") Integer id, HttpServletResponse response) throws IOException{
+		JSONObject jsonObj = new JSONObject();
+		try {
+			indexService.deleteCompanyById(id);
+			jsonObj.put("Status", "OK");
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			jsonObj.put("Status", "ERROR");
+		}
+		response.setContentType(contentTypeEnums.json.getContentType());
+		response.getWriter().print(jsonObj.toString());
+	}
+	
+	@RequestMapping("edit/saveCompany")
+	public void saveCompany(CompanyVo companyVo, HttpServletResponse response) throws IOException {
+		JSONObject jsonObj = new JSONObject();
+		try {
+			indexService.saveCompany(companyVo);
+			jsonObj.put("Status", "OK");
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			jsonObj.put("Status", "ERROR");
+		}
+		response.setContentType(contentTypeEnums.json.getContentType());
+		response.getWriter().print(jsonObj.toString());
+	}
+	
+	@RequestMapping(value = "company/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public CompanyVo getCompanyById(@PathVariable("id") Integer id) {
+		return indexService.getCompanyById(id);
+	}
+
 }

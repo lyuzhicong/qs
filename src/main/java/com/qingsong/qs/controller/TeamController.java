@@ -93,7 +93,7 @@ public class TeamController {
 			jsonObj.put("Status", "ERROR");
 		}
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(jsonObj.toString());
+		response.getWriter().print(jsonObj);
 	}
 
 }

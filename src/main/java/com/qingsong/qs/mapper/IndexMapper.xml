@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>    
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qingsong.qs.mapper.IndexMapper">
-	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
 	<resultMap id="indexMapper" type="com.qingsong.qs.dto.IndexVo">
 		<id column="id" property="id" />
 		<result column="number" property="number" />
 		<result column="content" property="content" />
 	</resultMap>
 
-	<!-- 查询单条记录 -->
 	<select id="getIndexVoList" resultMap="indexMapper">
 		SELECT
 		id,
 		`number`,
 		content
 		FROM `index`
+		order by id asc
 	</select>
-	
+
 	<select id="getIndexDataById" parameterType="java.lang.Integer" resultMap="indexMapper">
 		SELECT
 		id,
@@ -35,5 +34,104 @@
 		`content` = #{content}
 		WHERE `id` = #{id}
 	</update>
-	
+
+	<insert id="insertIndex" parameterType="com.qingsong.qs.dto.IndexVo">
+		INSERT INTO `index`
+		(`number`,
+		`content`
+		)
+		VALUES
+		(#{number},
+		#{content}
+		)
+	</insert>
+
+	<delete id="deleteIndexById" parameterType="java.lang.Integer">
+		DELETE
+		FROM
+		`index`
+		WHERE
+		id = #{value}
+	</delete>
+
+	<resultMap id="companyMapper" type="com.qingsong.qs.dto.CompanyVo">
+		<id column="id" property="id" />
+		<result column="image_path" property="imagePath" />
+		<result column="content" property="content" />
+		<result column="introduction" property="introduction" />
+		<result column="logo_image_path" property="logoImagePath" />
+		<result column="little_logo_image_path" property="littleLogoImagePath" />
+		<result column="location" property="location" />
+	</resultMap>
+
+
+	<select id="getCompanyList" resultMap="companyMapper">
+		SELECT
+		`id`,
+		`image_path`,
+		`logo_image_path`,
+		`introduction`,
+		`content`,
+		`little_logo_image_path`,
+		`location`
+		FROM
+		`company`
+		order by location asc
+	</select>
+
+	<select id="getCompanyById" parameterType="java.lang.Integer" resultMap="companyMapper">
+		SELECT
+		`id`,
+		`image_path`,
+		`logo_image_path`,
+		`introduction`,
+		`content`,
+		`little_logo_image_path`,
+		`location`
+		FROM
+		`company`
+		WHERE 
+		id = #{value}
+	</select>
+
+	<update id="updateCompany" parameterType="com.qingsong.qs.dto.CompanyVo">
+		UPDATE
+		`company`
+		SET
+		`image_path` = #{imagePath},
+		`logo_image_path` = #{logoImagePath},
+		`introduction` = #{introduction},
+		`content` = #{content},
+		`little_logo_image_path` = #{littleLogoImagePath},
+		`location` = #{location}
+		WHERE `id` = #{id}
+	</update>
+
+	<insert id="insertCompany" parameterType="com.qingsong.qs.dto.CompanyVo">
+		INSERT INTO `company` (
+		`image_path`,
+		`logo_image_path`,
+		`introduction`,
+		`content`,
+		`little_logo_image_path`,
+		`location`
+		)
+		VALUES
+		(
+		#{imagePath},
+		#{logoImagePath},
+		#{introduction},
+		#{content},
+		#{littleLogoImagePath},
+		#{location}
+		)
+	</insert>
+
+	<delete id="deleteCompanyById" parameterType="java.lang.Integer">
+		DELETE
+		FROM
+		`company`
+		WHERE `id` = #{value}
+	</delete>
+
 </mapper>

@@ -106,19 +106,19 @@ footer {
 	height: 207px;
 }
 
-.main ul li div p:nth-child(1) {
+.main ul li div p:nth-child(2) {
 	line-height: 148px;
 	font-weight: 400;
 	color: #0c6234;
 	font-size: 76px;
-	text-align: center
+	letf : 88px;
 }
 
-.main ul li div p:nth-child(2) {
+.main ul li div p:nth-child(3) {
 	color: #6C6C6C;
 	font-weight: bold;
-	font-size: 28px;
-	text-align: center
+	font-size: 24px;
+    left: 68px;
 }
 
 .main ul .main-li-fst {

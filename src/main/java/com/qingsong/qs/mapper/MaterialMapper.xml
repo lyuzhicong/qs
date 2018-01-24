@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingsong.qs.mapper.MaterialMapper">
+	<resultMap id="materialMap" type="com.qingsong.qs.dto.MaterialVo">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="image_path" property="imagePath" />
+	</resultMap>
+
+	<select id="getMaterialList" resultMap="materialMap">
+		SELECT
+		`id`,
+		`title`,
+		`image_path`
+		FROM
+		`material`
+	</select>
+
+	<select id="getMaterialById" parameterType="java.lang.Integer" resultMap="materialMap">
+		SELECT
+		`id`,
+		`title`,
+		`image_path`
+		FROM
+		`material`
+		WHERE
+		id = #{value}
+	</select>
+
+	<update id="updateMaterial" parameterType="com.qingsong.qs.dto.MaterialVo">
+		UPDATE
+		`material`
+		SET
+		`title` = #{title},
+		`image_path` = #{imagePath}
+		WHERE `id` = #{id}
+	</update>
+
+	<insert id="insertMaterial" parameterType="com.qingsong.qs.dto.MaterialVo">
+		INSERT INTO `material` (
+		`title`,
+		`image_path`
+		)
+		VALUES
+		(
+		#{title},
+		#{imagePath}
+		)
+	</insert>
+	
+	<delete id="deleteMaterialById" parameterType="java.lang.Integer">
+		DELETE FROM
+		material
+		WHERE 
+		id = #{value}
+	</delete>
+
+</mapper>

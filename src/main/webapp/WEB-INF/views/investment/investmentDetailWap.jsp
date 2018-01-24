@@ -33,7 +33,7 @@
 	</nav>
 	<ul class="group-detail">
 		<li class="active">
-			<h3>${investment.title }</h3> <span>发表日期： ${investment.time }</span>
+			<img src="${investment.imagePath }"/>
 			<p>${investment.content }</p>
 		</li>
 	</ul>
@@ -47,7 +47,7 @@
 <script type="text/javascript">
 	$(function() {
 		$("#back").click(function() {
-			window.localtion.href ="${pageContext.request.contextPath }/investment/getInvestmentWap";
+			window.location.href ="${pageContext.request.contextPath }/getIndexWap";
 		})
 	})
 </script>

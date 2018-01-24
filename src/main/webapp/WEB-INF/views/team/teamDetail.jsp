@@ -41,9 +41,11 @@
      </article>
     <span>投资项目<hr></span>
     <ul>
-        <div>
-             {{=it.projects}}            
-        </div>
+		{{~it.projectList : project : index}}
+			<li>
+              <img src="{{=project}}">
+			</li>
+		{{~}}            
     </ul>
 </li>
 </script>

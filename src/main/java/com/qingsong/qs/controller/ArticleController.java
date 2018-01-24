@@ -40,7 +40,7 @@ public class ArticleController {
 			ArticleVo articleVo = articleService.getArticleById(id);
 			JSONArray contentArray = JSONArray.fromObject(articleVo.getContent());
 			JSONArray newContArray = new JSONArray();
-			for(Object obj : contentArray){
+			for (Object obj : contentArray) {
 				JSONObject jsonObj = JSONObject.fromObject(obj);
 				String content = jsonObj.getString("content");
 				content = content.replace("\n", "\\n");
@@ -72,14 +72,22 @@ public class ArticleController {
 		request.setAttribute("articleVoList", articleService.getArticleList(articleVo));
 		return "/article/articleList";
 	}
-	
+
 	@RequestMapping(value = "/articleDetail")
+	@Deprecated
 	public String articleDetail(Long id, HttpServletRequest request) {
 		request.setAttribute("id", id);
 		return "/article/articleDetail";
 	}
 	
-	@RequestMapping(value = "/getarticleDetailWap")
+	@RequestMapping(value = "/articleShareDetail")
+	public String articleShareDetail(Long id, HttpServletRequest request) {
+		request.setAttribute("id", id);
+		return "/article/articleShareDetail";
+	}
+
+	
+	@RequestMapping(value = "/getArticleDetailWap")
 	public String getarticleDetailWap(Long id, HttpServletRequest request) {
 		request.setAttribute("id", id);
 		return "/article/articleDetailWap";
@@ -111,13 +119,26 @@ public class ArticleController {
 		return jsonObj;
 	}
 
+	@RequestMapping(value = "/edit/saveShareArticle.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public JSONObject saveShareArticle(ArticleVo articleVo, HttpServletRequest request) {
+		JSONObject jsonObj = new JSONObject();
+		try {
+			articleService.saveArticle(articleVo);
+			jsonObj.put("Status", "OK");
+		} catch (Exception e) {
+			jsonObj.put("Status", "ERROR");
+		}
+		return jsonObj;
+	}
+
 	@RequestMapping(value = "/getArticleById.do", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ArticleVo getArticleById(Long id) {
 		ArticleVo articleVo = articleService.getArticleById(id);
 		JSONArray contentArray = JSONArray.fromObject(articleVo.getContent());
 		JSONArray newContArray = new JSONArray();
-		for(Object obj : contentArray){
+		for (Object obj : contentArray) {
 			JSONObject jsonObj = JSONObject.fromObject(obj);
 			String content = jsonObj.getString("content");
 			content = "<p>" + content;
@@ -127,6 +148,13 @@ public class ArticleController {
 		}
 		articleVo.setContent(newContArray.toString());
 		return articleVo;
+	}
+	
+
+	@RequestMapping(value = "/getArticleShareById.do", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ArticleVo getArticleShareById(Long id) {
+		return articleService.getArticleById(id);
 	}
 
 	@RequestMapping(value = "/edit/deleteArticleById.do", method = RequestMethod.POST)
@@ -168,5 +196,11 @@ public class ArticleController {
 		}
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(jsonObj.toString());
+	}
+
+	@RequestMapping("edit/articleShareEdit")
+	public String testRichEditor(Long id, HttpServletRequest reuqest) {
+		reuqest.setAttribute("article", articleService.getArticleById(id));
+		return "article/editArticleWithRichText";
 	}
 }

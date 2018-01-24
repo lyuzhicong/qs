@@ -24,7 +24,7 @@
 							class:"btn btn-success",
 							ope:function(){
 								$('#editForm').ajaxSubmit({
-									url: '${pageContext.request.contextPath}/edit/updateIndexData',
+									url: '${pageContext.request.contextPath}/edit/saveIndexData',
 									dataType: 'json',
 									type: 'post',
 									success : function(data){
@@ -47,7 +47,75 @@
 					}
 				});
 			})
-		})
+		});
+		
+		$('.addData').on('click', function() {
+			var html = doT.template($('#editTmpl').text());
+			$.Pop(html,{
+				Title:'编辑',
+				Btn:{
+					yes:{
+						vla:"确定",
+						class:"btn btn-success",
+						ope:function(){
+							$('#editForm').ajaxSubmit({
+								url: '${pageContext.request.contextPath}/edit/saveIndexData',
+								dataType: 'json',
+								type: 'post',
+								success : function(data){
+									if(data.Status == 'OK'){
+										location.reload();
+									} else{
+										alert("服务器异常，请稍后再试！");
+									}
+								}
+							})
+						}
+					},
+					cancel:{
+						vla: "取消",
+						class:"btn btn-notice",
+						ope: function(){
+							location.reload();
+						}
+					}
+				}
+			});
+		});
+		
+		$('.deleteData').on('click', function(){
+			var id = $(this).data('id');
+			$.Pop("是否确认删除?",{
+				Title:'删除确认',
+				Btn:{
+					yes:{
+						vla:"确定",
+						class:"btn btn-success",
+						ope:function(){
+							$.ajax({
+								url : '${pageContext.request.contextPath}/edit/index/' + id,
+								type: 'DELETE',
+								dataType: 'json',
+								success: function(data){
+									if (data.Status == 'OK') {
+										location.reload();
+									} else {
+										alert("服务器异常，请稍后再试！");
+									}
+								}
+							})
+						}
+					},
+					cancel:{
+						vla: "取消",
+						class:"btn btn-notice",
+						ope: function(){
+							location.reload();
+						}
+					}
+				}
+			});
+		});
 	});
 </script>
 <script id="editTmpl" type="text/x-dot-template">
@@ -73,19 +141,22 @@
 <body>
 	<div class="main-block">
 		<h2>首页数据修改</h2>
+		<p>
+			<b>帮助：</b>首页只有三组数据，为保证数据正常显示请勿于三条记录，多条记录去取前三条记录
+		</p>
+		<td><button type="button" class="btn btn-success btn-sm addData">添加</button></td>
 		<table class="table">
 			<thead>
-				<th>#</th>
 				<th>数据</th>
 				<th>内容</th>
 				<th></th>
 			</thead>
 			<c:forEach items="${indexVoList }" var="item">
 				<tr>
-					<td style="text-align:left">${item.id }</td>
-					<td style="text-align:left">${item.number }</td>
-					<td style="text-align:left">${item.content }</td>
-					<td><button type="button" data-id="${item.id }"class="btn btn-primary btn-sm editData">编辑</button></td>
+					<td style="text-align: left">${item.number }</td>
+					<td style="text-align: left">${item.content }</td>
+					<td><button type="button" data-id="${item.id }" class="btn btn-primary btn-sm editData">编辑</button></td>
+					<td><button type="button" data-id="${item.id }" class="btn btn-danger btn-sm deleteData">删除</button></td>
 				</tr>
 			</c:forEach>
 		</table>

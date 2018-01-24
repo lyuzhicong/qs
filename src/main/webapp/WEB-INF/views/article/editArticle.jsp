@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -70,9 +71,9 @@
 					success : function(data) {
 						if (data.Status == "OK") {
 							$('#hidImagePath').val(data.fileId);
-							$('#imageForm').append('<p>上传成功！</p>')
+							$('#imageForm').empty().append('<p>上传成功！</p>')
 						} else {
-							$('#imageForm').append('<p>' + data.errorMsg + '</p>');
+							$('#imageForm').empty().append('<p>' + data.errorMsg + '</p>');
 						}
 					}
 				});
