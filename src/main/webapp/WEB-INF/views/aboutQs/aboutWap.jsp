@@ -15,8 +15,8 @@
 <script type="text/javascript">
 	$(function() {
 		var content = $('#hidContent').val();
-		content = content.replace(/\r\n/g, "<br/>");
-		content = content.replace(/\n/g, "<br/>");
+		content = content.replace(/\r\n/g, "_$tag");
+		content = content.replace(/\n/g, "_$tag");
 		content = content.replace(/\s/g, "&nbsp;");
 		$('#content').html(content);
 
@@ -39,9 +39,10 @@
 	</header>
 	<nav id="floatmenu">
 		<ul>
+			<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/investment/getInvestmentWap">投资组合</a></li>
 			<li><a href="${pageContext.request.contextPath }/team/getTeamWap">投资团队</a></li>
-			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松分享</a></li>
+			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松动态</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getAboutWap">关于青松</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getContactWap">联系我们</a></li>
 		</ul>

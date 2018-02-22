@@ -16,6 +16,7 @@
 		`email`
 		FROM
 		`about_qs`
+		limit 1
 	</select>
 
 	<update id="updateAboutQsVo" parameterType="com.qingsong.qs.dto.AboutQsVo">
@@ -27,5 +28,10 @@
 		`email` = #{email}
 		WHERE `id` = #{id}
 	</update>
+	
+	<insert id="insertAboutQsVo" parameterType="com.qingsong.qs.dto.AboutQsVo">
+		INSERT INTO
+		`about_qs` (title,content,email) values( #{title}, #{content},#{email})
+	</insert>
 
 </mapper>

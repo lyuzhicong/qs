@@ -26,7 +26,7 @@
             }
         });
 
-        $.getJSON("${pageContext.request.contextPath }/article/getArticleList.do?currentPage=" + 1 + "&pageSize=" + 4, function(data) {
+        $.getJSON("${pageContext.request.contextPath }/article/getRelatedArticleList.do?currentPage=" + 1 + "&pageSize=" + 4 + "&id=" + id, function(data) {
             if (data) {
                 var articleVoList = data.articleVoList;
                 pageCount = data.pageCount;
@@ -34,12 +34,16 @@
 
                 for (var i = 0; i < articleVoList.length; i++) {
                     var articleVo = articleVoList[i];
-                    var title = "<li>" + articleVo.title + "</li>";
+                    var title = '<li style="cursor: pointer;" data-id="' + articleVo.id + '">' + articleVo.title + '</li>';
                     $(".article-list>ul").append(title);
                 }
             }
         });
-
+        
+        $(document).on("click", ".article-list li", function() {
+            var id = $(this).data("id");
+            location.href = "${pageContext.request.contextPath }/article/articleShareDetail?id=" + id;
+        });
     });
 
 </script>
@@ -56,7 +60,7 @@
 					<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 					<li><a href="${pageContext.request.contextPath }/investment">投资组合</a></li>
 					<li><a href="${pageContext.request.contextPath }/team">投资团队</a></li>
-					<li class="active"><a href="${pageContext.request.contextPath }/share">青松分享</a></li>
+					<li class="active"><a href="${pageContext.request.contextPath }/share">青松动态</a></li>
 					<li><a href="${pageContext.request.contextPath }/about">关于青松</a></li>
 				</ul>
 			</nav>

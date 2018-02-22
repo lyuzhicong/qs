@@ -6,11 +6,15 @@ import com.qingsong.qs.dto.ArticleVo;
 
 public interface ArticleService {
 
-	public void saveArticle(ArticleVo articleVo);
+	void saveArticle(ArticleVo articleVo);
 
-	public ArticleVo getArticleById(Long id);
+	ArticleVo getArticleById(Long id);
 	
-	public List<ArticleVo> getArticleList(ArticleVo articleVo);
+	List<ArticleVo> getArticleList(ArticleVo articleVo);
 
-	public int deleteArticleById(Long id);
+	int deleteArticleById(Long id);
+	
+	List<ArticleVo> getShowArticleList(ArticleVo articleVo);
+
+	List<ArticleVo> getRelatedArticleList(ArticleVo articleVo);
 }

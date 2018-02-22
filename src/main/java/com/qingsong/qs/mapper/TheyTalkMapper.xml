@@ -17,7 +17,7 @@
 		FROM
 		`they_talk`
 	</select>
-	
+
 	<select id="getTheyTalkById" parameterType="java.lang.Integer" resultMap="theytalkMap">
 		SELECT
 		`id`,
@@ -53,12 +53,23 @@
 		#{imagePath}
 		)
 	</insert>
-	
+
 	<delete id="deleteTheyTalkById" parameterType="java.lang.Integer">
 		DELETE FROM
 		they_talk
-		WHERE 
+		WHERE
 		id = #{value}
 	</delete>
+
+	<update id="updateIsShow" parameterType="java.lang.Integer">
+		UPDATE
+		qs_config
+		SET config_val = #{value}
+		WHERE config_name = "show_they_talk"
+	</update>
+	
+	<select id="getIsShow" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT config_val FROM qs_config WHERE config_name = "show_they_talk"
+	</select>
 
 </mapper>

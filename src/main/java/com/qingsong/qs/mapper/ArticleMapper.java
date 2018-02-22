@@ -5,16 +5,22 @@ import java.util.List;
 import com.qingsong.qs.dto.ArticleVo;
 
 public interface ArticleMapper {
-	public int updateArticle(ArticleVo articleVo);
+	int updateArticle(ArticleVo articleVo);
 	
-	public int insertArticle(ArticleVo articleVo);
+	int insertArticle(ArticleVo articleVo);
 	
-	public ArticleVo getArticleById(Long id);
+	ArticleVo getArticleById(Long id);
 
-	public int getArticleCount(ArticleVo articleVo);
+	int getArticleCount(ArticleVo articleVo);
 	
-	public List<ArticleVo> getArticleList(ArticleVo articleVo);
+	List<ArticleVo> getArticleList(ArticleVo articleVo);
 
-	public int deleteArticleById(Long id);
+	int deleteArticleById(Long id);
+	
+	List<ArticleVo> getShowArticleList(ArticleVo articleVo);
+	
+	int getShowArticleCount(ArticleVo articleVo);
+
+	List<ArticleVo> getRelatedArticleList(ArticleVo articleVo);
 	
 }

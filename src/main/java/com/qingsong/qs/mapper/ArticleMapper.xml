@@ -7,14 +7,16 @@
 		title,
 		content,
 		date,
-		path
+		path,
+		`status`
 		)
 		VALUES
 		(
 		#{title},
 		#{content},
 		NOW(),
-		#{path}
+		#{path},
+		#{status}
 		)
 	</insert>
 	
@@ -24,7 +26,8 @@
 		title = #{title},
 		content = #{content},
 		date = NOW(),
-		path = #{path}
+		path = #{path},
+		`status` = #{status}
 		WHERE id = #{id}
 	</update>
 	
@@ -34,7 +37,8 @@
 		title,
 		`date`,
 		content,
-		path
+		path,
+		`status`
 		FROM article
 		WHERE id = #{value}
 	</select>
@@ -43,17 +47,53 @@
 		SELECT COUNT(1) FROM article
 	</select>
 	
+	<select id="getShowArticleCount" resultType="int">
+		SELECT COUNT(1) FROM article WHERE `status` = 1
+	</select>
+	
 	<select id="getArticleList" parameterType="com.qingsong.qs.dto.ArticleVo" resultType="com.qingsong.qs.dto.ArticleVo">
 		SELECT
 		id,
 		title,
 		`date`,
 		content,
-		path
+		path,
+		`status`
 		FROM article
 		ORDER BY `date` desc
 		LIMIT #{startNum}, #{pageSize}
 	</select>
+	
+	<select id="getShowArticleList" parameterType="com.qingsong.qs.dto.ArticleVo" resultType="com.qingsong.qs.dto.ArticleVo">
+		SELECT
+		id,
+		title,
+		`date`,
+		content,
+		path,
+		`status`
+		FROM article
+		WHERE `status` = 1
+		ORDER BY `date` desc
+		LIMIT #{startNum}, #{pageSize}
+	</select>
+	
+	<select id="getRelatedArticleList" parameterType="com.qingsong.qs.dto.ArticleVo" resultType="com.qingsong.qs.dto.ArticleVo">
+		SELECT
+		id,
+		title,
+		`date`,
+		content,
+		path,
+		`status`
+		FROM article
+		WHERE `status` = 1
+		AND id != #{id}
+		ORDER BY `date` desc
+		LIMIT #{startNum}, #{pageSize}
+	</select>
+	
+	
 	
 	<delete id="deleteArticleById" parameterType="java.lang.Long">
 		DELETE

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qingsong.enums.contentTypeEnums;
 import com.qingsong.qs.dto.ArticleVo;
 import com.qingsong.qs.dto.TheyTalkVo;
 import com.qingsong.qs.service.ArticleService;
@@ -33,11 +34,9 @@ public class ShareController {
 
 	@RequestMapping("")
 	public String getTheyTalk(HttpServletRequest request) {
-		ArticleVo articleVo = new ArticleVo();
-		List<ArticleVo> articleVoList = articleService.getArticleList(articleVo);
 		List<TheyTalkVo> theyTalkVoList = theyTalkService.getTheyTalkVoList();
 		request.setAttribute("theyTalkVoList", theyTalkVoList);
-		request.setAttribute("articleVoList", articleVoList);
+		request.setAttribute("isShow", theyTalkService.getIsShow());
 		return "share/share";
 	}
 	
@@ -52,6 +51,8 @@ public class ShareController {
 	public String editTheyTalk(HttpServletRequest request) {
 		List<TheyTalkVo> theyTalkVoList = theyTalkService.getTheyTalkVoList();
 		request.setAttribute("theyTalkVoList", theyTalkVoList);
+		Integer isShow = theyTalkService.getIsShow();
+		request.setAttribute("isShow", isShow);
 		return "share/theyTalkManager";
 	}
 	
@@ -89,6 +90,18 @@ public class ShareController {
 		response.getWriter().print(jsonObj.toString());
 	}
 	
-	
+	@RequestMapping("edit/updateIsShow")
+	public void updateIsShow(String configVal, HttpServletResponse response) throws IOException {
+		JSONObject obj = new JSONObject();
+		try {
+			theyTalkService.updateIsShow(configVal);
+			obj.put("Status", "OK");
+		} catch(Exception e) {
+			logger.error(e.getMessage(), e);
+			obj.put("Status", "ERROR");
+		}
+		response.setContentType(contentTypeEnums.json.getContentType());
+		response.getWriter().print(obj);
+	}
 	
 }

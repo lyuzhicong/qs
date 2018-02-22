@@ -12,6 +12,15 @@
 <link href="${pageContext.request.contextPath }/resources/css/wap/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/main-wap.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var content = $('#hidContent').val();
+		content = content.replace(/\r\n/g, "<br/>");
+ 		content = content.replace(/\n/g, "<br/>");
+ 		content = content.replace(/\s/g, "&nbsp;");
+ 		$('#contentDiv').empty().html(content);
+	})
+</script>
 </head>
 <body>
 	<header>
@@ -24,19 +33,21 @@
 	</header>
 	<nav id="floatmenu">
 		<ul>
+			<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/investment/getInvestmentWap">投资组合</a></li>
 			<li><a href="${pageContext.request.contextPath }/team/getTeamWap">投资团队</a></li>
-			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松分享</a></li>
+			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松动态</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getAboutWap">关于青松</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getContactWap">联系我们</a></li>
 		</ul>
 	</nav>
 	<ul class="number">
-		<li class="active">
-			<img src="${team.imagePath }">
+		<li class="active"><img src="${team.imagePath }">
 			<div class="number-content">
 				<h3>${team.name }</h3>
-				<div>${team.content }</div>
+				<input type="hidden" id="hidContent" value="${team.content }"/ >
+				<div id="contentDiv">
+				</div>
 				<div>
 					邮箱：${team.email }<br>关注领域：${team.focusAreas }
 				</div>
@@ -48,8 +59,7 @@
 						<li><img src="${project }" /></li>
 					</c:forEach>
 				</ul>
-			</div>
-		</li>
+			</div></li>
 	</ul>
 	<footer style="background-color: white;">
 		<button id="back" style="background-color: white;">返回</button>

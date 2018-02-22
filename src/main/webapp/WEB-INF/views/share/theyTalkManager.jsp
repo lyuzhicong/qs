@@ -9,7 +9,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery/jquery-plugin-pop.js"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/web/public.css">
-<title>他们说管理</title>
+<title>创业者说管理</title>
 <script type="text/javascript">
 	$(function() {
 		$('.editTheyTalk').on('click', function() {
@@ -131,7 +131,7 @@
 					success: function(data){
 						if(data.Status == "OK"){
 							$('#hidImagePath').val(data.fileId);
-							$('#imageForm').empty().append('<p>上传成功！</p>')
+							$('#imageForm').append('<p>上传成功！</p>')
 						} else{
 							$('#imageForm').append('<p>' + data.errorMsg + '</p>');
 						}
@@ -141,6 +141,21 @@
 				alert('请先选择要上传的图片！');
 			}
 		});
+		
+		$('#changeStatus').on('click', function(){
+			var status = 1;
+			console.info($(this).text().trim());
+			if($(this).text().trim() == "显示"){
+				status = 0;
+			}
+			$.post('${pageContext.request.contextPath}/share/edit/updateIsShow?configVal=' + status, function(data){
+				if(data.Status == "OK"){
+					location.reload();
+				} else{
+					alert("切换状态失败，请联系管理员");
+				}
+			})
+		})
 	});
 	
 </script>
@@ -185,8 +200,9 @@ td {
 </style>
 <body>
 	<div class="main-block">
-		<h2>他们说管理</h2>
+		<h2>创业说管理</h2>
 		<button type="button" class="btn btn-success btn-sm" id="addTheyTalk">添加</button>
+
 		<table class="table">
 			<thead>
 				<th nowrap>标题</th>
@@ -198,13 +214,21 @@ td {
 			<c:forEach items="${theyTalkVoList }" var="item">
 				<tr>
 					<td>${item.title }</td>
-					<td style="width:600px;">${item.content }</td>
+					<td style="width: 600px;">${item.content }</td>
 					<td><img src="${item.imagePath}" width="100px" height="100px" /></td>
 					<td><button type="button" data-id="${item.id }" class="btn btn-primary btn-sm editTheyTalk">编辑</button></td>
 					<td><button type="button" data-name="${item.title }" data-id="${item.id }" class="btn btn-danger btn-sm deleteTheyTalk">删除</button></td>
 				</tr>
 			</c:forEach>
 		</table>
+		<div>
+			<span>是否在"文章分享"中显示：</span>
+			<button type="button" class="btn <c:if test="${isShow==0 }">btn-danger</c:if><c:if test="${isShow==1 }">btn-success</c:if> btn-sm" id="changeStatus">
+				<c:if test="${isShow==0 }">隐藏</c:if>
+				<c:if test="${isShow==1 }">显示</c:if>
+			</button>
+			<span>(提示:点击按钮切换状态)</span>
+		</div>
 		<div id="foot">
 			<nav>
 				<a href="${pageContext.request.contextPath }/qsManager/edit/console">管理员首页</a> <a href="${pageContext.request.contextPath }/">进入青松</a>

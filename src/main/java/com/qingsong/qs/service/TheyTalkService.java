@@ -10,6 +10,10 @@ public interface TheyTalkService {
 	public TheyTalkVo getTheyTalkById(Integer id);
 
 	public int deleteTheyTalkById(Integer id);
-
+	
 	public int saveTheyTalk(TheyTalkVo theyTalkVo);
+
+	public void updateIsShow(String configVal);
+	
+	public Integer getIsShow();
 }

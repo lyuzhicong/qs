@@ -23,7 +23,7 @@
 							vla:"确定",
 							class:"btn btn-success",
 							ope:function(){
-								if($('#hidImagePath').val() && $('#hidLogoImagePath').val() && $('#hidLittleLogoImagePath').val()){
+								if($('#hidImagePath').val() && $('#hidLogoImagePath').val()){
 									$('#editForm').ajaxSubmit({
 										url: '${pageContext.request.contextPath}/edit/saveCompany',
 										dataType: 'json',
@@ -136,7 +136,7 @@
 					success: function(data){
 						if(data.Status == "OK"){
 							$('#hidImagePath').val(data.fileId);
-							$('#uploadStatus').empty().append('<p>上传成功！</p>')
+							$('#uploadStatus').append('<p>上传成功！</p>')
 						} else{
 							$('#imageForm').append('<p>' + data.errorMsg + '</p>');
 						}
@@ -156,7 +156,7 @@
 					success: function(data){
 						if(data.Status == "OK"){
 							$('#hidLogoImagePath').val(data.fileId);
-							$('#uploadLogoStatus').empty().append('<p>上传成功！</p>')
+							$('#uploadLogoStatus').append('<p>上传成功！</p>')
 						} else{
 							$('#imageLogoForm').append('<p>' + data.errorMsg + '</p>');
 						}
@@ -177,7 +177,7 @@
 					success: function(data){
 						if(data.Status == "OK"){
 							$('#hidLittleLogoImagePath').val(data.fileId);
-							$('#uploadLittleLogoStatus').empty().append('<p>上传成功！</p>')
+							$('#uploadLittleLogoStatus').append('<p>上传成功！</p>')
 						} else{
 							$('#imageLittleLogoForm').append('<p>' + data.errorMsg + '</p>');
 						}
@@ -211,7 +211,7 @@
 		<div class="form-group">
 			<label class="col-sm-3 control-label">位置：</label>
 			<div class="col-sm-6">
-				<input type="text" name="location" value=value.replace(/[^\d]/g,'') class="form-control" value="{{=it.location||''}}" placeholder="请输入数字"/>
+				<input type="text" name="location" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control" value="{{=it.location||''}}" placeholder="请输入数字"/>
 			</div>
 		</div>
 	</form>
@@ -229,7 +229,7 @@
 	</form>
 	<form id="imageLogoForm" class="form-horizontal" enctype="multipart/form-data">
 		<div class="form-group">
-			<label class="col-sm-3 control-label">公司logo：</label>
+			<label class="col-sm-3 control-label">详情大图：</label>
 			<div class="col-sm-4">
 				<input id="logoInput" type="file" name="file">	
 			</div>
@@ -239,7 +239,9 @@
 			<div class="col-sm-2" id="uploadLogoStatus"></div>
 		</div>
 	</form>
-	<form id="imageLittleLogoForm" class="form-horizontal" enctype="multipart/form-data">
+<div>
+</script>
+<!-- <form id="imageLittleLogoForm" class="form-horizontal" enctype="multipart/form-data">
 		<div class="form-group">
 			<label class="col-sm-3 control-label">公司小logo：</label>
 			<div class="col-sm-4">
@@ -255,9 +257,7 @@
 				[大小：5M；文件格式：jpg,png]
 			</div>
 		</div>
-	</form>
-<div>
-</script>
+	</form> -->
 </head>
 <style type="text/css">
 </style>
@@ -271,8 +271,7 @@
 				<th nowrap>详细内容</th>
 				<th nowrap>位置</th>
 				<th nowrap>人物图片</th>
-				<th nowrap>公司logo</th>
-				<th nowrap>公司小logo</th>
+				<th nowrap>详情大图</th>
 				<th nowrap></th>
 				<th nowrap></th>
 			</thead>
@@ -283,7 +282,6 @@
 					<td>${item.location }</td>
 					<td><img src="${item.imagePath}" width="100px" height="100px" /></td>
 					<td><img src="${item.logoImagePath }" width="100px" height="100px" /></td>
-					<td><img src="${item.littleLogoImagePath }" width="100px" height="50px" /></td>
 					<td><button type="button" data-id="${item.id }" class="btn btn-primary btn-sm editCompany">编辑</button></td>
 					<td><button type="button" data-id="${item.id }" class="btn btn-danger btn-sm deleteCompany">删除</button></td>
 				</tr>

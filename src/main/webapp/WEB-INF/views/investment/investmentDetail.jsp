@@ -36,7 +36,7 @@
 					<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 					<li class="active"><a href="${pageContext.request.contextPath }/investment">投资组合</a></li>
 					<li><a href="${pageContext.request.contextPath }/team">投资团队</a></li>
-					<li><a href="${pageContext.request.contextPath }/share">青松分享</a></li>
+					<li><a href="${pageContext.request.contextPath }/share">青松动态</a></li>
 					<li><a href="${pageContext.request.contextPath }/about">关于青松</a></li>
 				</ul>
 			</nav>

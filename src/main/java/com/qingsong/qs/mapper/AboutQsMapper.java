@@ -7,5 +7,7 @@ public interface AboutQsMapper {
 	public AboutQsVo getAboutQsVo();
 	
 	public int updateAboutQsVo(AboutQsVo aboutQsVo);
+
+	public int insertAboutQsVo(AboutQsVo aboutQsVo);
 	
 }

@@ -58,7 +58,20 @@ public class ArticleController {
 	@ResponseBody
 	public void getArticleList(ArticleVo articleVo, HttpServletResponse response) throws IOException {
 		JSONObject jsonObj = new JSONObject();
-		List<ArticleVo> articleVoList = articleService.getArticleList(articleVo);
+		List<ArticleVo> articleVoList = articleService.getShowArticleList(articleVo);
+		jsonObj.put("articleVoList", articleVoList);
+		jsonObj.put("pageSize", articleVo.getPageSize());
+		jsonObj.put("currentPage", articleVo.getCurrentPage());
+		jsonObj.put("pageCount", articleVo.getPageCount());
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(jsonObj);
+	}
+	
+	@RequestMapping(value = "getRelatedArticleList.do", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public void getRelatedArticleList(ArticleVo articleVo, HttpServletResponse response) throws IOException {
+		JSONObject jsonObj = new JSONObject();
+		List<ArticleVo> articleVoList = articleService.getRelatedArticleList(articleVo);
 		jsonObj.put("articleVoList", articleVoList);
 		jsonObj.put("pageSize", articleVo.getPageSize());
 		jsonObj.put("currentPage", articleVo.getCurrentPage());

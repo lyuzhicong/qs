@@ -142,7 +142,7 @@
 	<div class="main-block">
 		<h2>首页数据修改</h2>
 		<p>
-			<b>帮助：</b>首页只有三组数据，为保证数据正常显示请勿于三条记录，多条记录去取前三条记录
+			<b>帮助：</b>首页只有三组数据，为保证数据正常显示请勿少于三条数据，多组数据只取前三组
 		</p>
 		<td><button type="button" class="btn btn-success btn-sm addData">添加</button></td>
 		<table class="table">

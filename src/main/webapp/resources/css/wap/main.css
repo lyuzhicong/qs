@@ -169,34 +169,33 @@ footer button, .footer button {
 }
 
 .main .home img {
-	width: 80%;
-	height: 50%;
-	margin: 20px 0;
-	position: relative
+	width: 40%;
+	position: relative;
 }
 
 .main .home ul .wap-index-div {
 	text-align: center;
 	position: relative;
+	width: 100%;
 }
 
 .wap-index-div .first-p {
-	top: 38px;
+	top: 0.4em;
 	position: absolute;
 	color: #0c6234;
 	font-weight: 400;
-	font-size: 78px;
-	width: 281px;
+	font-size: 3em;
+	width: 100%;
 	text-align: center;
 }
 
 .wap-index-div .second-p {
-	top: 128px;
+	top: 5.6em;
 	position: absolute;
 	color: #6C6C6C;
 	font-weight: bold;
-	font-size: 22px;
-	width: 281px;
+	font-size: 0.9em;
+	width: 100%;
 	text-align: center;
 }
 
@@ -280,7 +279,7 @@ footer button, .footer button {
 	position: absolute;
 	top: 60px;
 	left: 0px;
-	height: 400px;
+	height: 484px;
 	width: 100%;
 	background-color: white;
 	z-index: 9;

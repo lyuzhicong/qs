@@ -10,6 +10,8 @@ public class ArticleVo extends BasePageVo {
 	private Date date;
 	private String path;
 	private String littleTitle;
+	
+	private Integer status;
 
 	public Long getId() {
 		return id;
@@ -65,6 +67,14 @@ public class ArticleVo extends BasePageVo {
 			return sdf.format(date);
 		}
 		return null;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 }

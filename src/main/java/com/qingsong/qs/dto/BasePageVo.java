@@ -1,7 +1,7 @@
 package com.qingsong.qs.dto;
 
 public class BasePageVo {
-	private Integer pageSize = 10000;
+	private Integer pageSize = 5;
 	private Integer currentPage = 1;
 	private Integer startNum;
 	private Integer pageCount = 0;

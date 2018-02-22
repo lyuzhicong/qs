@@ -38,12 +38,24 @@ public class ArticleServiceImpl implements ArticleService {
 		int rownum = articleMapper.getArticleCount(articleVo);
 		int pageCount = Toolkit.getPageCount(rownum, articleVo.getPageSize());
 		articleVo.setPageCount(pageCount);
-		List<ArticleVo> articleVoList = articleMapper.getArticleList(articleVo);
-		return articleVoList;
+		return articleMapper.getArticleList(articleVo);
 	}
 
 	@Override
 	public int deleteArticleById(Long id) {
 		return articleMapper.deleteArticleById(id);
+	}
+
+	@Override
+	public List<ArticleVo> getShowArticleList(ArticleVo articleVo) {
+		int rownum = articleMapper.getShowArticleCount(articleVo);
+		int pageCount = Toolkit.getPageCount(rownum, articleVo.getPageSize());
+		articleVo.setPageCount(pageCount);
+		return articleMapper.getShowArticleList(articleVo);
+	}
+
+	@Override
+	public List<ArticleVo> getRelatedArticleList(ArticleVo articleVo) {
+		return articleMapper.getRelatedArticleList(articleVo);
 	}
 }

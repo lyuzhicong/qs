@@ -71,9 +71,9 @@
 					success : function(data) {
 						if (data.Status == "OK") {
 							$('#hidImagePath').val(data.fileId);
-							$('#imageForm').empty().append('<p>上传成功！</p>')
+							$('#imageForm').append('<p>上传成功！</p>')
 						} else {
-							$('#imageForm').empty().append('<p>' + data.errorMsg + '</p>');
+							$('#imageForm').append('<p>' + data.errorMsg + '</p>');
 						}
 					}
 				});

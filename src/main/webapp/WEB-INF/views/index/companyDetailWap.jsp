@@ -11,6 +11,15 @@
 <link href="${pageContext.request.contextPath }/resources/css/wap/reset.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath }/resources/css/wap/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var content = $('#hidContent').val();
+		content = content.replace(/\r\n/g, "<br/>");
+		content = content.replace(/\n/g, "<br/>");
+		content = content.replace(/\s/g, "&nbsp;");
+		$('#content').empty().html(content);
+	})
+</script>
 </head>
 <body>
 	<header>
@@ -23,18 +32,19 @@
 	</header>
 	<nav id="floatmenu">
 		<ul>
+			<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/company/getInvestmentWap">投资组合</a></li>
 			<li><a href="${pageContext.request.contextPath }/team/getTeamWap">投资团队</a></li>
-			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松分享</a></li>
+			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松动态</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getAboutWap">关于青松</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getContactWap">联系我们</a></li>
 		</ul>
 	</nav>
 	<ul class="group-detail">
-		<li class="active">
-			<img src="${company.logoImagePath }"/>
-			<p>${company.content }</p>
-		</li>
+		<li class="active"><img src="${company.logoImagePath }" />
+			<input type="hidden" value="${company.content}" id="hidContent">
+			<p id="content"></p>
+			</li>
 	</ul>
 	</ul>
 	<footer>
@@ -46,7 +56,7 @@
 <script type="text/javascript">
 	$(function() {
 		$("#back").click(function() {
-			window.location.href ="${pageContext.request.contextPath }/getIndexWap";
+			window.location.href = "${pageContext.request.contextPath }/";
 		})
 	})
 </script>

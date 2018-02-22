@@ -42,6 +42,7 @@
 			json.title = $('#articleTitle').val();
 			json.content = editor.txt.html();
 			json.path = $('#hidImagePath').val();
+			json.status = $('#statusVal').val();
 			if (json.title && json.content && json.path) {
 				$.post('${pageContext.request.contextPath}/article/edit/saveShareArticle.do', json, function(data) {
 					if (data.Status == 'OK') {
@@ -69,9 +70,9 @@
 					success : function(data) {
 						if (data.Status == "OK") {
 							$('#hidImagePath').val(data.fileId);
-							$('#uploadStatus').empty().append('<p>上传成功！</p>')
+							$('#uploadStatus').append('<p>上传成功！</p>')
 						} else {
-							$('#uploadStatus').empty().append('<p>' + data.errorMsg + '</p>');
+							$('#uploadStatus').append('<p>' + data.errorMsg + '</p>');
 						}
 					}
 				});
@@ -89,11 +90,20 @@
 		<br /> <br />
 		<form id="articleForm" class="form-horizontal">
 			<c:if test="${empty article}">
-			<input id="hidId" type="hidden">
+				<input id="hidId" type="hidden" />
 				<div class="form-group">
 					<label class="col-sm-2 control-label">标题：</label>
 					<div class="col-sm-4">
-						<input type="text" id="articleTitle" name="title" class="form-control"/>
+						<input type="text" id="articleTitle" name="title" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否显示：</label>
+					<div class="col-sm-4">
+						<select name="status" class="form-control" id="statusVal">
+							<option value="1">显示</option>
+							<option value="0">隐藏</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -102,11 +112,20 @@
 				<input type="hidden" id="hidImagePath" name="path" />
 			</c:if>
 			<c:if test="${not empty article}">
-				<input id="hidId" value="${article.id }" type="hidden">
+				<input id="hidId" value="${article.id }" type="hidden" />
 				<div class="form-group">
 					<label class="col-sm-2 control-label">标题：</label>
 					<div class="col-sm-4">
 						<input type="text" id="articleTitle" name="title" class="form-control" value="${article.title}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否显示：</label>
+					<div class="col-sm-4">
+						<select name="status" class="form-control" id="statusVal">
+							<option value="1">显示</option>
+							<option value="0" <c:if test="${article.status == 0 }"> selected</c:if>>隐藏</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">

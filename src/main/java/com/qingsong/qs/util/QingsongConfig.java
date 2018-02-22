@@ -10,6 +10,8 @@ public class QingsongConfig {
 	private static Logger logger = LoggerFactory.getLogger(QingsongConfig.class);
 	public static String IMAGE_PATH;
 	private static Properties properties;
+	
+	
 	static {
 		try {
 			properties = new Properties();
@@ -19,8 +21,7 @@ public class QingsongConfig {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-
-		IMAGE_PATH = getProperty("image.path", "/usr/local/qingsong/image");
+		IMAGE_PATH = getProperty("image.path", "/a8root/web/qingsong/image");
 	}
 
 	public static String getProperty(String key, String defaultValue) {

@@ -102,16 +102,16 @@ public class InvestmentController {
 	}
 
 	@RequestMapping("/uploadImage")
-	public void fileUpload(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+	public void fileUpload(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		JSONObject json = new JSONObject();
 		response.setCharacterEncoding("utf-8");
-//		String path = "E:" + File.separator + "temp";
 		String imagePath = QingsongConfig.IMAGE_PATH;
-		System.out.println(imagePath);
 		String fileName = file.getOriginalFilename(); // prefix suffix
-		String suffix = fileName.substring(fileName.lastIndexOf("."));
+		String suffix = fileName.substring(fileName.lastIndexOf('.'));
 		String newFileName = UUID.randomUUID().toString() + suffix;
 		File targetFile = new File(imagePath, newFileName);
+		logger.info("File path:" + targetFile.getAbsolutePath());
+		logger.info("File path:" + targetFile.getAbsolutePath());
 		if (!targetFile.exists()) {
 			targetFile.mkdirs();
 		}
@@ -119,11 +119,11 @@ public class InvestmentController {
 			file.transferTo(targetFile);
 			json.put("Status", "OK");
 			json.put("fileId","/image/" + newFileName);
-			response.getWriter().print(json);
 		} catch (Exception e) {
 			json.put("Status", "ERROR");
 			json.put("errorMsg", "上传失败：" + e.getMessage());
 			logger.error(e.getMessage(), e);
 		}
+		response.getWriter().print(json);
 	}
 }

@@ -52,6 +52,7 @@
             if (data) {
                 var articleVoList = data.articleVoList;
                 pageCount = data.pageCount;
+                console.info(pageCount);
                 $(".share-detail>ul").empty();
 
                 for (var i = 0; i < articleVoList.length; i++) {
@@ -103,13 +104,14 @@
                 }
             });
         }
+        
+        $(document).on("click", ".share-detail li", function() {
+            var id = $(this).closest("li").attr("id");
+            location.href = "${pageContext.request.contextPath }/article/articleShareDetail?id=" + id;
+        });
     });
 
-    $(document).on("click", ".share-detail li", function() {
-        var id = $(this).closest("li").attr("id");
-//         location.href = "${pageContext.request.contextPath }/article/articleDetail?id=" + id;
-        location.href = "${pageContext.request.contextPath }/article/articleShareDetail?id=" + id;
-    });
+    
 </script>
 <script id="theyTalkTmpl" type="text/x-dot-template">
 </script>
@@ -128,7 +130,7 @@
 					<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 					<li><a href="${pageContext.request.contextPath }/investment">投资组合</a></li>
 					<li><a href="${pageContext.request.contextPath }/team">投资团队</a></li>
-					<li class="active"><a href="${pageContext.request.contextPath }/share">青松分享</a></li>
+					<li class="active"><a href="${pageContext.request.contextPath }/share">青松动态</a></li>
 					<li><a href="${pageContext.request.contextPath }/about">关于青松</a></li>
 				</ul>
 			</nav>
@@ -137,27 +139,29 @@
 	<main class="share-wrap">
 	<div class="share">
 		<div class="share-detail">
-			<span> 青松分享 </span>
+			<span>青松动态</span>
 			<hr>
 			<ul>
 			</ul>
 			<div id="Pagination" class="pagination"></div>
 		</div>
-		<div class="share-list">
-			<span> TA们说 </span>
-			<hr>
-			<ul>
-				<c:forEach items="${theyTalkVoList }" var="item">
-					<li>
-						<h4>${item.title }</h4>
-						<p>${item.content }</p> <img src="${item.imagePath }">
-					</li>
-				</c:forEach>
-			</ul>
-			<div>
-				<i id="back" class="fa fa-angle-left" aria-hidden="true"></i> <i id="next" class="fa fa-angle-right" aria-hidden="true"></i>
+		<c:if test="${isShow == 1 }">
+			<div class="share-list">
+				<span>创业者说</span>
+				<hr>
+				<ul>
+					<c:forEach items="${theyTalkVoList }" var="item">
+						<li>
+							<h4>${item.title }</h4>
+							<p>${item.content }</p> <img src="${item.imagePath }">
+						</li>
+					</c:forEach>
+				</ul>
+				<div>
+					<i id="back" class="fa fa-angle-left" aria-hidden="true"></i> <i id="next" class="fa fa-angle-right" aria-hidden="true"></i>
+				</div>
 			</div>
-		</div>
+		</c:if>
 	</div>
 	</main>
 	<footer>

@@ -19,7 +19,12 @@ public class AboutQsServiceImpl implements AboutQsService{
 
 	@Override
 	public int updateAboutQsVo(AboutQsVo aboutQsVo) {
-		return aboutQsMapper.updateAboutQsVo(aboutQsVo);
+		if(aboutQsVo.getId() == null) {
+			
+			return aboutQsMapper.insertAboutQsVo(aboutQsVo);
+		} else {
+			return aboutQsMapper.updateAboutQsVo(aboutQsVo);
+		}
 	}
 
 }

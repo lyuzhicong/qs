@@ -38,4 +38,13 @@ public class TheyTalkServiceImpl implements TheyTalkService{
 		}
 	}
 
+	@Override
+	public void updateIsShow(String configVal) {
+		theyTalkMapper.updateIsShow(configVal);
+	}
+
+	@Override
+	public Integer getIsShow() {
+		return theyTalkMapper.getIsShow();
+	}
 }

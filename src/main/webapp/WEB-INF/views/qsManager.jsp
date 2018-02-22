@@ -28,8 +28,8 @@
 				<a target="_blank" href="${pageContext.request.contextPath }/edit/indexManager">首页</a>
 				<a target="_blank" href="${pageContext.request.contextPath }/investment/edit/investmentManager">投资组合</a>
 				<a target="_blank" href="${pageContext.request.contextPath }/team/edit/teamManager">投资团队</a>
-				<a target="_blank" href="${pageContext.request.contextPath }/article/edit/articleManager.do">文章分享</a>
-				<a target="_blank" href="${pageContext.request.contextPath }/share/edit/theyTalkManager">他们说</a>
+				<a target="_blank" href="${pageContext.request.contextPath }/article/edit/articleManager.do">青松动态</a>
+				<a target="_blank" href="${pageContext.request.contextPath }/share/edit/theyTalkManager">创业者说</a>
 				<a target="_blank" href="${pageContext.request.contextPath }/about/edit/editAboutQs">关于青松</a>
 				<a target="_blank" href="${pageContext.request.contextPath }/edit/indexWapManager">手机首页数据管理</a>
 				<a target="_blank" href="${pageContext.request.contextPath }/material/edit/materialManager">素材管理</a>

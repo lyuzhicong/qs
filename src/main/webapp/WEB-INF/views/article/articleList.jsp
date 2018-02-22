@@ -59,12 +59,14 @@
 		<thead>
 			<th>标题</th>
 			<th>时间</th>
+			<th>状态</th>
 			<th></th>
 		</thead>
 		<c:forEach items="${articleVoList }" var="articleVo">
 			<tr>
 				<td>${articleVo.title }</td>
 				<td>${articleVo.dateText }</td>
+				<td><c:if test="${articleVo.status == 0 }">隐藏</c:if><c:if test="${articleVo.status == 1 }">显示</c:if></td>
 				<td>
 					<button type="button" class="btn btn-warning btn-sm editArticle" data-id="${articleVo.id }">编辑</button>
 					<button type="button" class="btn btn-danger btn-sm deleteArticle" data-id="${articleVo.id }">删除</button>

@@ -34,7 +34,7 @@
 
 		timer = setInterval(function() {
 			$("#btn_next").click();
-		}, 3000000)
+		}, 3000)
 
 	})
 </script>
@@ -52,9 +52,10 @@
 	</header>
 	<nav id="floatmenu">
 		<ul>
+			<li><a href="${pageContext.request.contextPath }/">首页</a></li>
 			<li><a href="${pageContext.request.contextPath }/investment/getInvestmentWap">投资组合</a></li>
 			<li><a href="${pageContext.request.contextPath }/team/getTeamWap">投资团队</a></li>
-			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松分享</a></li>
+			<li><a href="${pageContext.request.contextPath }/share/getShareWap">青松动态</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getAboutWap">关于青松</a></li>
 			<li><a href="${pageContext.request.contextPath }/about/getContactWap">联系我们</a></li>
 		</ul>
@@ -98,7 +99,8 @@
 
 			<c:forEach items="${companyList }" var="company">
 				<li class="ceo">
-					<%-- 					<div class="image" style='background-image: url("${company.imagePath}")'></div> <span class="font" style='background-image: url("${company.littleLogoImagePath}")'> </span> --%> <img src="${company.imagePath}"> <img src="${company.littleLogoImagePath}">
+					<%-- <div class="image" style='background-image: url("${company.imagePath}")'></div> <span class="font" style='background-image: url("${company.littleLogoImagePath}")'> </span> --%> 
+					<img src="${company.imagePath}"> <%-- <img src="${company.littleLogoImagePath}"> --%>
 					<p>${company.introduction}</p>
 					<div class="company" data-id="${company.id }">了解更多</div>
 				</li>

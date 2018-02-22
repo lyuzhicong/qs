@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" deferredSyntaxAllowedAsLiteral="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <link href="${pageContext.request.contextPath}/resources/css/web/public.css" rel="stylesheet" type="text/css" />
@@ -44,7 +45,7 @@
 					<li class="active"><a href="${pageContext.request.contextPath }">首页</a></li>
 					<li><a href="${pageContext.request.contextPath }/investment">投资组合</a></li>
 					<li><a href="${pageContext.request.contextPath }/team">投资团队</a></li>
-					<li><a href="${pageContext.request.contextPath }/share">青松分享</a></li>
+					<li><a href="${pageContext.request.contextPath }/share">青松动态</a></li>
 					<li><a href="${pageContext.request.contextPath }/about">关于青松</a></li>
 				</ul>
 			</nav>
@@ -55,24 +56,26 @@
 	<div class="main-wrap">
 		<div class="main">
 			<ul>
-				<li class="main-li">
-					<div class="main-li-fst">
-						<p>${indexVoList.get(0).number }</p>
-						<p>${indexVoList.get(0).content }</p>
-					</div>
-				</li>
-				<li>
-					<div class="main-li-sec">
-						<p>${indexVoList.get(1).number }</p>
-						<p>${indexVoList.get(1).content }</p>
-					</div>
-				</li>
-				<li>
-					<div class="main-li-thd">
-						<p>${indexVoList.get(2).number }</p>
-						<p>${indexVoList.get(2).content }</p>
-					</div>
-				</li>
+				<c:if test="${indexVoList.size() == 3 }">
+					<li class="main-li">
+						<div class="main-li-fst">
+							<p>${indexVoList.get(0).number }</p>
+							<p>${indexVoList.get(0).content }</p>
+						</div>
+					</li>
+					<li>
+						<div class="main-li-sec">
+							<p>${indexVoList.get(1).number }</p>
+							<p>${indexVoList.get(1).content }</p>
+						</div>
+					</li>
+					<li>
+						<div class="main-li-thd">
+							<p>${indexVoList.get(2).number }</p>
+							<p>${indexVoList.get(2).content }</p>
+						</div>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>

@@ -15,4 +15,8 @@ public interface TheyTalkMapper {
 
 	public TheyTalkVo getTheyTalkById(Integer id);
 	
+	public int updateIsShow(String configVal);
+	
+	public Integer getIsShow();
+	
 }
