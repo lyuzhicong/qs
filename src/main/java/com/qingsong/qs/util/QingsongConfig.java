@@ -1,5 +1,6 @@
 package com.qingsong.qs.util;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -11,23 +12,38 @@ public class QingsongConfig {
 	public static String IMAGE_PATH;
 	private static Properties properties;
 	
+	private QingsongConfig() {
+		
+	}
 	
 	static {
-		try {
-			properties = new Properties();
-			InputStream in = QingsongConfig.class.getClassLoader().getResourceAsStream("qs-config.properties");
-
-			properties.load(in);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
 		IMAGE_PATH = getProperty("image.path", "/a8root/web/qingsong/image");
 	}
 
 	public static String getProperty(String key, String defaultValue) {
-		String value = properties.getProperty(key, defaultValue);
-		if (value != null) {
-			value = value.trim();
+		InputStream in = QingsongConfig.class.getClassLoader().getResourceAsStream("qs-config.properties");
+		String value = null;
+		properties = new Properties();
+		try {
+			if(in != null) {
+				properties.load(in);
+				value = properties.getProperty(key, defaultValue);
+				if (value != null) {
+					value = value.trim();
+				}
+			} else {
+				value = defaultValue;
+			}
+		} catch (Exception e) {
+			logger.error("load configFile : qs-config.properties error: " + e.getMessage(), e);
+		} finally {
+			try {
+				if(in != null) {
+					in.close();
+				}
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+			}
 		}
 		return value;
 	}
