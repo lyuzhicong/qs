@@ -100,7 +100,8 @@
 			<c:forEach items="${companyList }" var="company">
 				<li class="ceo">
 					<%-- <div class="image" style='background-image: url("${company.imagePath}")'></div> <span class="font" style='background-image: url("${company.littleLogoImagePath}")'> </span> --%> 
-					<img src="${company.imagePath}"> <%-- <img src="${company.littleLogoImagePath}"> --%>
+					<img src="${company.imagePath}">
+					<img style="width: 50%" src="${company.littleLogoImagePath}">
 					<p>${company.introduction}</p>
 					<div class="company" data-id="${company.id }">了解更多</div>
 				</li>

@@ -30,6 +30,7 @@
 		`location`
 		FROM
 		`team`
+		ORDER BY location ASC
 	</select>
 
 	<select id="getTeamById" parameterType="java.lang.Integer" resultMap="teamMap">

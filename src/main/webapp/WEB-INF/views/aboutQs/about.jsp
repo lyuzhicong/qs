@@ -59,7 +59,7 @@
 				<img src="${pageContext.request.contextPath }/resources/images/web/map_shanghai.png"> <span>上海市静安区南京西路1486号SOHO东海广场3902室</span>
 			</div>
 			<div>
-				<img src="${pageContext.request.contextPath }/resources/images/web/map_shenzhen.png"> <span>深圳市南山区科技园科园路1002号A8音乐大厦23楼</span>
+				<img src="${pageContext.request.contextPath }/resources/images/web/map_shenzhen.png"> <span>深圳市南山区科技园科园路1002号A8音乐大厦24楼</span>
 			</div>
 		</div>
 	</div>

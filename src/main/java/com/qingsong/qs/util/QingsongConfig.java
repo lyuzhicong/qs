@@ -9,21 +9,15 @@ import org.slf4j.LoggerFactory;
 
 public class QingsongConfig {
 	private static Logger logger = LoggerFactory.getLogger(QingsongConfig.class);
-	public static String IMAGE_PATH;
-	private static Properties properties;
+	public static final String IMAGE_PATH = getProperty("image.path", "/a8root/web/qingsong/image");
 	
 	private QingsongConfig() {
 		
 	}
-	
-	static {
-		IMAGE_PATH = getProperty("image.path", "/a8root/web/qingsong/image");
-	}
-
-	public static String getProperty(String key, String defaultValue) {
-		InputStream in = QingsongConfig.class.getClassLoader().getResourceAsStream("qs-config.properties");
+	private static String getProperty(String key, String defaultValue) {
+		InputStream in = QingsongConfig.class.getClassLoader().getResourceAsStream("config/qs-config.properties");
 		String value = null;
-		properties = new Properties();
+		Properties properties = new Properties();
 		try {
 			if(in != null) {
 				properties.load(in);

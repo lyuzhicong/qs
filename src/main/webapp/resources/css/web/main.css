@@ -595,6 +595,7 @@ footer {
 	flex: 2;
 	padding: 40px 20px;
 	background-color: white;
+	line-height: 2rem;
 }
 
 .article-detail h3 {
@@ -619,7 +620,6 @@ footer {
 
 .article-detail p {
 	color: #666666;
-	line-height: 2rem;
 	margin: 1rem 0 2rem 0;
 }
 

@@ -493,6 +493,7 @@ footer ul li, .footer ul li {
 	margin: 0 auto;
 	background-color: #F8F8F8;
 	flex-direction: column;
+	line-height: 2rem;
 }
 
 .article h3 {
@@ -519,7 +520,6 @@ footer ul li, .footer ul li {
 
 .article p {
 	color: #666666;
-	line-height: 2rem;
 	margin: 1rem 0 2rem 0;
 }
 

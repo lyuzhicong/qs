@@ -217,7 +217,7 @@
 	</form>
 	<form id="imageForm" class="form-horizontal" enctype="multipart/form-data"">
 		<div class="form-group">
-			<label class="col-sm-3 control-label">人物图片：</label>
+			<label class="col-sm-3 control-label">轮播图：</label>
 			<div class="col-sm-4">
 				<input id="imageInput" type="file" name="file">	
 			</div>
@@ -229,7 +229,7 @@
 	</form>
 	<form id="imageLogoForm" class="form-horizontal" enctype="multipart/form-data">
 		<div class="form-group">
-			<label class="col-sm-3 control-label">详情大图：</label>
+			<label class="col-sm-3 control-label">详情图：</label>
 			<div class="col-sm-4">
 				<input id="logoInput" type="file" name="file">	
 			</div>
@@ -237,6 +237,23 @@
 				<button type="button" class="btn btn-success btn-sm" id="uploadLogoImage">上传
 			</div>
 			<div class="col-sm-2" id="uploadLogoStatus"></div>
+		</div>
+	</form>
+	<form id="imageLittleLogoForm" class="form-horizontal" enctype="multipart/form-data">
+		<div class="form-group">
+			<label class="col-sm-3 control-label">公司logo图：</label>
+			<div class="col-sm-4">
+				<input id="littleLogoInput" type="file" name="file">	
+			</div>
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-success btn-sm" id="uploadLittleLogoImage">上传</button>
+			</div>
+			<div class="col-sm-2" id="uploadLittleLogoStatus"></div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				[大小：5M；文件格式：jpg,png]
+			</div>
 		</div>
 	</form>
 <div>
@@ -270,8 +287,9 @@
 				<th nowrap>简介</th>
 				<th nowrap>详细内容</th>
 				<th nowrap>位置</th>
-				<th nowrap>人物图片</th>
-				<th nowrap>详情大图</th>
+				<th nowrap>轮播图</th>
+				<th nowrap>详情图</th>
+				<th nowrap>公司logo图</th>
 				<th nowrap></th>
 				<th nowrap></th>
 			</thead>
@@ -282,6 +300,7 @@
 					<td>${item.location }</td>
 					<td><img src="${item.imagePath}" width="100px" height="100px" /></td>
 					<td><img src="${item.logoImagePath }" width="100px" height="100px" /></td>
+					<td><img src="${item.littleLogoImagePath}" width="100px" height="100px" /></td>
 					<td><button type="button" data-id="${item.id }" class="btn btn-primary btn-sm editCompany">编辑</button></td>
 					<td><button type="button" data-id="${item.id }" class="btn btn-danger btn-sm deleteCompany">删除</button></td>
 				</tr>
